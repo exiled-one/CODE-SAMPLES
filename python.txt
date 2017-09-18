@@ -1,0 +1,5421 @@
+﻿***********************************
+Filename: area.py
+***********************************
+import os, winsound, time, sys, random #import os function
+
+
+os.system("color 02")                  #changes color
+
+def print_slow(str):
+    for letter in str:
+        sys.stdout.write(letter)
+        sys.stdout.flush()
+        time.sleep(0.009)
+
+def print_slow1(str):
+    for letter in str:
+        sys.stdout.write(letter)
+        sys.stdout.flush()
+        time.sleep(0.09)
+
+print_slow("""
+
+  ▄▄▄       ██▀███  ▓█████ ▄▄▄      
+▒████▄    ▓██ ▒ ██▒▓█   ▀▒████▄    
+▒██  ▀█▄  ▓██ ░▄█ ▒▒███  ▒██  ▀█▄  
+░██▄▄▄▄██ ▒██▀▀█▄  ▒▓█  ▄░██▄▄▄▄██ 
+ ▓█   ▓██▒░██▓ ▒██▒░▒████▒▓█   ▓██▒
+ ▒▒   ▓▒█░░ ▒▓ ░▒▓░░░ ▒░ ░▒▒   ▓▒█░
+  ▒   ▒▒ ░  ░▒ ░ ▒░ ░ ░  ░ ▒   ▒▒ ░
+  ░   ▒     ░░   ░    ░    ░   ▒   
+      ░  ░   ░        ░  ░     ░  ░
+                                   
+
+
+""")                                  #print banner
+
+pi = 3.14
+
+
+
+def main():                       #define main function
+
+    os.system("color 02")
+
+    print("Choose an option:\n1. Area of a rectangle\n2. Area of a triangle\n3\
+. Area of a circle\n4. Area of a trapezoid\n5. Circumference\n6. Quit")
+
+    ch = 0
+    ch = int(input("Enter your choice: "))
+
+    if ch == 1:
+        rectangle()
+    elif ch == 2:
+        triangle()
+    elif ch == 3:
+        circle()
+    elif ch == 4:
+        trapezoid()
+    elif ch == 5:
+        circumference()
+    elif ch == 6:
+        os.system("cls")
+        print_slow1("Terminating program...")
+        quit()
+
+
+def rectangle():   # A = B*H
+
+   b = float(input("Input Base: "))
+   h = float(input("Input Height: "))
+   measure = input("Unit of measurement: ")
+   area = b * h
+   print("The area of the rectangle is: ", area, measure, "squared.\n")
+
+   main()
+   rectangle()
+
+def triangle(): # A = 1/2 (B * H)
+    
+    b = float(input("Input Base: "))
+    h = float(input("Input Height: "))
+    measure = input("Unit of measurement: ")
+    area = (b * h) / 2
+    print("The area of the triangle is: ", area, measure, "squared.\n")
+    
+    main()
+    triangle()
+
+def circle():  # A = pi(radius**2)
+    d = float(input("Enter the diameter of the circle: "))
+    measure = input("Unit of measurement: ")
+    r = 1 / 2 * d
+    area = pi *(r**2)
+
+    print("The area of the circle is: ", area, measure, "squared\n")
+    
+
+    main()
+    circle()
+
+def trapezoid(): # A = 1/2h(base1 + base2)
+
+    b = float(input("Input Base#1: "))
+    b2 = float(input("Input Base#2: "))
+    h = float(input("Input Height: "))
+    measure = input("Unit of measurement: ")
+    area = 1 / 2 * (h * (b + b2))
+    print("The area of the trapezoid is: ", area, measure, "squared\n")
+
+    main()
+    trapezoid()
+
+def circumference(): # C = PI * Diameter
+    d = float(input("Enter the diameter of the circle: "))
+    measure = input("Unit of measurement: ")
+    circumference = pi * d
+    
+
+    print("The circumference of the circle is: ", circumference, measure, "\n")
+    main()
+    circumference()
+    
+                     
+main()   
+
+        
+
+        
+
+        
+
+
+        
+        
+
+
+***********************************
+Filename: area_determine_great.py
+***********************************
+#write a program that asks for the length and width of two rectangles
+#it should determine the area of both of them, and tell the user which one has the greater area
+
+#get length and width input from user for each rectangle
+#perform calculation to determine the area of each one
+#determine which one has the greater area or if they are the same size
+#display to user which one has greater area, display both.
+
+#get user input for the two sides of each rectangle
+
+print("This program will determine the area of two rectangles and return which one has the greater area, or if they are the same.")
+print("")
+
+length1 = float(input("Input the length of the first rectangle: "))
+width1= float(input("Input the width of the first rectangle: "))
+measure1 = input("Enter the unit of measurement for the first rectangle: ")
+
+length2 = float(input("Input the length of the second rectangle: "))
+width2= float(input("Input the width of the second rectangle: "))
+measure2 = input("Enter the unit of measurement for the second rectangle: ")
+
+area1 = length1 * width1
+area2 = length2 * width2
+
+print("Rectangle one's area is:", area1, measure1)
+print("Rectangle two's area is:", area2, measure2)
+
+if area1 > area2:
+    print("Rectangle one's area was greater.")
+elif area1 < area2:
+    print("Rectangle two's area was greater.")
+elif area1 == area2:
+    print("The rectangles areas are equal.")
+    
+
+
+***********************************
+Filename: average_test_score.py
+***********************************
+#this program averages test scores. it asks the user for the number of students and the number of test scores per student.
+
+#get the number of students
+num_students = int(input('How many students do you have? '))
+
+# get the number of tests scores per student
+num_test_scores = int(input('how many test scores per student? '))
+
+#determine each students average test score
+for students in range(num_students):
+    #initialize an accumulator for test scores
+    total = 0.0
+    #get a student's test scores
+    print('Student number', students + 1)
+    print('-----------------')
+    for test_num in range(num_test_scores):
+        print('Test number', test_num + 1, end='')
+        score = float(input(': '))
+        #add the score to the accumulator.
+        total += score
+
+    #calculate the average test score for this student
+    average = total / num_test_scores
+
+    #display the average.
+    print('The average for student number', students +1, 'is:', average)
+    print()
+
+***********************************
+Filename: binary.py
+***********************************
+from decimal import *
+
+def main():
+    global bits
+    bits = ''
+    print("This program converts decimal to binary.\n")
+    print("Enter a decimal number: ")
+
+    
+
+    try:
+        a = Decimal(input("Number: "))
+        divideBy2(a)
+    except:
+        print("\nError, invalid entry.")
+        main()
+
+    cont = input("\nEnter y to continue, n to exit. ")
+    
+    if cont == 'y' or cont == 'Y':
+        main()
+    
+
+def divideBy2(decimal):              #function to divide number repeatedy by 2
+    global bits                     #function saves the remainder as bit
+    while decimal > 0:              # function saves the result and sets original number equal to it
+        bit = decimal % 2           #program runs this until orig number can't be divided
+        bit = str(bit)
+        result = decimal // 2
+        decimal = result
+        holder(bit)
+
+    print(bits)
+
+    bits = int(bits)
+    
+    if bits <= 1:                           #adds the 0's so that the binary number looks right
+        bits = str(bits)                    #number is converted to a string to be easily manipulated
+        bits = '0000 000' + bits
+    elif bits <= 11:
+        bits = str(bits)
+        bits = '0000 00' + bits
+    elif bits < 1000 and bits >= 100:
+        bits = str(bits)
+        bits = '0000 0' + bits
+        
+    elif bits >= 1000 and bits <= 1111:
+        bits = str(bits)
+        bits = '0000 ' + bits
+    elif bits > 1111 and bits <= 11111:
+        bits = str(bits)
+        bits = '000' + bits
+    elif bits > 11111 and bits <= 111111:
+        bits = str(bits)
+        bits = '00' + bits
+    elif bits > 111111 and bits <= 1111111:
+        bits = str(bits)
+        bits = '0' + bits
+    
+    
+    bits = str(bits)    
+    print(bits)
+
+
+def holder(a):                  #holds bits and adds each one as it gets passed to it
+    global bits
+    bits = a + bits
+    
+
+main()
+
+***********************************
+Filename: calc.py
+***********************************
+#calc.py
+#By: Greg Leftwich
+#© January 21, 2016
+
+import os, winsound, time, sys, random #import external function libraries
+
+def print_slow(str):
+    for letter in str:
+        sys.stdout.write(letter)
+        sys.stdout.flush()
+        time.sleep(0.009)
+
+os.system("color 0a")         #change color
+
+print_slow("""
+
+ ▄████▄   ▄▄▄       ██▓     ▄████▄  
+▒██▀ ▀█  ▒████▄    ▓██▒    ▒██▀ ▀█  
+▒▓█    ▄ ▒██  ▀█▄  ▒██░    ▒▓█    ▄ 
+▒▓▓▄ ▄██▒░██▄▄▄▄██ ▒██░    ▒▓▓▄ ▄██▒
+▒ ▓███▀ ░ ▓█   ▓██▒░██████▒▒ ▓███▀ ░.py
+░ ░▒ ▒  ░ ▒▒   ▓▒█░░ ▒░▓  ░░ ░▒ ▒  ░
+  ░  ▒     ▒   ▒▒ ░░ ░ ▒  ░  ░  ▒   
+░          ░   ▒     ░ ░   ░        
+░ ░            ░  ░    ░  ░░ ░      
+░                          ░        
+
+
+""")                                  #print banner
+
+print("")
+print("\a")
+
+def main():                       #define main function
+
+    os.system("color 0a")         #change color    
+
+    print("Enter first number, press Enter, then choose an operator: +  -  * / ")
+    print("or choose operator R to reset, Q to quit.")
+    print("")
+
+    ch = 0
+    
+    x = float(input("number>>> "))    #get first value
+
+
+    print("")
+    
+    ch = input("operator> ")         #get operator choice
+    
+    print("")
+    
+    y = float(input("number>>> "))    #get second value
+
+    choice(ch, x, y)
+    
+def choice(ch, x, y):                #choice function for operators
+    
+    if ch in ['+']:                 # quit and restart choices
+        add(x, y)
+    if ch in ['-']:
+        subtract(x, y)
+    if ch in ['*']:
+        multiply(x, y)
+    if ch in ['/']: 
+        divide(x, y)
+    if ch in ['r', 'R']:
+        main()
+    
+    if ch in ['q', 'Q']:
+        os.system("cls")
+        print_slow("Terminating program...")
+        quit()
+
+    else:
+        print("")
+        
+
+        
+        count = 0
+        while count < 5:
+            os.system("color 0c")
+            time.sleep(.5)
+            print("")
+            print("*** ALERT! *** *** DUMBASS DETECTED *** *** ALERT! ***\a\a\a")
+            winsound.Beep(500,2000)
+            time.sleep(.5)
+            os.system("color Fa")            
+            time.sleep(.5)
+            winsound.Beep(500,2000)
+            print("")
+            print("*** ALERT! *** *** DUMBASS DETECTED *** *** ALERT! ***\a\a\a")
+            os.system("color c0")
+            time.sleep(.5)
+            print("")
+            print("*** ALERT! *** *** DUMBASS DETECTED *** *** ALERT! ***\a\a\a")
+            os.system("color DB")
+            time.sleep(.5)
+            print("")
+            print("*** ALERT! *** *** DUMBASS DETECTED *** *** ALERT! ***\a\a\a")
+            count += 1
+        
+        os.system("color 0c")
+        print_slow("""
+
+▄▄▄█████▓ ██▀███ ▓██   ██▓
+▓  ██▒ ▓▒▓██ ▒ ██▒▒██  ██▒
+▒ ▓██░ ▒░▓██ ░▄█ ▒ ▒██ ██░
+░ ▓██▓ ░ ▒██▀▀█▄   ░ ▐██▓░
+  ▒██▒ ░ ░██▓ ▒██▒ ░ ██▒▓░
+  ▒ ░░   ░ ▒▓ ░▒▓░  ██▒▒▒ 
+    ░      ░▒ ░ ▒░▓██ ░▒░ 
+  ░        ░░   ░ ▒ ▒ ░░  
+            ░     ░ ░     
+                  ░ ░    
+
+
+
+        
+
+                """)
+        
+        os.system("cls")
+        
+        print_slow("""
+
+ ▄▄▄        ▄████  ▄▄▄       ██▓ ███▄    █ 
+▒████▄     ██▒ ▀█▒▒████▄    ▓██▒ ██ ▀█   █ 
+▒██  ▀█▄  ▒██░▄▄▄░▒██  ▀█▄  ▒██▒▓██  ▀█ ██▒
+░██▄▄▄▄██ ░▓█  ██▓░██▄▄▄▄██ ░██░▓██▒  ▐▌██▒
+ ▓█   ▓██▒░▒▓███▀▒ ▓█   ▓██▒░██░▒██░   ▓██░
+ ▒▒   ▓▒█░ ░▒   ▒  ▒▒   ▓▒█░░▓  ░ ▒░   ▒ ▒ 
+  ▒   ▒▒ ░  ░   ░   ▒   ▒▒ ░ ▒ ░░ ░░   ░ ▒░
+  ░   ▒   ░ ░   ░   ░   ▒    ▒ ░   ░   ░ ░ 
+      ░  ░      ░       ░  ░ ░           ░ 
+                                           
+
+                   """)
+        os.system("cls")
+        
+        print_slow("""
+▓█████▄  █    ██  ███▄ ▄███▓ ▄▄▄▄    ▄▄▄        ██████   ██████ 
+▒██▀ ██▌ ██  ▓██▒▓██▒▀█▀ ██▒▓█████▄ ▒████▄    ▒██    ▒ ▒██    ▒ 
+░██   █▌▓██  ▒██░▓██    ▓██░▒██▒ ▄██▒██  ▀█▄  ░ ▓██▄   ░ ▓██▄   
+░▓█▄   ▌▓▓█  ░██░▒██    ▒██ ▒██░█▀  ░██▄▄▄▄██   ▒   ██▒  ▒   ██▒
+░▒████▓ ▒▒█████▓ ▒██▒   ░██▒░▓█  ▀█▓ ▓█   ▓██▒▒██████▒▒▒██████▒▒
+ ▒▒▓  ▒ ░▒▓▒ ▒ ▒ ░ ▒░   ░  ░░▒▓███▀▒ ▒▒   ▓▒█░▒ ▒▓▒ ▒ ░▒ ▒▓▒ ▒ ░
+ ░ ▒  ▒ ░░▒░ ░ ░ ░  ░      ░▒░▒   ░   ▒   ▒▒ ░░ ░▒  ░ ░░ ░▒  ░ ░
+ ░ ░  ░  ░░░ ░ ░ ░      ░    ░    ░   ░   ▒   ░  ░  ░  ░  ░  ░  
+   ░       ░            ░    ░            ░  ░      ░        ░  
+ ░                                ░                             
+
+
+""")
+        os.system("cls")
+        print_slow("""
+
+               
+ ██▓  ██▓  ██▓ 
+ ▒▓▒  ▒▓▒  ▒▓▒ 
+ ░▒   ░▒   ░▒  
+ ░    ░    ░   
+  ░    ░    ░  
+  ░    ░    ░ 
+
+
+
+""")
+
+    os.system("cls")
+    
+    main()
+    choice()
+
+def add(x, y):                      #add function
+
+    total = x+y
+    print("")
+    print(">>>>>>>>>",total)
+    runningTotal(total)
+    add()
+
+def subtract(x, y):                 #subtract function
+    
+    total = x-y
+    print("")
+    print(">>>>>>>>>",total)
+    runningTotal(total)
+    subtract()
+
+def multiply(x, y):                 #multiply function
+    total = x*y
+                
+    print("")
+    print(">>>>>>>>>",total)
+    runningTotal(total)
+    multiply()
+
+def divide(x, y):                   #divide function
+
+    total = x/y
+    print("")
+    print(">>>>>>>>>",total)
+    runningTotal(total)
+    divide()
+
+def runningTotal(total):            #running total function
+
+    x = total
+    print("")
+    ch = input("operator> ")          
+    
+    print("")
+    
+    y = float(input("number>>> "))    
+
+
+    choice(ch, x, y)    
+        
+        
+    runningTotal(total)
+
+    
+                     
+main()                              #end of main function
+
+***********************************
+Filename: calculator.py
+***********************************
+from tkinter import *
+import sys, os, subprocess
+
+
+root = Tk()
+root.title("Calculator")
+root.geometry("200x250")
+root.columnconfigure(0, weight=1)
+
+def main():
+    global x
+    global y
+    x = ""
+    y = ""
+    
+
+    def choice(ch, x, y):                #choice function for operators
+    
+        if ch in ['+']:                 # quit and restart choices
+            addition(x, y)
+        if ch in ['-']:
+            subtract(x, y)
+        if ch in ['*']:
+            multiply(x, y)
+        if ch in ['/']: 
+            divide(x, y)
+        if ch in ['r', 'R']:
+            main()
+    
+        if ch in ['q', 'Q']:
+        
+            print_slow("Terminating program...")
+            quit()
+  
+
+
+    def reset1():
+        global ch
+        global x
+        global y
+        x = ''
+        y = ''
+        ch = '' 
+    
+
+    def reset(event):
+        delete()
+        global ch
+        global x
+        global y
+        x = ''
+        y = ''
+        ch = ''
+    
+    def add(event):
+        global ch
+        global x
+        global y
+        ch = "+"
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        
+
+    def sub(event):
+        global ch
+        global x
+        global y
+        ch = "-"
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        
+
+    def mul(event):
+        global ch
+        global x
+        global y
+        ch = "*"
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        
+
+    def div(event):
+        global ch
+        global x
+        global y
+        ch = "/"
+        delete()
+        print(ch)
+        y = x
+        x = ""
+
+    def negative(event):
+        delete()
+        global x
+        try:
+            x = x + '-'
+            print(x)
+        except:
+            print("Error")
+        
+        
+    def seven(event):
+        delete()
+        global x
+        try:
+            x = x + '7'
+            print(x)
+        except:
+            reset1()
+        
+        
+    def eight(event):
+        delete()
+        global x
+        try:
+            x = x + '8'
+            print(x)
+        except:
+            reset1()
+        
+    def nine(event):
+        delete()
+        global x
+        try:
+            x = x + '9'
+            print(x)
+        except:
+            reset1()
+        
+    def four(event):
+        delete()
+        global x
+        try:
+            x = x + '4'
+            print(x)
+        except:
+            reset1()
+        
+    def five(event):
+        delete()
+        global x
+        try:
+            x = x + '5'
+            print(x)
+        except:
+            reset1()
+        
+        
+    def six(event):
+        delete()
+        global x
+        try:
+            x = x + '6'
+            print(x)
+        except:
+            reset1()
+        
+    def one(event):
+        delete()
+        global x
+        try:
+            x = x + '1'
+            print(x)
+        except:
+            print("Error")
+            reset1()
+        
+        
+    def two(event):
+        delete()
+        global x
+        try:
+            x = x + '2'
+            print(x)
+        except:
+            reset1()
+        
+        
+    def three(event):
+        delete()
+        global x
+        try:
+            x = x + '3'
+            print(x)
+        except:
+            reset1()
+        
+        
+    def zero(event):
+        delete()
+        global x
+        try:
+            x = x + '0'
+            print(x)
+        except:
+            reset1()
+        
+    def dot(event):
+        delete()
+        global x
+        try:
+            x = x + '.'
+            print(x)
+        except:
+            reset1()
+        
+    def equal(event):
+        delete()
+        global x
+        global y
+        try:
+            x = float(x)
+            y = float(y)
+            choice(ch, x, y)
+        except:
+            print("Error")
+            reset1()
+
+    def addition(x, y):                      #add function
+        
+        total = y+x
+        print(total)
+        runningTotal(total)
+        
+        
+
+    def subtract(x, y):                 #subtract function
+        
+        total = y-x
+        print(total)
+        runningTotal(total)
+        
+
+    def multiply(x, y):                 #multiply function
+        total = y*x
+                    
+        print(total)
+        runningTotal(total)
+        
+
+    def divide(x, y):                   #divide function
+
+        total = y/x
+        print(total)
+        runningTotal(total)
+        
+
+    def runningTotal(total):            #running total function
+        global x
+        global y
+        x = total
+        y = ''
+        
+
+    def redirector(inputStr):
+        textBox.insert(END, inputStr, "right" )
+
+    def delete():
+        textBox.delete(1.0, END)
+
+    sys.stdout.write = redirector
+
+    frameZero = Frame(root, width=200, height=25)
+    frameZero.pack()
+    frameZero.pack_propagate(False)
+    frameOne = Frame(root)
+    frameOne.pack(fill=BOTH, expand=1)
+    frameTwo = Frame(root)
+    frameTwo.pack(fill=BOTH, expand=1)
+    frameThree = Frame(root)
+    frameThree.pack(fill=BOTH, expand=1)
+    frameFour = Frame(root)
+    frameFour.pack(fill=BOTH, expand=1)
+    frameFive = Frame(root)
+    frameFive.pack(fill=BOTH, expand=1)
+
+    textBox = Text(frameZero, bg="black", fg="lawn green")
+    textBox.config(state=NORMAL)
+    textBox.tag_configure("right", justify='right')
+    textBox.tag_add("right", 1.0, "end")
+
+    textBox.pack()
+
+
+    buttonC = Button(frameOne, text="C", bg="black", fg="lawn green")
+    buttonC.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonC.bind("<Button-1>", reset)
+
+    buttonAdd = Button(frameOne, text="+", bg="black", fg="lawn green")
+    buttonAdd.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonAdd.bind("<Button-1>", add)
+
+    buttonSub= Button(frameOne, text="-", bg="black", fg="lawn green")
+    buttonSub.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonSub.bind("<Button-1>", sub)
+
+    buttonMul = Button(frameOne, text="*", bg="black", fg="lawn green")
+    buttonMul.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonMul.bind("<Button-1>", mul)
+
+    buttonDiv = Button(frameOne, text="/", bg="black", fg="lawn green")
+    buttonDiv.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonDiv.bind("<Button-1>", div)
+
+    buttonC = Button(frameOne, text="Neg", bg="black", fg="lawn green")
+    buttonC.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonC.bind("<Button-1>", negative)
+
+    button7 = Button(frameTwo, text="7", bg="black", fg="lawn green")
+    button7.pack(side=LEFT, fill=BOTH, expand=1)
+    button7.bind("<Button-1>", seven)
+
+    button8 = Button(frameTwo, text="8", bg="black", fg="lawn green")
+    button8.pack(side=LEFT, fill=BOTH, expand=1)
+    button8.bind("<Button-1>", eight)
+
+    button9 = Button(frameTwo, text="9", bg="black", fg="lawn green")
+    button9.pack(side=LEFT, fill=BOTH, expand=1)
+    button9.bind("<Button-1>", nine)
+
+    button4 = Button(frameThree, text="4", bg="black", fg="lawn green")
+    button4.pack(side=LEFT, fill=BOTH, expand=1)
+    button4.bind("<Button-1>", four)
+
+    button5 = Button(frameThree, text="5", bg="black", fg="lawn green")
+    button5.pack(side=LEFT, fill=BOTH, expand=1)
+    button5.bind("<Button-1>", five)
+
+    button6 = Button(frameThree, text="6", bg="black", fg="lawn green")
+    button6.pack(side=LEFT, fill=BOTH, expand=1)
+    button6.bind("<Button-1>", six)
+
+    button1 = Button(frameFour, text="1", bg="black", fg="lawn green")
+    button1.pack(side=LEFT, fill=BOTH, expand=1)
+    button1.bind("<Button-1>", one)
+
+    button2 = Button(frameFour, text="2", bg="black", fg="lawn green")
+    button2.pack(side=LEFT, fill=BOTH, expand=1)
+    button2.bind("<Button-1>", two)
+
+    button3 = Button(frameFour, text="3", bg="black", fg="lawn green")
+    button3.pack(side=LEFT, fill=BOTH, expand=1)
+    button3.bind("<Button-1>", three)
+
+    button0 = Button(frameFive, text="0", bg="black", fg="lawn green")
+    button0.pack(side=LEFT, fill=BOTH, expand=1)
+    button0.bind("<Button-1>", zero)
+
+    buttonDot = Button(frameFive, text=".", bg="black", fg="lawn green")
+    buttonDot.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonDot.bind("<Button-1>", dot)
+
+    buttonEqual = Button(frameFive, text="=", bg="black", fg="lawn green")
+    buttonEqual.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonEqual.bind("<Button-1>", equal)
+
+
+
+
+
+
+
+
+
+
+    root.mainloop()
+main()
+
+***********************************
+Filename: calc_v1.py
+***********************************
+from tkinter import *
+import sys, os, subprocess
+
+
+root = Tk()
+root.title("Calculator")
+root.geometry("200x250")
+root.columnconfigure(0, weight=1)
+
+def main():
+    global x
+    global y
+    global ch
+    ch = ""
+    x = ""
+    y = ""
+    
+
+    def choice(ch, x, y):                #choice function for operators
+    
+        if ch in ['+']:                 # quit and restart choices
+            addition(x, y)
+        if ch in ['-']:
+            subtract(x, y)
+        if ch in ['*']:
+            multiply(x, y)
+        if ch in ['/']: 
+            divide(x, y)
+        if ch in ['r', 'R']:
+            main()
+        if ch in ['%']:
+            rem(x, y)
+        if ch in ['//']:
+            intdiv(x, y)
+        if ch in ['^']:
+            exponent(x, y)
+    
+        if ch in ['q', 'Q']:
+        
+            print_slow("Terminating program...")
+            quit()
+
+    def whole_division(event):
+        global ch
+        global x
+        global y
+        global alg
+        ch = "//"
+        alg = x + ch
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        algorithm()  
+
+    def remainder(event):
+        global ch
+        global x
+        global y
+        global alg
+        ch = "%"
+        alg = x + ch
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        algorithm()
+
+    def exp1():
+        global ch
+        global x
+        global y
+        global alg
+        ch = "^"
+        alg = x + ch
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        algorithm()
+
+    def whole_division1():
+        global ch
+        global x
+        global y
+        global alg
+        ch = "//"
+        alg = x + ch
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        algorithm()
+
+    def remainder1():
+        global ch
+        global x
+        global y
+        global alg
+        ch = "%"
+        alg = x + ch
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        algorithm()
+        
+
+    def reset1():
+        global ch
+        global x
+        global y
+        x = ''
+        y = ''
+        ch = '' 
+    
+
+    def reset(event):
+        delete()
+        global ch
+        global x
+        global y
+        x = ''
+        y = ''
+        ch = ''
+
+    def add1():
+        global ch
+        global x
+        global y
+        global alg
+        ch = "+"
+        alg = x + ch
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        algorithm()
+        
+
+    def sub1():
+        global ch
+        global x
+        global y
+        global alg
+        ch = "-"
+        alg = x + ch
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        algorithm()
+        
+
+    def mul1():
+        global ch
+        global x
+        global y
+        global alg
+        ch = "*"
+        alg = x + ch
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        algorithm()
+        
+
+    def div1():
+        global ch
+        global x
+        global y
+        global alg
+        ch = "/"
+        alg = x + ch
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        algorithm()
+
+    def exp(event):
+        global ch
+        global x
+        global y
+        global alg
+        ch = "^"
+        alg = x + ch
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        algorithm()
+    
+    def add(event):
+        global ch
+        global x
+        global y
+        global alg
+        ch = "+"
+        alg = x + ch
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        algorithm()
+        
+
+    def sub(event):
+        global ch
+        global x
+        global y
+        global alg
+        ch = "-"
+        alg = x + ch
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        algorithm()
+        
+
+    def mul(event):
+        global ch
+        global x
+        global y
+        global alg
+        ch = "*"
+        alg = x + ch
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        algorithm()
+        
+
+    def div(event):
+        global ch
+        global x
+        global y
+        global alg
+        ch = "/"
+        alg = x + ch
+        delete()
+        print(ch)
+        y = x
+        x = ""
+        algorithm()
+        
+        
+
+    def negative(event):
+        
+        global x
+        delete()
+        try:
+            x = x + '-'
+            print(x)
+            algorithm()
+        except:
+            print("Error")
+        
+        
+    def seven(event):
+        delete()
+        global x
+        try:
+            x = x + '7'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+        
+    def eight(event):
+        delete()
+        global x
+        try:
+            x = x + '8'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+    def nine(event):
+        delete()
+        global x
+        try:
+            x = x + '9'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+    def four(event):
+        delete()
+        global x
+        try:
+            x = x + '4'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+    def five(event):
+        delete()
+        global x
+        try:
+            x = x + '5'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+        
+    def six(event):
+        delete()
+        global x
+        try:
+            x = x + '6'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+    def one(event):
+        delete()
+        global x
+        try:
+            x = x + '1'
+            print(x)
+            algorithm()
+            
+        except:
+            print("Error")
+            reset1()
+        
+        
+    def two(event):
+        delete()
+        global x
+        try:
+            x = x + '2'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+        
+    def three(event):
+        delete()
+        global x
+        try:
+            x = x + '3'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+        
+    def zero(event):
+        delete()
+        global x
+        try:
+            x = x + '0'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+    def dot(event):
+        delete()
+        global x
+        try:
+            x = x + '.'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+    def equal(event):
+        delete()
+        global x
+        global y
+        try:
+            x = float(x)
+            y = float(y)
+            choice(ch, x, y)
+        except:
+            print("Error")
+            reset1()
+
+
+    def addition(x, y):                      #add function
+        
+        total = y+x
+        print(total)
+        runningTotal(total)
+        
+        
+
+    def subtract(x, y):                 #subtract function
+        
+        total = y-x
+        print(total)
+        runningTotal(total)
+        
+
+    def multiply(x, y):                 #multiply function
+        total = y*x
+                    
+        print(total)
+        runningTotal(total)
+        
+
+    def divide(x, y):                   #divide function
+
+        total = y/x
+        print(total)
+        runningTotal(total)
+
+    def rem(x, y):                      #remainder function
+        
+        total = y%x
+        print(total)
+        runningTotal(total)
+
+    def intdiv(x, y):                      #integer division function
+        
+        total = y//x
+        print(total)
+        runningTotal(total)
+
+    def exponent(x, y):                      #add function
+        
+        total = y**x
+        print(total)
+        runningTotal(total)
+        
+
+    def runningTotal(total):            #running total function
+        global x
+        global y
+        x = total
+        y = ''
+        x = str(x)
+
+    def algorithm():
+        global x
+        global y
+        alg = y + ' ' + ch + ' ' + x
+        sys.stdout.write = redirector1
+        print(alg)
+        sys.stdout.write = redirector
+        
+        
+        
+
+    def redirector(inputStr):
+        textBox.insert(END, inputStr, "right" )
+        
+
+    def redirector1(inputStr):
+        textBox1.insert(END, inputStr, "right" )
+
+    def delete():
+        textBox.delete(1.0, END)
+        textBox1.delete(1.0, END)
+
+    def backspace(event):
+        global x
+        x = x[:-1]
+        delete()
+        print(x)
+        algorithm()
+    def displayHotkeys():
+        
+        sys.stdout.write = temp
+        print("Hotkeys:'C' to Clear\n'Enter' to equals\n'+' to add\n'-' to subtract\n'*' to multiply\n'/' to divide\n'i' to do integer division\n'r' or '%' for remainder division\n'^' for exponents\n'n' for negative")
+        sys.stdout.write = redirector
+
+        
+        
+        
+        
+
+    def key(event):
+        global ch
+        global x
+        global y
+        if event.char in ['+', '-', '*', '/', 'r', 'i', '^']:
+            ch = event.char
+            if ch == '+':
+                add1()
+            elif ch == '-':
+                sub1()
+            elif ch == '*':
+                mul1()
+            elif ch == '/':
+                div1()
+            elif ch == 'r':
+                remainder1()
+            elif ch == 'i':
+                whole_division1()
+            elif ch == '^':
+                exp1()
+            
+        elif event.char in '1' or '2' or '3' or '4' or '5' or '6' or '7' or '8' or '9' or '0' or '.':
+            delete()
+                   
+            try:
+                x = x + event.char
+                print(x)
+                algorithm()
+                
+            except:
+                reset1()
+        
+    temp = sys.stdout.write
+    
+    sys.stdout.write = redirector
+    
+    root.bind("n", negative)
+    root.bind("c", reset)
+    root.bind("<BackSpace>", backspace)
+    root.bind("<Return>", equal)
+    root.bind("<Key>", key)
+    
+    menu = Menu(root)                    # menu items
+    root.config(menu=menu)
+    subMenu = Menu(menu)
+    menu.add_cascade(label="File", menu=subMenu)
+    subMenu.add_command(label="Hotkeys", command=displayHotkeys)
+    
+
+    
+    frameAlg = Frame(root, width=200, height=25)   # frames
+    frameAlg.pack(fill=BOTH, expand=1)
+    frameAlg.pack_propagate(False)
+    frameZero = Frame(root, width=200, height=25)
+    frameZero.pack(fill=BOTH, expand=1)
+    frameZero.pack_propagate(False)
+    frameFunc = Frame(root)
+    frameFunc.pack(fill=BOTH, expand=1)
+    frameOne = Frame(root)
+    frameOne.pack(fill=BOTH, expand=1)
+    frameTwo = Frame(root)
+    frameTwo.pack(fill=BOTH, expand=1)
+    frameThree = Frame(root)
+    frameThree.pack(fill=BOTH, expand=1)
+    frameFour = Frame(root)
+    frameFour.pack(fill=BOTH, expand=1)
+    frameFive = Frame(root)
+    frameFive.pack(fill=BOTH, expand=1)
+
+    
+   
+    
+    
+    textBox1 = Text(frameAlg, bg="black", fg="lawn green")
+    textBox1.config(state=NORMAL)
+    textBox1.tag_configure("right", justify='right')
+    textBox1.tag_add("right", 1.0, "end")
+
+    textBox1.pack()
+    
+    
+
+    textBox = Text(frameZero, bg="black", fg="lawn green")
+    textBox.config(state=NORMAL)
+    textBox.tag_configure("right", justify='right')
+    textBox.tag_add("right", 1.0, "end")
+
+    textBox.pack()
+
+    buttonBack = Button(frameFunc, text="<--", bg="black", fg="lawn green")
+    buttonBack.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonBack.bind("<Button-1>", backspace)
+
+    buttonRem = Button(frameFunc, text="Remainder", bg="black", fg="lawn green")
+    buttonRem.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonRem.bind("<Button-1>", remainder)
+
+    buttonIntDiv = Button(frameFunc, text="//", bg="black", fg="lawn green")
+    buttonIntDiv.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonIntDiv.bind("<Button-1>", whole_division)
+
+    buttonExp = Button(frameFunc, text="X^", bg="black", fg="lawn green")
+    buttonExp.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonExp.bind("<Button-1>", exp)
+
+
+    buttonC = Button(frameOne, text="C", bg="black", fg="lawn green")
+    buttonC.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonC.bind("<Button-1>", reset)
+
+    buttonAdd = Button(frameOne, text="+", bg="black", fg="lawn green")
+    buttonAdd.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonAdd.bind("<Button-1>", add)
+
+    buttonSub= Button(frameOne, text="-", bg="black", fg="lawn green")
+    buttonSub.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonSub.bind("<Button-1>", sub)
+
+    buttonMul = Button(frameOne, text="*", bg="black", fg="lawn green")
+    buttonMul.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonMul.bind("<Button-1>", mul)
+
+    buttonDiv = Button(frameOne, text="/", bg="black", fg="lawn green")
+    buttonDiv.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonDiv.bind("<Button-1>", div)
+
+    buttonC = Button(frameOne, text="Neg", bg="black", fg="lawn green")
+    buttonC.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonC.bind("<Button-1>", negative)
+
+    button7 = Button(frameTwo, text="7", bg="black", fg="lawn green")
+    button7.pack(side=LEFT, fill=BOTH, expand=1)
+    button7.bind("<Button-1>", seven)
+
+    button8 = Button(frameTwo, text="8", bg="black", fg="lawn green")
+    button8.pack(side=LEFT, fill=BOTH, expand=1)
+    button8.bind("<Button-1>", eight)
+
+    button9 = Button(frameTwo, text="9", bg="black", fg="lawn green")
+    button9.pack(side=LEFT, fill=BOTH, expand=1)
+    button9.bind("<Button-1>", nine)
+
+    button4 = Button(frameThree, text="4", bg="black", fg="lawn green")
+    button4.pack(side=LEFT, fill=BOTH, expand=1)
+    button4.bind("<Button-1>", four)
+
+    button5 = Button(frameThree, text="5", bg="black", fg="lawn green")
+    button5.pack(side=LEFT, fill=BOTH, expand=1)
+    button5.bind("<Button-1>", five)
+
+    button6 = Button(frameThree, text="6", bg="black", fg="lawn green")
+    button6.pack(side=LEFT, fill=BOTH, expand=1)
+    button6.bind("<Button-1>", six)
+
+    button1 = Button(frameFour, text="1", bg="black", fg="lawn green")
+    button1.pack(side=LEFT, fill=BOTH, expand=1)
+    button1.bind("<Button-1>", one)
+
+    button2 = Button(frameFour, text="2", bg="black", fg="lawn green")
+    button2.pack(side=LEFT, fill=BOTH, expand=1)
+    button2.bind("<Button-1>", two)
+
+    button3 = Button(frameFour, text="3", bg="black", fg="lawn green")
+    button3.pack(side=LEFT, fill=BOTH, expand=1)
+    button3.bind("<Button-1>", three)
+
+    button0 = Button(frameFive, text="0", bg="black", fg="lawn green")
+    button0.pack(side=LEFT, fill=BOTH, expand=1)
+    button0.bind("<Button-1>", zero)
+
+    buttonDot = Button(frameFive, text=".", bg="black", fg="lawn green")
+    buttonDot.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonDot.bind("<Button-1>", dot)
+
+    buttonEqual = Button(frameFive, text="=", bg="black", fg="lawn green")
+    buttonEqual.pack(side=LEFT, fill=BOTH, expand=1)
+    buttonEqual.bind("<Button-1>", equal)
+
+
+
+
+
+
+
+
+
+
+    root.mainloop()
+main()
+
+***********************************
+Filename: client.py
+***********************************
+import socket
+import sys
+
+#create a tcp/ip socket
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+#connect the socket to the port where the server is listening
+
+server_address = ('localhost', 10000)
+
+print('connecting to the %s port %s' % server_address, file=sys.stderr)
+sock.connect(server_address)
+
+try:
+    #send data
+
+    message = 'This is the message. It will be repeated.'
+    print('sending "%s"' % message, file=sys.stderr)
+    sock.sendall(message.encode())
+
+    #look for the response
+    amount_received = 0
+    amount_expected = len(message)
+
+    while amount_received < amount_expected:
+        data = sock.recv(16).decode()
+        amount_received += len(data)
+        print('received "%s"' % data, file=sys.stderr)
+
+finally:
+    print('closing socket', file=sys.stderr)
+    sock.close()
+
+    
+
+***********************************
+Filename: cmd.py
+***********************************
+
+import os
+
+def main():
+    
+    global enterCommand
+
+    enterCommand = input("Enter a command: ")
+    cmd()
+
+def cmd():
+    os.system(enterCommand)
+    main()
+
+main()
+
+
+
+***********************************
+Filename: console.py
+***********************************
+from tkinter import Tk, Text, Frame, Scrollbar
+try:
+    from ttk import Frame, Scrollbar
+except ImportError:
+        pass
+    
+import pyconsole
+    
+class History(list):
+    def __init__(self):
+        self.reset_bookkepping()
+   
+    def reset_bookkepping(self):
+        self._last_req = None
+   
+    def get_item(self):
+        ret = ''
+        if self:
+            return self[self._last_req]
+        return ret
+   
+    def next_relative(self):
+           if self:
+               if self._last_req is None:
+                   self._last_req = 0
+               else:
+                   self._last_req = (self._last_req + 1) % len(self)
+           return self.get_item()
+   
+    def prev_relative(self):
+           if self:
+               if self._last_req is None:
+                   self._last_req = -1
+               else:
+                   self._last_req = -((-self._last_req + 1) % len(self))
+               return self.get_item()
+   
+   
+class ConsoleProcessWindow(Text):
+   
+       def __init__(self, master=None, **kwargs):
+           Text.__init__(self, **kwargs)
+           self.bind('<KeyPress>', self._evt_keypress)
+   
+           # You can actually change this 'cmd.exe' to 'powershell.exe'
+           # or even something like 'ping -n 20 localhost' (if you use
+           # this one then be sure to not use console_process_end).
+           self.console_process = pyconsole.ConsoleProcess('cmd.exe',
+                   console_update=self._console_update,
+                   console_process_end=self._console_process_end)
+   
+           self.history = History()
+           self._complete = False
+           self._last_line = 0
+   
+       def send(self, command, partial=False):
+           """Send command to the cmd.exe."""
+           if partial:
+               end = '\t'
+           else:
+               end = '\n'
+               self.clear_cmd_line()
+   
+           self.console_process.write(command + end)
+   
+       def clear_cmd_line(self):
+           """Clear current text written in the command line."""
+           right_after_ps1, line = self._right_after_ps1()
+           self.delete(right_after_ps1, '%d.end' % line)
+   
+       def get_cmd_line(self):
+           """Get current text written in the command line."""
+           right_after_ps1, line = self._right_after_ps1()
+           return self.get(right_after_ps1, '%d.end' % line)
+   
+       def set_cmd_line(self, text):
+           """Write some text on the command line."""
+           if text is None:
+               return
+           self.insert(self._right_after_ps1()[0], text)
+   
+   
+       def _right_after_ps1(self):
+           index = str(self.tag_ranges('ps1')[1])
+           line = int(index.split('.')[0])
+           return index, line
+   
+       def _evt_keypress(self, event):
+           self._complete = False
+   
+           try:
+               right_after_ps1, line = self._right_after_ps1()
+           except IndexError:
+               return "break"
+   
+           keysym = event.keysym.lower()
+           disallow = self.compare(self.index('insert'), '<',
+                   right_after_ps1)
+           limit = self.compare(self.index('insert'), '==',
+                  right_after_ps1)
+  
+          if keysym in ('left', 'backspace') and limit:
+              custom_sel = self.tag_ranges('my_sel')
+              if keysym == 'backspace' and custom_sel:
+                  # Assuming there is just one index selected
+                  self.delete(custom_sel[0], custom_sel[1])
+                  self.tag_delete('my_sel')
+              disallow = True
+  
+          elif keysym in ('c', 'v') and event.state & 4:
+              # Allow Ctrl-C, Ctrl-V anywhere (take care with multiline Ctrl-V)
+              disallow = False
+  
+          elif keysym == 'home':
+              if event.state & 1:
+                  # Perform Shift-Home
+                  self.tag_add('my_sel', right_after_ps1, '%d.end' % line)
+                  self.tk.call('tk::TextKeySelect', event.widget,
+                          right_after_ps1)
+              else:
+                  # Unselect anything that might be selected by an earlier
+                  # Shift-Home
+                  self.tk.call('tk::TextSetCursor', event.widget,
+                          right_after_ps1)
+              self.see('%d.0' % line)
+              disallow = True
+  
+          elif keysym == 'up':
+              command = self.history.prev_relative()
+              self.clear_cmd_line()
+              self.set_cmd_line(command)
+              disallow = True
+  
+          elif keysym == 'down':
+              command = self.history.next_relative()
+              self.clear_cmd_line()
+              self.set_cmd_line(command)
+              disallow = True
+  
+          #elif keysym == 'tab':
+          #    # let the shell complete
+          #    self._complete = True
+          #    command = self.get_cmd_line()
+          #    self.send(command, partial=True)
+          #    disallow = True
+  
+          elif keysym == 'return':
+              # store command in the history and send it to the console process
+              command = self.get_cmd_line()
+              self.history.append(command)
+              self.history.reset_bookkepping()
+              self.send(command)
+              disallow = True
+  
+          if disallow:
+              return "break"
+  
+      def _console_process_end(self):
+          self.master.destroy()
+  
+      def _console_update(self, x, y, text):
+          self.after_idle(lambda: self._update_text(x, y, text))
+  
+      def _update_text(self, x, y, text):
+          y += 1
+  
+          for i in xrange(y - self._last_line):
+              self.insert('%d.0' % (self._last_line + i + 1), '\n')
+  
+          # XXX Allow auto complete
+  
+          self._last_line = y
+  
+          self.insert('%d.%d' % (y, x), text)
+          self.mark_set('insert', '%d.%d' % (y, x + len(text)))
+          self.see('insert')
+  
+          # remove the extra newline
+          self.delete('end - 1 char')
+  
+          self.tag_delete('ps1')
+          self.tag_add('ps1',
+                  '%d.0' % y,
+                  '%d.%d' % (y, text.find('>') + 1))
+  
+          self.update_idletasks()
+  
+  
+class ConsoleFrame(Frame):
+      def __init__(self):
+          Frame.__init__(self)
+  
+          self.console = ConsoleProcessWindow(self, wrap='none')
+          self.console.focus()
+          hscroll = Scrollbar(orient='horizontal', command=self.console.xview)
+          vscroll = Scrollbar(orient='vertical', command=self.console.yview)
+          self.console.configure(
+                  yscrollcommand=vscroll.set,
+                  xscrollcommand=hscroll.set)
+  
+          self.console.grid(sticky='news')
+          vscroll.grid(sticky='ns', row=0, column=1)
+          hscroll.grid(sticky='ew', row=1, column=0)
+  
+  
+  if __name__ == "__main__":
+      root = Tk()
+      frame = ConsoleFrame()
+      frame.grid()
+      root.grid_columnconfigure(0, weight=1)
+      root.grid_rowconfigure(0, weight=1)
+      root.mainloop()
+
+***********************************
+Filename: convert_kilograms_to_newtons.py
+***********************************
+#this program will calculate a programs weight in newtons with the formula weight = mass * 9.8, ask the user to input the mass of an object in kilograms, and output the newtons.
+
+#get user to input mass in kilograms
+#calculate the weight in newtons.
+#output the weight in newtons.
+#if it is over 500 newtons, display message that it's too heavy
+#if it is under 100 newtons, display a message that it is too light.
+
+#get user to input mass in kilograms
+
+measurement = 'newtons'
+
+mass_in_kilograms = float(input("Enter the mass in kilograms: "))
+
+#calculate newtons
+
+weight_in_newtons = mass_in_kilograms * 9.8
+
+#output result
+
+print("The weight in Newtons is:", weight_in_newtons, measurement)
+
+#display a message based on range
+
+if weight_in_newtons < 100:
+    print("This object is too light!")
+elif weight_in_newtons > 500:
+    print("This object is too heavy!")
+
+
+***********************************
+Filename: daysofweek_decision_structure_prac.py
+***********************************
+#program to take a number 1 - 7 and display a day of the week, where 1 = monday and so on. The program should display an error message if not in range 1-7.
+#get user to input 1-7
+#compare number
+#decide which result to display based on number entered
+#display error message if not in the range
+
+#get number
+try:
+    choice = int(input("Enter a number 1-7: "))
+    
+    if choice == 1:
+        print("Monday")
+    elif choice == 2:
+        print("Tuesday")
+    elif choice == 3:
+        print("Tuesday")
+    elif choice == 4:
+        print("Tuesday")
+    elif choice == 5:
+        print("Tuesday")
+    elif choice == 6:
+        print("Tuesday")
+    elif choice == 7:
+        print("Tuesday")
+    elif choice > 7:
+        print("Please enter a valid choice in the range 1-7.")
+    elif choice < 1:
+        print("Please enter a valid choice in the range 1-7.")
+
+except:
+    print("Please enter a valid choice in the range 1-7.")
+
+***********************************
+Filename: default.py
+***********************************
+"""
+    URLResolver Addon for Kodi
+    Copyright (C) 2016 t0mm0, tknorris
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+"""
+import sys
+from urlresolver.lib import kodi
+from urlresolver.lib import log_utils
+from urlresolver.lib import cache
+from urlresolver.lib.url_dispatcher import URL_Dispatcher
+url_dispatcher = URL_Dispatcher()
+
+def __enum(**enums):
+    return type('Enum', (), enums)
+
+MODES = __enum(AUTH_RD='auth_rd', RESET_RD='reset_rd', RESET_CACHE='reset_cache')
+
+@url_dispatcher.register(MODES.AUTH_RD)
+def auth_rd():
+    kodi.close_all()
+    kodi.sleep(500)  # sleep or authorize won't work for some reason
+    from urlresolver.plugins import realdebrid
+    if realdebrid.RealDebridResolver().authorize_resolver():
+        kodi.notify(msg=kodi.i18n('rd_authorized'), duration=5000)
+
+@url_dispatcher.register(MODES.RESET_RD)
+def reset_rd():
+    kodi.close_all()
+    kodi.sleep(500)  # sleep or reset won't work for some reason
+    from urlresolver.plugins import realdebrid
+    rd = realdebrid.RealDebridResolver()
+    rd.reset_authorization()
+    kodi.notify(msg=kodi.i18n('rd_auth_reset'), duration=5000)
+    
+@url_dispatcher.register(MODES.RESET_CACHE)
+def reset_cache():
+    if cache.reset_cache():
+        kodi.notify(msg=kodi.i18n('cache_reset'))
+    else:
+        kodi.notify(msg=kodi.i18n('cache_reset_failed'))
+    
+def main(argv=None):
+    if sys.argv: argv = sys.argv
+    queries = kodi.parse_query(sys.argv[2])
+    log_utils.log('Version: |%s| Queries: |%s|' % (kodi.get_version(), queries))
+    log_utils.log('Args: |%s|' % (argv))
+
+    # don't process params that don't match our url exactly. (e.g. plugin://plugin.video.1channel/extrafanart)
+    plugin_url = 'plugin://%s/' % (kodi.get_id())
+    if argv[0] != plugin_url:
+        return
+
+    mode = queries.get('mode', None)
+    url_dispatcher.dispatch(mode, queries)
+
+if __name__ == '__main__':
+    sys.exit(main())
+
+***********************************
+Filename: divide.py
+***********************************
+x = float(input("Enter X: "))
+print("")
+y = float(input("Enter Y: "))
+print("")
+total = x/y
+remainder = x%y
+total = int(total)
+print (y, "goes into", x, "a total of", total, "time(s)")
+print("")
+print("with a remainder of", remainder, "/", y)
+print("")
+input("Press Enter to Exit")
+
+***********************************
+Filename: else_if_nested_statements.py
+***********************************
+a_score = 90
+b_score = 80
+c_score = 70
+d_score = 60
+
+# get a test score from the user.
+
+def main():
+
+    try:
+        score = int(input("Enter your test score: "))
+    except ValueError:
+        print("Please enter a valid test score.")
+        main()
+
+
+# determine the grade
+
+    if score >= a_score:
+        print("Your grade is A.")
+    else:
+        if score >= b_score:
+            print("Your grade is B.")
+        else:
+            if score >= c_score:
+                print("Your grade is C.")
+            else:
+                if score >= d_score:
+                    print("Your grade is D.")
+                else:
+                    print("Your grade is F.")
+main()
+
+                
+
+***********************************
+Filename: entry_widget_example.py
+***********************************
+from tkinter import *
+
+master = Tk()
+
+e = Entry(master)
+e.pack()
+
+e.focus_set()
+
+def callback():
+    print ("", e.get())
+
+b = Button(master, text="get", width=10, command=callback)
+b.pack()
+
+mainloop()
+e = Entry(master, width=50)
+e.pack()
+
+text = e.get()
+def makeentry(parent, caption, width=None, **options):
+    Label(parent, text=caption).pack(side=LEFT)
+    entry = Entry(parent, **options)
+    if width:
+        entry.config(width=width)
+    entry.pack(side=LEFT)
+    return entry
+
+user = makeentry(parent, "User name:", 10)
+password = makeentry(parent, "Password:", 10, show="*")
+content = StringVar()
+entry = Entry(parent, text=caption, textvariable=content)
+
+text = content.get()
+content.set(text)
+
+***********************************
+Filename: for loops.py
+***********************************
+
+
+pets = ['dog', 'cat', 'horse']
+
+
+
+for pet in pets:
+    print (pet.title())
+
+
+for x in range(0, 3):
+    print(pets[x].title())
+   
+
+
+
+
+***********************************
+Filename: functions_and_returns.py
+***********************************
+
+def loan_payment():
+    loan = float(input("Enter the amount loan payment: "))
+    return loan
+
+def insurance_payment():
+    insurance = float(input("Enter the insurance payment: "))
+    return insurance
+def gas_cost():
+    gas = float(input("Enter the amount for gas: "))
+    return gas
+def oil():
+    oil = float(input("Enter the amount for oil: "))
+    return oil
+def tires():
+    tires = float(input("Enter the amount for tires: "))
+    return tires
+def maint():
+    maint =  float(input("Enter the amount for maintenance: "))
+    return maint
+
+def total(a,b,c,d,e):
+    total = a + b + c + d + e
+    return total
+
+def times_twelve(n):
+    yearly = n * 12
+    return yearly
+
+def main():
+    a = insurance_payment()
+    b = gas_cost()
+    c = oil()
+    d = tires()
+    e = maint()
+
+    monthly =   total(a, b, c, d, e)
+    year_costs = times_twelve(monthly)
+
+    print("Monthly cost:", monthly,"\n\nYearly cost:", year_costs)
+    
+main()    
+
+***********************************
+Filename: gui3.py
+***********************************
+from tkinter import *
+import sys, os
+
+
+root = Tk()
+root.title("Calc.py")
+root.geometry("200x250")
+root.columnconfigure(0, weight=1)
+
+
+
+def reset(event):
+    
+    print("test")
+def add(event):
+    
+    print("test1")
+def sub(event):
+    
+    print("test2")
+def mul(event):
+    
+    print("test3")
+def div(event):
+    
+    print("test4")
+def seven(event):
+    
+    print("test5")
+def eight(event):
+    
+    print("test6")
+def nine(event):
+    
+    print("test7")
+def four(event):
+    
+    print("test8")
+def five(event):
+    
+    print("test9")
+def six(event):
+    
+    print("test0")
+def one(event):
+    
+    print("test11")
+def two(event):
+    
+    print("test22")
+def three(event):
+    
+    print("test33")
+def zero(event):
+    
+    print("test44")
+def dot(event):
+    
+    print("test55")
+def equal(event):
+    
+    print("test66")
+
+
+
+frameZero = Frame(root, width=200, height=100)
+frameZero.pack()
+frameZero.pack_propagate(False)
+frameOne = Frame(root)
+frameOne.pack(fill=BOTH, expand=1)
+frameTwo = Frame(root)
+frameTwo.pack(fill=BOTH, expand=1)
+frameThree = Frame(root)
+frameThree.pack(fill=BOTH, expand=1)
+frameFour = Frame(root)
+frameFour.pack(fill=BOTH, expand=1)
+frameFive = Frame(root)
+frameFive.pack(fill=BOTH, expand=1)
+
+wid = frameZero.winfo_id()
+os.system('cygwin -into %d -geometry 40x20 -sb &' % wid)
+
+
+buttonC = Button(frameOne, text="C")
+buttonC.pack(side=LEFT, fill=BOTH, expand=1)
+buttonC.bind("<Button-1>", reset)
+
+buttonAdd = Button(frameOne, text="+")
+buttonAdd.pack(side=LEFT, fill=BOTH, expand=1)
+buttonAdd.bind("<Button-1>", add)
+
+buttonSub= Button(frameOne, text="-")
+buttonSub.pack(side=LEFT, fill=BOTH, expand=1)
+buttonSub.bind("<Button-1>", sub)
+
+buttonMul = Button(frameOne, text="*")
+buttonMul.pack(side=LEFT, fill=BOTH, expand=1)
+buttonMul.bind("<Button-1>", mul)
+
+buttonDiv = Button(frameOne, text="/")
+buttonDiv.pack(side=LEFT, fill=BOTH, expand=1)
+buttonDiv.bind("<Button-1>", div)
+
+button7 = Button(frameTwo, text="7")
+button7.pack(side=LEFT, fill=BOTH, expand=1)
+button7.bind("<Button-1>", seven)
+
+button8 = Button(frameTwo, text="8")
+button8.pack(side=LEFT, fill=BOTH, expand=1)
+button8.bind("<Button-1>", eight)
+
+button9 = Button(frameTwo, text="9")
+button9.pack(side=LEFT, fill=BOTH, expand=1)
+button9.bind("<Button-1>", nine)
+
+button4 = Button(frameThree, text="4")
+button4.pack(side=LEFT, fill=BOTH, expand=1)
+button4.bind("<Button-1>", four)
+
+button5 = Button(frameThree, text="5")
+button5.pack(side=LEFT, fill=BOTH, expand=1)
+button5.bind("<Button-1>", five)
+
+button6 = Button(frameThree, text="6")
+button6.pack(side=LEFT, fill=BOTH, expand=1)
+button6.bind("<Button-1>", six)
+
+button1 = Button(frameFour, text="1")
+button1.pack(side=LEFT, fill=BOTH, expand=1)
+button1.bind("<Button-1>", one)
+
+button2 = Button(frameFour, text="2")
+button2.pack(side=LEFT, fill=BOTH, expand=1)
+button2.bind("<Button-1>", two)
+
+button3 = Button(frameFour, text="3")
+button3.pack(side=LEFT, fill=BOTH, expand=1)
+button3.bind("<Button-1>", three)
+
+button0 = Button(frameFive, text="0")
+button0.pack(side=LEFT, fill=BOTH, expand=1)
+button0.bind("<Button-1>", zero)
+
+buttonDot = Button(frameFive, text=".")
+buttonDot.pack(side=LEFT, fill=BOTH, expand=1)
+buttonDot.bind("<Button-1>", dot)
+
+buttonEqual = Button(frameFive, text="=")
+buttonEqual.pack(side=LEFT, fill=BOTH, expand=1)
+buttonEqual.bind("<Button-1>", equal)
+
+
+
+
+
+
+
+
+
+root.mainloop()
+
+***********************************
+Filename: kinetic_energy.py
+***********************************
+#calculates kinetic energy
+
+#formula is KE = 1/2 mv^2 where KE is kenetic energy. m is the objects mass in kilograms and v is the objects velocity in meters per second.
+
+def kinetic_energy(mass, velocity):
+    KE = 1/2 * mass * velocity**2
+    return KE
+
+m = float(input("Enter the mass in kilograms: "))
+v = float(input("Enter the velocity in meters per second: "))
+
+KE = kinetic_energy(m, v)
+
+print("Kinetic Energy is: ", KE)
+
+input("Press enter to continue...")
+
+
+***********************************
+Filename: password.py
+***********************************
+#This program compares two strings
+# get a password from the user
+
+password = input("Enter the password:")
+
+# determine whether the correct password was entered
+
+if password == "prospero":
+    print("Password accepted")
+else:
+    print("Sorry, that is the wrong password")
+
+***********************************
+Filename: payroll.py
+***********************************
+#variables to represent the base hours and the overtime multiplier
+
+base_hours = 40
+ot_multiplier = 1.5
+
+#get the hours worked and hourly pay rate
+
+hours = float(input('Enter the number of hours worked: '))
+pay_rate = float(input('Enter the hourly pay rate: '))
+
+#calculate and display the gross pay
+
+if hours > base_hours:
+    #calculate with overtime
+    #first get number of overtime hours worked
+    overtime_hours = hours - base_hours
+
+    #calculate the amount of overtime pay.
+    overtime_pay = overtime_hours * pay_rate * ot_multiplier
+
+    #calculate the gross pay.
+
+    gross_pay = base_hours * pay_rate + overtime_pay
+else:
+    # calculate the gross pay without overtime
+    gross_pay = hours * pay_rate
+
+
+#display the gross pay.
+print("The gross pay is $", format(gross_pay, ',.2f'), sep='')
+print("The hourly pay rate selected was:", format(pay_rate, '.2f'))
+      
+    
+
+***********************************
+Filename: prime.py
+***********************************
+
+
+
+
+
+
+def is_prime(int1):
+    prime = True
+    for number in range(1,10):
+        if number != int1 and number != 1:
+            remainder = int1 % number
+            if remainder == 0:
+                prime = False
+            
+
+    return prime
+
+
+while(1):
+    
+    choice = int(input("Enter an integar: "))
+
+    is_it_prime = is_prime(choice)
+
+    if is_it_prime == True:
+        print(choice, "is a prime number.")
+    elif is_it_prime == False:
+        print(choice, "is not a prime number.")
+
+***********************************
+Filename: prime_number_list.py
+***********************************
+
+
+
+
+
+
+def is_prime(int):
+    prime = True
+    for number in range(1,10):
+        if number != int and number != 1:
+            remainder = int % number
+            if remainder == 0:
+                prime = False
+            
+
+    return prime
+
+
+while(1):
+    
+    for n in range(1,101):
+        is_it_prime = is_prime(n)
+
+    if is_it_prime == True:
+        print(n)
+    
+
+***********************************
+Filename: random.py
+***********************************
+
+***********************************
+Filename: server.py
+***********************************
+import socket
+import sys
+
+#create a tcp/ip socket
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+#bind the socket to the port
+
+server_address = ('localhost', 10000)
+print( 'starting up on %s port %s' % server_address, file=sys.stderr)
+sock.bind(server_address)
+
+#listen for incoming connections
+sock.listen(1)
+
+while True:
+    #wait for a connection
+    print ( 'waiting for a connection', file=sys.stderr)
+    connection, client_address = sock.accept()
+
+    try:
+        print('connection from',client_address, file=sys.stderr)
+
+        #receive the data in small chunks and retransmit it
+        while True:
+            data = connection.recv(16).decode()
+            print('received "%s"' % data, file=sys.stderr)
+            if data:
+                print('sending data back to the client', file=sys.stderr)
+                connection.sendall(data.encode())
+            else:
+                print('no more data from', client_address, file=sys.stderr)
+                break
+    finally:
+        #clean up the connection
+        connection.close()
+        
+
+***********************************
+Filename: setup.py
+***********************************
+from distutils.core import setup
+import py2exe
+
+setup(windows=['calculator.py'])
+
+***********************************
+Filename: testCalc.py
+***********************************
+from tkinter import *
+from decimal import *
+import sys, os, subprocess, cmath
+
+#tinter window
+root = Tk()
+root.title("Calculator")
+root.geometry("200x300")
+root.columnconfigure(0, weight=1)
+#saving the default bg color for tkinter
+defaultbg = root.cget('bg')
+#constant for pi
+pi = Decimal(3.141592653590)
+#precision of decimal places setting
+getcontext().prec = 11
+
+#main function
+def main():
+    global x
+    global y
+    global ch
+    global bits
+    global hexadecimal
+    global hexadecimals
+    global oldAlg
+    oldAlg = ''
+    hexadecimals = ''
+    hexadecimal = ''
+    bits = ''
+    ch = ""
+    x = ""
+    y = ""
+    #strings for formula descriptions
+    circumference = "The formula for calculating circumference is:\n\n C = PI * Diameter\n\nEnter the Diameter and unit of measurement below, then click Calculate."
+    areaRectangleDescription ="The formula for calculating the Area of a Rectangle is:\n\nA = Base * Height\n\nEnter the base, height, and measurement below then click Calculate."
+    hotkeys = "Hotkeys:\n--------------------\n'C' to Clear\n'Enter' to equals\n'+' to add\n'-' to subtract\n'*' to multiply\n'/' to divide\n'i' to do integer division\n'r' or '%' for remainder division\n'^' for exponents\n'n' for negative"
+    areaTriangleDescription = "The formula for calculating the Area of a Trinagle is:\n\n A = 1/2 (Base * Height)\n\nEnter the base, height, and measurement below then click Calculate."
+    areaTrapezoidDescription = "The formula for calculating the Area of a Trapezoid is:\n\n A = 1/2 * Height *(base1+base2)\n\nEnter the bases, height, and measurement below then click Calculate."
+    circleAreaDescription = "The formula for calculating the Area of a Cirlce is:\n\n A = PI(radius ^2)\n\nRadius = Diamter / 2\n\n Enter the Diamter, and unit of measurement below then click Calculate."
+    #function to pipe operator choices to other functions
+    def choice(x, y):                #choice function for operators
+    
+        if ch in ['+']:                 # quit and restart choices
+            addition(x, y)
+        if ch in ['-']:
+            subtract(x, y)
+        if ch in ['*']:
+            multiply(x, y)
+        if ch in ['/']: 
+            divide(x, y)
+        if ch in ['r', 'R']:
+            main()
+        if ch in ['%']:
+            rem(x, y)
+        if ch in ['//']:
+            intdiv(x, y)
+        if ch in ['^']:
+            exponent(x, y)
+    
+        if ch in ['q', 'Q']:
+        
+            print_slow("Terminating program...")
+            quit()
+    #tied to whole division button. performs whole division.
+    def whole_division(event):
+        global ch
+        global x
+        global y
+        global alg            
+        
+        if x != '' and y != '':
+            alg = x + ch
+            print(ch)
+            equal1()
+            ch = "//"
+            algorithm()
+            y = x
+            x = ""
+            
+            
+        else:
+            ch = "//"
+            alg = x + ch
+            delete()
+            print(ch)
+            y = x
+            x = ""
+            algorithm()  
+
+    def remainder(event):
+        global ch
+        global x
+        global y
+        global alg            
+        
+        if x != '' and y != '':
+            alg = x + ch
+            print(ch)
+            equal1()
+            ch = "%"
+            algorithm()
+            y = x
+            x = ""
+            
+            
+        else:
+            ch = "%"
+            alg = x + ch
+            delete()
+            print(ch)
+            y = x
+            x = ""
+            algorithm()
+
+    def exp1():
+        global ch
+        global x
+        global y
+        global alg            
+        
+        if x != '' and y != '':
+            alg = x + ch
+            print(ch)
+            equal1()
+            ch = "^"
+            algorithm()
+            y = x
+            x = ""
+            
+            
+        else:
+            ch = "^"
+            alg = x + ch
+            delete()
+            print(ch)
+            y = x
+            x = ""
+            algorithm()
+
+    def whole_division1():
+        global ch
+        global x
+        global y
+        global alg            
+        
+        if x != '' and y != '':
+            alg = x + ch
+            print(ch)
+            equal1()
+            ch = "//"
+            algorithm()
+            y = x
+            x = ""
+            
+            
+        else:
+            ch = "//"
+            alg = x + ch
+            delete()
+            print(ch)
+            y = x
+            x = ""
+            algorithm()
+
+    def remainder1():
+        global ch
+        global x
+        global y
+        global alg            
+        
+        if x != '' and y != '':
+            alg = x + ch
+            print(ch)
+            equal1()
+            ch = "%"
+            algorithm()
+            y = x
+            x = ""
+            
+            
+        else:
+            ch = "%"
+            alg = x + ch
+            delete()
+            print(ch)
+            y = x
+            x = ""
+            algorithm()
+        
+
+    def reset1():
+        global ch
+        global x
+        global y
+        global bits
+        global hexadecimal
+        global hexadecimals
+        global oldAlg
+        oldAlg = ''
+        hexadecimal = ''
+        hexadecimals = ''
+        x = ''
+        y = ''
+        ch = ''
+        bits = ''
+    
+
+    def reset(event):
+        delete()
+        global ch
+        global x
+        global y
+        global bits
+        global hexadecimal
+        global hexadecimals
+        global oldAlg
+        oldAlg = ''
+        hexadecimal = ''
+        hexadecimals = ''
+        x = ''
+        y = ''
+        ch = ''
+        bits = ''
+
+    def add1():
+        global ch
+        global x
+        global y
+        global alg            
+        
+        if x != '' and y != '':
+            alg = x + ch
+            print(ch)
+            equal1()
+            ch = "+"
+            algorithm()
+            y = x
+            x = ""
+            
+            
+        else:
+            ch = "+"
+            alg = x + ch
+            delete()
+            print(ch)
+            y = x
+            x = ""
+            algorithm()
+        
+
+    def sub1():
+        global ch
+        global x
+        global y
+        global alg            
+        
+        if x != '' and y != '':
+            alg = x + ch
+            print(ch)
+            equal1()
+            ch = "-"
+            algorithm()
+            y = x
+            x = ""
+            
+            
+        else:
+            ch = "-"
+            alg = x + ch
+            delete()
+            print(ch)
+            y = x
+            x = ""
+            algorithm()
+        
+
+    def mul1():
+        global ch
+        global x
+        global y
+        global alg            
+        
+        if x != '' and y != '':
+            alg = x + ch
+            print(ch)
+            equal1()
+            ch = "*"
+            algorithm()
+            y = x
+            x = ""
+            
+            
+        else:
+            ch = "*"
+            alg = x + ch
+            delete()
+            print(ch)
+            y = x
+            x = ""
+            algorithm()
+        
+
+    def div1():
+        global ch
+        global x
+        global y
+        global alg            
+        
+        if x != '' and y != '':
+            alg = x + ch
+            print(ch)
+            equal1()
+            ch = "/"
+            algorithm()
+            y = x
+            x = ""
+            
+            
+        else:
+            ch = "/"
+            alg = x + ch
+            delete()
+            print(ch)
+            y = x
+            x = ""
+            algorithm()
+
+    def exp(event):
+        global ch
+        global x
+        global y
+        global alg            
+        
+        if x != '' and y != '':
+            alg = x + ch
+            print(ch)
+            equal1()
+            ch = "^"
+            algorithm()
+            y = x
+            x = ""
+            
+            
+        else:
+            ch = "^"
+            alg = x + ch
+            delete()
+            print(ch)
+            y = x
+            x = ""
+            algorithm()
+    
+    def add(event):
+        global ch
+        global x
+        global y
+        global alg            
+        
+        if x != '' and y != '':
+            
+            alg = x + ch
+            print(ch)
+            equal1()
+            ch = "+"
+            algorithm()
+            y = x
+            x = ""
+            
+            
+        else:
+            ch = "+"
+            alg = x + ch
+            delete()
+            print(ch)
+            y = x
+            x = ""
+            algorithm()
+        
+
+    def sub(event):
+        global ch
+        global x
+        global y
+        global alg            
+        
+        if x != '' and y != '':
+            
+            alg = x + ch
+            print(ch)
+            equal1()
+            ch = "-"
+            algorithm()
+            y = x
+            x = ""
+            
+            
+        else:
+            ch = "-"
+            alg = x + ch
+            delete()
+            print(ch)
+            y = x
+            x = ""
+            algorithm()
+        
+
+    def mul(event):
+        global ch
+        global x
+        global y
+        global alg            
+        
+        if x != '' and y != '':
+            alg = x + ch
+            print(ch)
+            equal1()
+            ch = "*"
+            algorithm()
+            y = x
+            x = ""
+            
+            
+        else:
+            ch = "*"
+            alg = x + ch
+            delete()
+            print(ch)
+            y = x
+            x = ""
+            algorithm()
+        
+
+    def div(event):
+        global ch
+        global x
+        global y
+        global alg            
+        
+        if x != '' and y != '':
+            alg = x + ch
+            print(ch)
+            equal1()
+            ch = "/"
+            algorithm()
+            y = x
+            x = ""
+            
+            
+        else:
+            ch = "/"
+            alg = x + ch
+            delete()
+            print(ch)
+            y = x
+            x = ""
+            algorithm()
+        
+        
+
+    def negative(event):
+        
+        global x
+        delete()
+        try:
+            x = x + '-'
+            print(x)
+            algorithm()
+        except:
+            print("Error")
+        
+        
+    def seven(event):
+        delete()
+        global x
+        try:
+            x = x + '7'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+        
+    def eight(event):
+        delete()
+        global x
+        try:
+            x = x + '8'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+    def nine(event):
+        delete()
+        global x
+        try:
+            x = x + '9'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+    def four(event):
+        delete()
+        global x
+        try:
+            x = x + '4'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+    def five(event):
+        delete()
+        global x
+        try:
+            x = x + '5'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+        
+    def six(event):
+        delete()
+        global x
+        try:
+            x = x + '6'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+    def one(event):
+        delete()
+        global x
+        try:
+            x = x + '1'
+            print(x)
+            algorithm()
+            
+        except:
+            print("Error")
+            reset1()
+        
+        
+    def two(event):
+        delete()
+        global x
+        try:
+            x = x + '2'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+        
+    def three(event):
+        delete()
+        global x
+        try:
+            x = x + '3'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+        
+    def zero(event):
+        delete()
+        global x
+        try:
+            x = x + '0'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+    def dot(event):
+        delete()
+        global x
+        try:
+            x = x + '.'
+            print(x)
+            algorithm()
+        except:
+            reset1()
+        
+    def equal(event):
+        delete()
+        global ch
+        global x
+        global y
+        try:
+            x = Decimal(x)
+            y = Decimal(y)
+            choice(x, y)
+        except:
+            print("Error")
+            reset1()
+
+    def equal1():
+        delete()
+        global ch
+        global x
+        global y
+        try:
+            x = Decimal(x)
+            y = Decimal(y)
+            choice(x, y)
+        except:
+            print("Error")
+            reset1()
+
+            
+
+    def savefunc(a, b, c, choice):
+        global d, e, f, saveC
+        d = a
+        e = b
+        f = c
+        saveC = choice
+
+    def displayMem(event):
+        delete()
+        try:
+            print("Mem:", d, saveC, e, '=', f)
+        except:
+            print("Syntax Error")
+
+    def percent(event):
+        delete()
+        global x, y
+        try:
+            x = Decimal(x)
+            y = Decimal(y)
+            x = Decimal(x) / Decimal(100)
+            multiply(x, y)
+        except:
+            print("Error")
+            reset1()
+        
+        
+            
+
+    def addition(x, y):                 #add function
+        global ch
+        choice = ch
+        a = y
+        b = x
+        total = y+x
+        c = total
+        print(total)
+        savefunc(a, b, c, choice)     #pass variable values to save function
+        runningTotal(total)
+        
+        
+
+    def subtract(x, y):                 #subtract function
+        
+        global ch
+        choice = ch
+        a = y
+        b = x
+        total = y-x
+        c = total
+        print(total)
+        savefunc(a, b, c, choice)     #pass variable values to save function
+        runningTotal(total)
+        
+        
+
+    def multiply(x, y):                 #multiply function
+        global ch
+        choice = ch
+        a = y
+        b = x
+        total = y*x
+        c = total
+        print(total)
+        savefunc(a, b, c, choice)     #pass variable values to save function
+        runningTotal(total)
+        
+        
+
+    def divide(x, y):                   #divide function
+
+        global ch
+        choice = ch
+        a = y
+        b = x
+        total = y/x
+        c = total
+        print(total)
+        savefunc(a, b, c, choice)     #pass variable values to save function
+        runningTotal(total)
+        
+
+    def rem(x, y):                      #remainder function
+        
+        global ch
+        choice = ch
+        a = y
+        b = x
+        total = y%x
+        c = total
+        print(total)
+        savefunc(a, b, c, choice)     #pass variable values to save function
+        runningTotal(total)
+        
+
+    def intdiv(x, y):                      #integer division function
+        
+        global ch
+        choice = ch
+        a = y
+        b = x
+        total = y//x
+        c = total
+        print(total)
+        savefunc(a, b, c, choice)     #pass variable values to save function
+        runningTotal(total)
+        
+
+    def exponent(x, y):                      #add function
+        
+        global ch
+        choice = ch
+        a = y
+        b = x
+        total = y**x
+        c = total
+        print(total)
+        savefunc(a, b, c, choice)     #pass variable values to save function
+        runningTotal(total)
+
+    def squareRoot(event):
+        global x
+        squareCalc(x)
+
+
+    def squareCalc(n):
+        global x
+        try:
+            n = Decimal(n)
+            
+            if n > 0:
+                
+                half = Decimal(.5)
+                square = n ** half
+                delete()
+                print(square)
+            else:
+                square = cmath.sqrt(n)
+                delete()
+                print(square)
+        except:
+            print("Syntax Error")
+        
+        
+        
+
+    def runningTotal(total):            #running total function
+        global x
+        global y
+        x = total
+        y = ''
+        x = str(x)
+
+    def algorithm():
+        global x
+        global y
+        global oldAlg
+        if y == '':
+            alg = x + ' ' + ch + ' ' + y
+            sys.stdout.write = redirector1
+            print(alg)
+            #oldAlg = alg
+            #oldAlg = alg + ' ' + '='
+            sys.stdout.write = redirector
+        else:
+            
+            alg = y + ' ' + ch + ' ' + x
+            sys.stdout.write = redirector1
+            print(alg)
+            #oldAlg = alg
+            sys.stdout.write = redirector
+        
+        
+        
+
+    def redirector(inputStr):
+        enableText()
+        textBox.insert(END, inputStr, "right" )
+        disableText()
+
+    def redirector1(inputStr):
+        enableText()
+        textBox1.insert(END, inputStr, "right" )
+        disableText()
+
+    def delete():
+        enableText()        
+        textBox.delete(1.0, END)
+        textBox1.delete(1.0, END)
+        disableText()
+
+    def enableText():
+        textBox.config(state=NORMAL)
+        textBox1.config(state=NORMAL)
+
+    def disableText():
+        textBox.config(state=DISABLED)
+        textBox1.config(state=DISABLED)
+        
+    
+
+    def backspace(event):
+        global x
+        x = x[:-1]
+        delete()
+        print(x)
+        algorithm()
+        
+        #CONVERSIONS
+        
+    def binary(event):
+        global x
+        try:
+            
+            x = int(x)
+
+            divideBy2(x)
+        except:
+            print("Syntax Error")
+
+
+    def divideBy2(decimal):
+        global x                        #function to divide number repeatedy by 2
+        global bits
+        try:
+            
+            decimal = x
+                                 #function saves the remainder as bit
+            while decimal > 0:              # function saves the result and sets original number equal to it
+                bit = decimal % 2           #program runs this until orig number can't be divided
+                bit = str(bit)
+                result = decimal // 2
+                decimal = result
+                holder(bit)
+
+            bits = int(bits)
+    
+            if bits <= 1:                           #adds the 0's so that the binary number looks right
+                bits = str(bits)                    #number is converted to a string to be easily manipulated
+                bits = '0000 000' + bits
+            elif bits <= 11:
+                bits = str(bits)
+                bits = '0000 00' + bits
+            elif bits < 1000 and bits >= 100:
+                bits = str(bits)
+                bits = '0000 0' + bits
+        
+            elif bits >= 1000 and bits <= 1111:
+                bits = str(bits)
+                bits = '0000 ' + bits
+            elif bits > 1111 and bits <= 11111:
+                bits = str(bits)
+                bits = '000' + bits
+            elif bits > 11111 and bits <= 111111:
+                bits = str(bits)
+                bits = '00' + bits
+            elif bits > 111111 and bits <= 1111111:
+                bits = str(bits)
+                bits = '0' + bits
+    
+    
+            bits = str(bits)
+            delete()
+            print(bits)
+        except:
+            print("Error")
+
+
+    def holder(a):                  #holds bits and adds each one as it gets passed to it
+        global bits
+        bits = a + bits
+
+    def hexadecimalConversion(event):
+        global x
+        try:
+            x = int(x)
+            divideBy16(x)
+        except:
+            print("Syntax Error")
+
+    #decimal to hexadecimal
+    def divideBy16(d):
+        try:                                     
+            decimal = d
+            while decimal > 0:
+                remainder = decimal % 16
+                remainder = str(remainder)
+                result = decimal // 16
+                decimal = result
+                smallNumbers(remainder)
+            delete()
+            print(hexadecimals)
+        except:
+            print("Syntax Error")
+
+    def smallNumbers(h):
+        global hexadecimal
+        global hexadecimals
+        try:
+            
+            hexadecimal = h
+            if hexadecimal == '10':
+                hexadecimal = 'A'
+            if hexadecimal == '11':
+                hexadecimal = 'B'
+            if hexadecimal == '12':
+                hexadecimal = 'C'
+            if hexadecimal == '13':
+                hexadecimal = 'D'
+            if hexadecimal == '14':
+                hexadecimal = 'E'
+            if hexadecimal == '15':
+                hexadecimal = 'F'
+            hexadecimals = hexadecimal + hexadecimals
+        except:
+            print("Syntax Error")    
+            
+        
+        #hotkeys menu button
+    def displayHotkeys():
+
+        top = Toplevel()
+        top.title("Hotkeys")
+        msg = Message(top, text=hotkeys)
+        msg.pack()
+
+        #FORMULAS
+
+    def circ():
+        global diameter, measure, top1, entry, entry2, msg1     #circumference entry menu
+        top1 = Toplevel()
+        top1.title("Circumference")
+        top1.geometry("200x250")
+        msg1 = Message(top1, text=circumference)
+        msg1.pack()
+        entry = Entry(top1)
+        entry.pack()
+        entry.insert(0, "Diameter")
+        entry2 = Entry(top1)
+        entry2.pack()
+        entry2.insert(0, "Unit of measure")
+
+        buttonGet = Button(top1, text="Calculate")         #button
+        buttonGet.pack(expand=1)
+        buttonGet.bind("<Button-1>", circumference1)
+
+    def circumference1(event):                             
+        global diameter, measure
+        getcontext().prec = 9
+        diameter = entry.get()
+        measure = entry2.get()
+        total = Decimal(diameter) * pi
+        total = Decimal(total)
+        delete()
+        print(total, measure)
+
+    def areaRectangle():
+        global base, measure, top1, entryRectangle, entryRectangle2, entryRectangle1     #area of a rectangle window
+        top1 = Toplevel()
+        top1.title("Area of a Rectangle")
+        top1.geometry("200x250")
+        msg1 = Message(top1, text=areaRectangleDescription)
+        msg1.pack()
+        entryRectangle = Entry(top1)
+        entryRectangle.pack()        
+        entryRectangle.insert(0, "Base")
+        entryRectangle1 = Entry(top1)
+        entryRectangle1.pack()        
+        entryRectangle1.insert(0, "Height")
+        entryRectangle2 = Entry(top1)
+        entryRectangle2.pack()
+        entryRectangle2.insert(0, "Unit of measure")
+
+        buttonGet1 = Button(top1, text="Calculate")         #button
+        buttonGet1.pack(expand=1)
+        buttonGet1.bind("<Button-1>", rectangle)
+        
+    def rectangle(event):
+        global base, height, measure
+        getcontext().prec = 9
+        base = entryRectangle.get()
+        height = entryRectangle1.get()
+        measure = entryRectangle2.get()
+        total = Decimal(base) * Decimal(height)
+        total = Decimal(total)
+        delete()
+        print(total, measure, "^2")
+    def areaTriangle():
+        global base, measure, top1, entryTriangle, entryTriangle2, entryTriangle1     #area of a rectangle window
+        top1 = Toplevel()
+        top1.title("Area of a Triangle")
+        top1.geometry("200x250")
+        msg1 = Message(top1, text=areaTriangleDescription)
+        msg1.pack()
+        entryTriangle = Entry(top1)
+        entryTriangle.pack()        
+        entryTriangle.insert(0, "Base")
+        entryTriangle1 = Entry(top1)
+        entryTriangle1.pack()        
+        entryTriangle1.insert(0, "Height")
+        entryTriangle2 = Entry(top1)
+        entryTriangle2.pack()
+        entryTriangle2.insert(0, "Unit of measure")
+
+        buttonGet1 = Button(top1, text="Calculate")         #button
+        buttonGet1.pack(expand=1)
+        buttonGet1.bind("<Button-1>", triangle)
+    def triangle(event):
+        global base, height, measure
+        getcontext().prec = 9
+        base = entryTriangle.get()
+        height = entryTriangle1.get()
+        measure = entryTriangle2.get()
+        total = (Decimal(base) * Decimal(height)) / 2
+        total = Decimal(total)
+        delete()
+        print(total, measure, "^2")
+    def areaTrapezoid():
+        global base, measure, top1, entryTrapezoid, entryTrapezoid2, entryTrapezoid1 , entryTrapezoid3    #area of a rectangle window
+        top1 = Toplevel()
+        top1.title("Area of a Trapezoid")
+        top1.geometry("200x250")
+        msg1 = Message(top1, text=areaTrapezoidDescription)
+        msg1.pack()
+        entryTrapezoid = Entry(top1)
+        entryTrapezoid.pack()        
+        entryTrapezoid.insert(0, "Base 1")
+        entryTrapezoid1 = Entry(top1)
+        entryTrapezoid1.pack()        
+        entryTrapezoid1.insert(0, "Base 2")
+        entryTrapezoid2 = Entry(top1)
+        entryTrapezoid2.pack()        
+        entryTrapezoid2.insert(0, "Height")
+        entryTrapezoid3 = Entry(top1)
+        entryTrapezoid3.pack()
+        entryTrapezoid3.insert(0, "Unit of measure")
+
+        buttonGet1 = Button(top1, text="Calculate")         #button
+        buttonGet1.pack(expand=1)
+        buttonGet1.bind("<Button-1>", trapezoid)
+    def trapezoid(event):
+        global base, height, measure
+        getcontext().prec = 9
+        base1 = entryTrapezoid.get()
+        base2 = entryTrapezoid1.get()
+        height = entryTrapezoid2.get()
+        measure = entryTrapezoid3.get()
+        total = ((Decimal(base1)+Decimal(base2)) * Decimal(height)) / 2
+        total = Decimal(total)
+        delete()
+        print(total, measure, "^2")
+
+    def areaCircle():
+        global diameter, measure, top1, entryCircle, entryCircle2     #circumference entry menu
+        top1 = Toplevel()
+        top1.title("Area of a Circle")
+        top1.geometry("300x300")
+        msg1 = Message(top1, text=circleAreaDescription)
+        msg1.pack()
+        entryCircle = Entry(top1)
+        entryCircle.pack()
+        entryCircle.insert(0, "Diameter")
+        entryCircle2 = Entry(top1)
+        entryCircle2.pack()
+        entryCircle2.insert(0, "Unit of measure")
+
+        buttonGet = Button(top1, text="Calculate")         #button
+        buttonGet.pack(expand=1)
+        buttonGet.bind("<Button-1>", circleArea)
+    def circleArea(event):
+        global diameter, measure
+        getcontext().prec = 9
+        diameter = entryCircle.get()
+        measure = entryCircle2.get()
+        radius = Decimal(diameter) / 2
+        total = (Decimal(radius)**2) * pi
+        total = Decimal(total)
+        delete()
+        print(total, measure)     
+        
+        
+        
+    
+    def raiseprecision():
+        getcontext().prec = getcontext().prec + 1   #raise precision
+
+    def lowerprecision():
+        getcontext().prec = getcontext().prec - 1    #lower precision
+
+        #COLOR CHANGE
+    def leetColors():   #1337
+        
+        frameAlg.configure(bg="black")
+        frameZero.configure(bg="black")
+        frameFunc.configure(bg="black")
+        frameFunc1.configure(bg="black")              
+        frameOne.configure(bg="black")
+        frameTwo.configure(bg="black")
+        frameThree.configure(bg="black")
+        frameFour.configure(bg="black")
+        frameFive.configure(bg="black")
+        textBox.configure(bg="black", fg="lawn green")
+        textBox1.configure(bg="black", fg="lawn green")
+        buttonMem.configure(bg="black", fg="lawn green")
+        buttonBack.configure(bg="black", fg="lawn green")
+        buttonRem.configure(bg="black", fg="lawn green")
+        buttonIntDiv.configure(bg="black", fg="lawn green")
+        buttonExp.configure(bg="black", fg="lawn green")
+        buttonC.configure(bg="black", fg="lawn green")
+        buttonAdd.configure(bg="black", fg="lawn green")
+        buttonSub.configure(bg="black", fg="lawn green")
+        buttonMul.configure(bg="black", fg="lawn green")
+        buttonDiv.configure(bg="black", fg="lawn green")
+        button7.configure(bg="black", fg="lawn green")
+        button8.configure(bg="black", fg="lawn green")
+        button9.configure(bg="black", fg="lawn green")
+        button4.configure(bg="black", fg="lawn green")
+        button5.configure(bg="black", fg="lawn green")
+        button6.configure(bg="black", fg="lawn green")
+        button1.configure(bg="black", fg="lawn green")
+        button2.configure(bg="black", fg="lawn green")
+        button3.configure(bg="black", fg="lawn green")
+        button0.configure(bg="black", fg="lawn green")
+        buttonDot.configure(bg="black", fg="lawn green")
+        buttonEqual.configure(bg="black", fg="lawn green")
+        buttonBin.configure(bg="black", fg="lawn green")
+        buttonPercent.configure(bg="black", fg="lawn green")
+        buttonNeg.configure(bg="black", fg="lawn green")
+        buttonHex.configure(bg="black", fg="lawn green")
+        buttonSquare.configure(bg="black", fg="lawn green")
+
+    def defaultColor():
+        frameAlg.configure(bg="lightsteelblue1")
+        frameZero.configure(bg="lightsteelblue1")
+        frameFunc.configure(bg="lightsteelblue1")
+        frameFunc1.configure(bg="lightsteelblue1")              
+        frameOne.configure(bg="lightsteelblue1")
+        frameTwo.configure(bg="lightsteelblue1")
+        frameThree.configure(bg="lightsteelblue1")
+        frameFour.configure(bg="lightsteelblue1")
+        frameFive.configure(bg="lightsteelblue1")
+        textBox.configure(bg="white smoke", fg="black")
+        textBox1.configure(bg="papaya whip", fg="black")
+        buttonMem.configure(bg=defaultbg, fg="black")
+        buttonBack.configure(bg=defaultbg, fg="black")
+        buttonRem.configure(bg=defaultbg, fg="black")
+        buttonIntDiv.configure(bg=defaultbg, fg="black")
+        buttonExp.configure(bg=defaultbg, fg="black")
+        buttonC.configure(bg=defaultbg, fg="black")
+        buttonAdd.configure(bg=defaultbg, fg="black")
+        buttonSub.configure(bg=defaultbg, fg="black")
+        buttonMul.configure(bg=defaultbg, fg="black")
+        buttonDiv.configure(bg=defaultbg, fg="black")
+        button7.configure(bg=defaultbg, fg="black")
+        button8.configure(bg=defaultbg, fg="black")
+        button9.configure(bg=defaultbg, fg="black")
+        button4.configure(bg=defaultbg, fg="black")
+        button5.configure(bg=defaultbg, fg="black")
+        button6.configure(bg=defaultbg, fg="black")
+        button1.configure(bg=defaultbg, fg="black")
+        button2.configure(bg=defaultbg, fg="black")
+        button3.configure(bg=defaultbg, fg="black")
+        button0.configure(bg=defaultbg, fg="black")
+        buttonDot.configure(bg=defaultbg, fg="black")
+        buttonEqual.configure(bg=defaultbg, fg="black")
+        buttonBin.configure(bg=defaultbg, fg="black")
+        buttonPercent.configure(bg=defaultbg, fg="black")
+        buttonNeg.configure(bg=defaultbg, fg="black")
+        buttonHex.configure(bg=defaultbg, fg="black")
+        buttonSquare.configure(bg=defaultbg, fg="black")
+        
+    #HOTKEYS
+    def key(event):
+        global c
+        global x
+        global y
+        if event.char in ['+', '-', '*', '/', 'r', 'i', '^', '%', 'I', 'R']:
+            c = event.char
+            if c == '+':
+                add1()
+            elif c == '-':
+                sub1()
+            elif c == '*':
+                mul1()
+            elif c == '/':
+                div1()
+            elif c == 'r' or c == 'R' or c == '%':
+                remainder1()
+            elif c == 'i' or c == 'I':
+                whole_division1()
+            elif c == '^':
+                exp1()
+            
+        c = event.char
+        if c == '0' or c == '1' or c == '2' or c == '3' or c == '4' or c == '5' or c == '6' or c == '7' or c == '8' or c == '9' or c == '.':
+            
+            delete()
+                   
+            try:
+                x = x + event.char
+                print(x)
+                algorithm()
+                
+            except:
+                reset1()
+        
+    temp = sys.stdout.write
+    
+    sys.stdout.write = redirector      # redirects stdout to redirector fuction
+
+    #GUI
+    
+    root.bind("n", negative)
+    root.bind("c", reset)
+    root.bind("<BackSpace>", backspace)   # key bindings
+    root.bind("<Return>", equal)
+    root.bind("<Key>", key)
+
+    plus = PhotoImage(file= "plus.gif")  #photo paths
+    
+    menu = Menu(root)                    # menu items
+    root.config(menu=menu)
+    subMenu = Menu(menu)
+    subMenu2 = Menu(menu)
+    colorMenu = Menu(menu)
+    menu.add_cascade(label="File", menu=subMenu)
+    menu.add_cascade(label="Formulas", menu=subMenu2)
+    menu.add_cascade(label="Color", menu=colorMenu)
+    subMenu.add_command(label="Hotkeys", command=displayHotkeys)
+    subMenu.add_command(label="Raise precision", command=raiseprecision)
+    subMenu.add_command(label="Lower precision", command=lowerprecision)
+    subMenu2.add_command(label="Circumference", command=circ)
+    subMenu2.add_command(label="Area of a Rectangle", command=areaRectangle)
+    subMenu2.add_command(label="Area of a Triangle", command=areaTriangle)
+    subMenu2.add_command(label="Area of a Trapezoid", command=areaTrapezoid)
+    subMenu2.add_command(label="Area of a Circle", command=areaCircle)
+    colorMenu.add_command(label="Default", command=defaultColor)
+    colorMenu.add_command(label="1337 Col0rz", command=leetColors)
+    
+    
+
+    
+    frameAlg = Frame(root, width=200, height=25)   # frames
+    frameAlg.pack(fill=BOTH, expand=1)
+    frameAlg.pack_propagate(False)
+    frameZero = Frame(root, width=200, height=25, bg="lightsteelblue1")
+    frameZero.pack(fill=BOTH, expand=1)
+    frameZero.pack_propagate(False)
+    frameFunc1 = Frame(root, bg="lightsteelblue1")
+    frameFunc1.pack(fill=BOTH, expand=1)
+    frameFunc = Frame(root, bg="lightsteelblue1")
+    frameFunc.pack(fill=BOTH, expand=1)
+    frameOne = Frame(root, bg="lightsteelblue1")
+    frameOne.pack(fill=BOTH, expand=1)
+    frameTwo = Frame(root, bg="lightsteelblue1")
+    frameTwo.pack(fill=BOTH, expand=1)
+    frameThree = Frame(root, bg="lightsteelblue1")
+    frameThree.pack(fill=BOTH, expand=1)
+    frameFour = Frame(root, bg="lightsteelblue1")
+    frameFour.pack(fill=BOTH, expand=1)
+    frameFive = Frame(root, bg="lightsteelblue1")
+    frameFive.pack(fill=BOTH, expand=1)
+    
+    
+   
+    
+    
+    textBox1 = Text(frameAlg, bg="papaya whip", fg="black")               # algorithm textbox
+    textBox1.config(state=DISABLED)
+    textBox1.tag_configure("right", justify='right')
+    textBox1.tag_add("right", 1.0, "end")
+
+    textBox1.pack()
+    
+    
+
+    textBox = Text(frameZero, bg="white smoke", fg="black")                   # main textbox
+    textBox.config(state=DISABLED)
+    textBox.tag_configure("right", justify='right')
+    textBox.tag_add("right", 1.0, "end")
+
+    textBox.pack()
+
+    buttonMem = Button(frameFunc1, text="Mem", fg="black")                       #buttons
+    buttonMem.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonMem.bind("<Button-1>", displayMem)
+
+    buttonPercent = Button(frameFunc1, text="%", fg="black")
+    buttonPercent.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonPercent.bind("<Button-1>", percent)
+
+    buttonBin = Button(frameFunc1, text="Bin", fg="black")  
+    buttonBin.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonBin.bind("<Button-1>", binary)
+
+    buttonHex = Button(frameFunc1, text="Hex", fg="black")  
+    buttonHex.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonHex.bind("<Button-1>", hexadecimalConversion)
+
+    buttonSquare = Button(frameFunc1, text="√", fg="black")  
+    buttonSquare.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonSquare.bind("<Button-1>", squareRoot)
+
+    buttonBack = Button(frameFunc, text="<--", fg="black")
+    buttonBack.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonBack.bind("<Button-1>", backspace)
+
+    buttonRem = Button(frameFunc, text="Remainder", fg="black")
+    buttonRem.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonRem.bind("<Button-1>", remainder)
+
+    buttonIntDiv = Button(frameFunc, text="//", fg="black")
+    buttonIntDiv.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonIntDiv.bind("<Button-1>", whole_division)
+
+    buttonExp = Button(frameFunc, text="X^", fg="black")
+    buttonExp.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonExp.bind("<Button-1>", exp)
+
+
+    buttonC = Button(frameOne, text="C", fg="black")
+    buttonC.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonC.bind("<Button-1>", reset)
+
+    buttonAdd = Button(frameOne, text="+", fg="black")
+    buttonAdd.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonAdd.bind("<Button-1>", add)
+
+    buttonSub= Button(frameOne, text="-", fg="black")
+    buttonSub.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonSub.bind("<Button-1>", sub)
+
+    buttonMul = Button(frameOne, text="*", fg="black")
+    buttonMul.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonMul.bind("<Button-1>", mul)
+
+    buttonDiv = Button(frameOne, text="/", fg="black")
+    buttonDiv.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonDiv.bind("<Button-1>", div)
+
+    buttonNeg = Button(frameOne, text="Neg", fg="black")
+    buttonNeg.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonNeg.bind("<Button-1>", negative)
+
+    button7 = Button(frameTwo, text="7", fg="black")
+    button7.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    button7.bind("<Button-1>", seven)
+
+    button8 = Button(frameTwo, text="8", fg="black")
+    button8.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    button8.bind("<Button-1>", eight)
+
+    button9 = Button(frameTwo, text="9", fg="black")
+    button9.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    button9.bind("<Button-1>", nine)
+
+    button4 = Button(frameThree, text="4", fg="black")
+    button4.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    button4.bind("<Button-1>", four)
+
+    button5 = Button(frameThree, text="5", fg="black")
+    button5.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    button5.bind("<Button-1>", five)
+
+    button6 = Button(frameThree, text="6", fg="black")
+    button6.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    button6.bind("<Button-1>", six)
+
+    button1 = Button(frameFour, text="1", fg="black")
+    button1.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    button1.bind("<Button-1>", one)
+
+    button2 = Button(frameFour, text="2", fg="black")
+    button2.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    button2.bind("<Button-1>", two)
+
+    button3 = Button(frameFour, text="3", fg="black")
+    button3.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    button3.bind("<Button-1>", three)
+
+    button0 = Button(frameFive, text="0", fg="black")
+    button0.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    button0.bind("<Button-1>", zero)
+
+    buttonDot = Button(frameFive, text=".", fg="black")
+    buttonDot.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonDot.bind("<Button-1>", dot)
+
+    buttonEqual = Button(frameFive, text="=", fg="black")
+    buttonEqual.pack(side=LEFT, fill=BOTH, expand=1, padx=3, pady=3)
+    buttonEqual.bind("<Button-1>", equal)
+
+
+
+
+
+
+
+
+
+
+
+    root.mainloop()
+main()
+
+***********************************
+Filename: using_input.py
+***********************************
+print("test")
+
+input()
+
+print("test1")
+
+x = input("Type in a word: ")
+
+y = int(input("Type in a number: "))
+
+print(x)
+
+print(y)
+
+input()
+
+
+***********************************
+Filename: window.py
+***********************************
+import tkinter as tk
+
+class MainWindow(tk.Frame):
+    counter = 0
+    def __init__(self, *args, **kwargs):
+        tk.Frame.__init__(self, *args, **kwargs)
+        self.button = tk.Button(self, text="Create new window", 
+                                command=self.create_window)
+        self.button.pack(side="top")
+
+    def create_window(self):
+        self.counter += 1
+        t = tk.Toplevel(self)
+        t.wm_title("Window #%s" % self.counter)
+        l = tk.Label(t, text="This is window #%s" % self.counter)
+        l.pack(side="top", fill="both", expand=True, padx=100, pady=100)
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    main = MainWindow(root)
+    main.pack(side="top", fill="both", expand=True)
+    root.mainloop()
+
+***********************************
+Filename: workbench.py
+***********************************
+global a
+global b
+b = ''
+c = ''
+d = ''
+a = ''
+
+def one(c,d):
+    global a
+    global b
+    a = c
+    b = d
+    a = a + '1'
+    b = b + '1'
+   
+    
+
+
+
+
+
+one(c, d)
+a = int(a)
+b = int(b)
+
+
+g = a + b
+print(a)
+print(g)
+
+
+
+
+***********************************
+Filename: write_names.py
+***********************************
+#this program gets three names from the user
+#and writes them to a file
+
+def main():
+    print('Enter the names of three friends.')
+    name1 = input('Friend #1: ')
+    name2 = input('Friend #2: ')
+    name3 = input('Friend #3: ')
+
+    #open a file named friends.txt
+    myfile = open('friends.txt', 'w')
+
+    #write the names to the file.
+    myfile.write(name1 +  '\n')
+    myfile.write(name2 +  '\n')
+    myfile.write(name3 +  '\n')
+
+    #close the file.
+    myfile.close()
+    print('The names were written to friends.txt')
+#call the main function
+main()
+    
+
+***********************************
+Filename: write_sales.py
+***********************************
+#this program prompts the user for sales amounts and writes those amounts to the sales.txt file.
+
+def main():
+    num_days = int(input('For how mahny days do you have sales? '))
+
+    #open a new file named sales.txt
+
+    sales_file = open('sales.txt', 'w')
+
+    #get the amount of sales for each day and write it to the file.
+
+    for count in range(1, num_days +1):
+        #get the sales for a day
+        sales = float(input("Enter the sales for day#", str(count) + ': '))
+
+        #write the sales amount to the file.
+        sales_file.write(str(sales) + '\n')
+
+        #close the file.
+    sales_file.close()
+    print('Data written to sales.txt.')
+
+#call main
+main()
+
+***********************************
+Filename: cashier.py
+***********************************
+# Name: Greg Leftwich
+# Student ID: 541451
+# pseudocode:
+# get user to input cost of the item
+# get the user to input the quantity of the item
+# calculate subtotal
+# calculate 7% tax
+# calculate total cost
+# display subtotal
+# display amount of tax
+# display total
+
+price = float(input("Enter the price of the item: "))  #input price
+
+quantity = int(input("Enter the quantity: "))  #input quantity
+
+subtotal = price * quantity   #calculate subtotal
+
+tax = subtotal * .07    #calculate tax
+
+total = subtotal + tax   #calculate total
+
+print("Subtotal: $", format(subtotal, ',.2f'), sep='')  #display subtotal
+print("Tax: $", format(tax, ',.2f'), sep='')  #display tax
+print("Total: $", format(total, ',.2f'), sep='')  #display total
+
+input("\nPress Enter to continue...")  #make program wait before exiting
+
+***********************************
+Filename: cop1000.py
+***********************************
+# Name: Greg Leftwich
+# Student ID: 541451
+
+#pseudocode:
+# set the name of the course
+# set the professors name
+# set the name of the programming language
+# set the name of the person who created this programming language
+# output the name of the course
+# output the professors name
+# output the name of the programming language
+# output the name of the creator of python
+
+courseName = "Introduction to Computer Programming" #course name variable
+profName = "Darlene Westberg"                       #professor name variable
+langName = "Python"                                 #programming language name variable
+creatorName = "Guido van Rossum"                    #python creator name variable
+
+print("Course name:", courseName)                   #output course name
+print("Professor:", profName)                       #output professor name
+print("Programming language:", langName)            #output programming language name
+print("Creator of Python:", creatorName)            #output the creator of pythons name
+
+input("\nPress Enter to continue...")  #make program wait before exiting
+
+
+***********************************
+Filename: temperature.py
+***********************************
+# Name: Greg Leftwich
+# Student ID: 541451
+# pseudocode:
+# get the user to input temperature in degrees Celcius
+# convert Celsius to Fahrenheit
+# display the converted temperature, formatted to 3 decimals.
+
+celsius = float(input("Please input the temperature in Celsius: ")) #input temperature in Celsius
+fahrenheit = celsius * 9 / 5 + 32     #convert Celcius to Fahrenheit
+print("The temperature is", format(fahrenheit, '.3f'), "degrees Fahrenheit.")  #display temperature in Fahrenheit
+
+input("\nPress Enter to continue...")  #make program wait before exiting          
+
+***********************************
+Filename: order32.py
+***********************************
+#Greg Leftwich
+#February 13 2016
+#order32.py
+
+#pseudocode
+#determine cost of an online order of t-shirts
+
+#get the user to input the amount of shirts being ordered.
+#determine what discounts are being applied based on amount of shirts ordered.
+#calculate the cost of the order depending on discounts
+#display the cost of the order in currency format.
+
+shirtCost = 12.99
+
+shippingCost = 8.99
+
+#get user to input quantity of shirts
+
+quantity = int(input("Enter the desired quantity of shirts: "))
+
+#determine the discount, and calculate the total cost
+
+if quantity <= 2:
+    subtotal = quantity * shirtCost
+    discountPercent = 0
+    discountAmount = 0
+    total =  subtotal + shippingCost
+elif quantity >= 3 and quantity <= 5:
+    discountPercent = 0.10
+    subtotal = (quantity * shirtCost)
+    discountAmount = subtotal * discountPercent
+    total = subtotal - discountAmount + shippingCost
+elif quantity >= 6 and quantity <= 11:
+    discountPercent = 0.20
+    subtotal = (quantity * shirtCost)
+    discountAmount = subtotal * discountPercent
+    total = subtotal - discountAmount + shippingCost
+elif quantity >= 12:
+    discountPercent = 0.30
+    shippingCost = 0
+    subtotal = (quantity * shirtCost)
+    discountAmount = subtotal * discountPercent
+    total = subtotal - discountAmount
+
+#display the costs
+
+print("Subtotal: $", format(subtotal, ',.2f'), sep='')
+print("Discount percentage: ", format(discountPercent * 100, '.0f'), "%", sep='')
+print("Discount: $", format(discountAmount, ',.2f'), sep='')
+print("Shipping cost: $", format(shippingCost, ',.2f'), sep='')
+print("Total cost: $", format(total, ',.2f'), sep='')
+    
+    
+
+***********************************
+Filename: program33.py
+***********************************
+#Greg Leftwich
+#February 13 2016
+#program33.py
+
+#pseudocode
+#Program to have user enter an odd number between 30 and 80, then display output based on number entered.
+
+#get user to enter an odd number between 30 and 80
+#determine if the output was in range
+#determine if the output was odd or even
+#display a message based on the 4 possible outcomes, in or out of range, and odd or even.
+
+#get user input
+
+input = int(input("Enter an odd number between 30 and 80: "))
+
+#determine odd or even
+
+oddOrEven = input % 2
+
+#determine the range and output result based on in or out of range, and odd or even.
+
+if input > 30 and input < 80 and oddOrEven == 1:
+    print("Good input!")
+    
+elif input > 30 and input < 80 and oddOrEven == 0:
+    print("That input was in range, but not odd.")
+    
+elif input <= 30 or input >= 80:
+    if oddOrEven == 1:
+        print("That input was odd, but out of the required range.")
+    elif oddOrEven == 0:
+        print("That input was out of the required range, and not odd.")
+        
+    
+    
+
+***********************************
+Filename: quiz31.py
+***********************************
+#Greg Leftwich
+#February 13 2016 ®
+#quiz31.py
+
+#pseudocode
+#Display the first question to user, which requires a string as the answer.
+#Prompt the user to input the answer to the first question.
+#Display positive or negative feedback about the users answer to the question.
+#Get the user to input two integers
+#Get the user to input the product of the integers they chose.
+#Calculate the product of the two numbers they entered
+#Display positive or negative feedback depending on the answer they provide.
+
+
+
+#display first question and get the answer.
+print("Question 1")
+answer = input("What is the capital of Alaska? ")
+
+#provide feedback for first question.
+
+if answer == 'Juneau' or answer == 'juneau':
+    print("Very good! That is correct!")
+else:
+    print("That is incorrect. The answer is Juneau.")
+
+#get the user to input two integers
+
+print("\nQuestion 2")
+firstNumber = int(input("Please enter a single digit integer: "))
+secondNumber = int(input("Please enter another single digit integer: "))
+
+#get the user to input the product of those two integers
+
+answer = int(input("What is the product of the two integers you entered? "))
+
+#calculate the product of the two numbers.
+
+product = firstNumber * secondNumber
+
+#provide feedback based on what the user answered.
+
+if answer == product:
+    print("Excellent! That is correct.")
+else:
+    print("Not quite, the product of ", firstNumber, " and ", secondNumber, " is ", product, ".", sep='')
+
+
+input("\n\nPress Enter to exit the program...")
+
+
+      
+      
+    
+
+
+
+    
+
+
+***********************************
+Filename: program41.py
+***********************************
+#Greg Leftwich
+#March 13, 2016
+#program41.py
+#pseudocode
+
+#program should generate a table of circle radii, areas, and circumferences for integer radii from 10 to 50. Must use a for loop.
+#generate the input radii with a for loop
+#calculate the areas
+#calculate the circumferences
+#display the outcome for each iteration of the for loop as a row in the table
+
+import math
+
+#constants
+PI = math.pi
+
+# generate the table
+
+
+for n in range(10,51):
+    #calculate area
+    area = PI * n**2
+    #calculate circumference
+    circumference = PI * (n*2)
+    #display the outcome for each iteration
+    print(format(n, "10,.3f"), "\t\t", format(area, "10,.3f"), "\t\t", format(circumference, "10,.3f"))
+    
+
+
+
+
+***********************************
+Filename: program42.py
+***********************************
+#Greg Leftwich
+#March 13, 2016
+#program42.py
+#pseudocode
+
+#use nested loops to generate a specific display
+#generate 6 letter o's on line one
+#gernate 5 letter o's on line two
+#continue decreasing number of letter o's on each line till you get to one.
+
+
+count = 6
+
+#generate display
+
+#this loop iterates 6 times, once for each row.
+for n in range(6):
+    
+    #this loop displays the number of o's that the count variable references
+    for number in range(count):
+        print("o", sep="", end="")
+        
+    #this decrements the counter    
+    count -= 1
+    
+    #this moves the display to the next row
+    print("")
+        
+
+***********************************
+Filename: program43.py
+***********************************
+#Greg Leftwich
+#March 13, 2016
+#program43.py
+
+#pseudocode
+#write a program to execute as a cashier and determine the total of a number of purchases.
+
+#create a loop that only terminates when the value 0 is entered as an input (sentinel value)
+
+#get the input from user for the item price.
+
+#check whether the value was 0. If it was zero, terminate. If it was not, add it to the total and ask for another value.
+
+price = 1
+total = 0
+
+#loop that ends when the value 0 is entered for price variable
+
+while price != 0:
+    
+    #get user input for price
+    price = float(input("Enter item price: "))
+
+    #add value entered for price to total
+    total += price
+
+#outside of the while loop, displays the total
+print("Your total is: $", format(total, ",.2f"), sep="")
+    
+    
+
+***********************************
+Filename: file_read.py
+***********************************
+#this program reads and displays the contents of the philosophers.txt file
+def main():
+    #open a file named philosphers.txt
+    infile = open('philosophers.txt', 'r')
+
+    #read the files contents
+    file_contents = infile.read()
+    #close the file
+    infile.close()
+    #print the data that was read into memory
+    print(file_contents)
+#call main
+main()
+
+***********************************
+Filename: file_write.py
+***********************************
+#this program writes 3 lines of data to a file
+def main():
+    #open a file named philosophers.txt
+    outfile = open("philosophers.txt", 'w')
+
+    #write the names of three philosophers to the file
+    outfile.write('John Locke\n')
+    outfile.write('David Hume\n')
+    outfile.write('Edmund Burke\n')
+
+    #close the file
+    outfile.close()
+
+    #call the main function.
+main()
+
+***********************************
+Filename: file_write1.py
+***********************************
+#this program writes 3 lines of data to a file
+def main():
+    #open a file named philosophers.txt
+    outfile = open("philosophers.txt", 'w')
+
+    #write the names of three philosophers to the file
+    outfile.write('1')
+    outfile.write('2')
+    outfile.write('3')
+
+    #close the file
+    outfile.close()
+
+    #call the main function.
+main()
+
+***********************************
+Filename: line_read.py
+***********************************
+#this program reads the contents of the philosophers.txt file one line at a time
+def main():
+    #open a file named philosophers.txt
+    infile = open('philosophers.txt', 'r')
+
+    #read three lines from the file.
+    line1 = infile.readline()
+    line2 = infile.readline()
+    line3 = infile.readline()
+
+    #close the file
+    infile.close()
+
+    #print the data that was read into memory
+    print(line1+'\n')
+    print(line2)
+    print(line3)
+
+    #call the main function
+main()
+
+***********************************
+Filename: mycircle.py
+***********************************
+#Greg Leftwich
+#April 16, 2016
+#mycircle.py
+
+#custom python module named mycircle.py that imports the math module and contains two void functions. One named area that takes the radius of a circle as its argument
+# and prints the area accurate to three decimal places. The other function called circumference also takes the radius of a circle as its only argument. It prints the circles circumference accurate to three
+#decimal places
+
+#pseudocode:
+
+#define area function
+
+#take the argument passed in and calculate the area
+
+#print the area to 3 decimal places
+
+#define the circumference function
+
+#calculate circumference
+
+#print output accurate to 3 decimal places
+
+#import math
+
+import math
+
+#define area
+
+def area(radius):
+    
+    #caclulate area
+    
+    areaCircle = math.pi * (radius**2)
+    
+    #print area
+    
+    print("The area of the circle is: ", format(areaCircle, ".3f"), "squared.")
+
+#define circumference
+    
+def circumference(radius):
+    
+    #calculate circumference
+    
+    circumferenceCircle = math.pi * (radius * 2)
+    
+    #print circumference
+    
+    print("The circumference of the circle is: ", format(circumferenceCircle, ".3f"))
+    
+
+***********************************
+Filename: program51.py
+***********************************
+#Greg Leftwich
+#March 13, 2016
+#program51.py
+
+#pseudocode
+#program should have a value returning function called box that takes
+#the three dimensions of a cuboid box as arguments and returns both the volume and surface aprea of the box.
+#prompt user to input the dimensions of the cuboid
+#call the box function
+#box function calculates the volume and the surface area of the box
+#return the results of the calculations
+#main function gets the return and displays both accurate to three decimal palces
+
+#define main function
+
+def main():
+    
+    #get the users input
+    length = float(input("Enter cuboid length: "))
+    width = float(input("Enter cuboid width: "))
+    height = float(input("Enter cuboid height: "))
+
+    #call the box function and get the return values
+    volume, surfaceArea = box(length, width, height)
+
+    #display the results of the calculations made by the box function
+    print("Volume is: ", format(volume, ".3f"))
+    print("Surface area is: ", format(surfaceArea, ".3f"))
+
+
+
+
+
+#define the box function
+def box(length, width, height):
+
+    #calculate volume
+    volume = length * width * height
+
+    #calculate surface area
+    surfaceArea = 2 * ((length * width) + (width * height) + (height * length))
+
+    #return results of volume and surface area calculation
+    return volume, surfaceArea
+
+
+#call the main function
+main()
+
+***********************************
+Filename: program52.py
+***********************************
+#Greg Leftwich
+#March 13, 2016
+#program52.py
+
+#use a void function named carpet that calculates the cost of carpeting a room with a rectangular floor.
+#The carpet function should take the length of the room in feet, width of the room in feet, and cost of carpet per square yard.
+#as its three arguments. The function should calculate and display the area of the floor in square yards and the cost of the carpet in currency format.
+
+#get the input for length, width, and cost of carpet from user.
+
+#pass these values to the carpet function
+
+#carpet function calculates the area of the floor in square yards and the cost of the carpet
+
+#display the output of the calculations
+
+#define main function
+
+def main():
+
+    #get the input for length, width, and cost of carpet
+
+    length = float(input("Enter the length of the room in feet: "))
+    width = float(input("Enter the width of the room in feet: "))
+    cost = float(input("Enter the cost of the carpet per square yard: "))
+
+    #call the carpet function
+    carpet(length, width, cost)
+
+#define the carpet function
+    
+def carpet(length, width, cost):
+    #calculate area in square yards
+    areaFloor = (length / 3) * (width / 3)
+
+    #calculate total cost
+    totalCost = cost * areaFloor
+
+    #display area in square yards and total cost of the carpet
+    print("The area of the floor is:", format(areaFloor, ".3f"), "square yards.")
+    print("The cost of the carpet is: $", format(totalCost, ",.2f"),  sep="")
+
+#call the main function
+main()
+    
+    
+
+***********************************
+Filename: program53.py
+***********************************
+#Greg Leftwich
+#April 16, 2016
+#program53.py
+
+#prompt the user to enter an even integer and use this integer as the sole argument for a value returning function named check_input.
+#Call it in main, analyze input a return a boolean value back to main. Notify the user if it is correct input.
+
+#get user input
+#pass it to the check_input function
+#check_input analyzes the input to determine if it is even.
+#check input returns true if even and false if odd.
+#output whether it was correct input or not
+
+
+def main():
+    #get user input
+    
+        
+    number = int(input("Enter an even number: "))
+    
+        
+
+    #check the input
+
+    result = check_input(number)
+
+    #tell the user if it was correct input
+
+    if result == True:
+        print("Good job! That was an even number.")
+    else:
+        print("That was not an even number.")
+
+def check_input(n):
+    if n % 2 == 0:
+        return True
+    else:
+        return False
+
+
+main()
+
+***********************************
+Filename: program54.py
+***********************************
+#Greg Leftwich
+#April 16, 2016
+#program54.py
+
+#program should import mycircle.py module. Program should prompt the user to enter the radius of a circle(possibly with decimals). It should call both methods in the mycircle module.
+
+#pseudocode
+
+#import mycircle.py module
+#get the user to input the radius of a circle as a float
+#call both methods from the mycircle module
+
+#import mycircle.py
+
+import mycircle
+
+#get user to input the radius of a circle
+
+radius = float(input("Enter the radius of a circle: "))
+
+print("")
+
+#call the method mycircle.area
+
+mycircle.area(radius)
+
+print("")
+
+#call the method mycircle.circumference
+
+mycircle.circumference(radius)
+
+
+***********************************
+Filename: read_numbers.py
+***********************************
+#this program demonstrates how numbers that are
+#read froma  file must be converted from strings
+#before they are used in a math operation.
+
+def main():
+    infile = open('numbers.txt', 'r')
+
+    #read three numbers from the file.
+    num1 = int(infile.readline())
+    num2 = int(infile.readline())
+    num3 = int(infile.readline())
+
+    #close the file
+    infile.close()
+
+    total = num1 + num2 + num3
+
+    print('The numbers are', num1, num2, num3)
+    print('Their total is:', total)
+
+    #call main
+main()
+
+***********************************
+Filename: rpg.py
+***********************************
+#framework for rpg game
+import random, os, sys
+
+
+
+name = 'Artemis'
+
+#stats
+strength = 5
+intelligence = 5
+charisma = 4
+dexterity = 4
+wisdom = 4
+constitution = 4
+stats = (strength, intelligence, charisma, dexterity, wisdom, constitution)
+#bonuses from stats
+lifeFromCon = constitution * 10
+manaFromInt = intelligence * 10
+#health, mana, dmg, atk speed
+hp = 100 + lifeFromCon
+mana = 100 + manaFromInt
+atk = strength * 2
+atkspeed = dexterity / 2
+critchance = int(dexterity / .75)
+global critrange
+critrange = 5
+crit = 3
+critdmg = atk * crit
+spelldmg = 3
+fireskill = 2
+coldskill = 7
+exp = 0
+lvl = 0
+
+
+name2 = 'Blaine'
+hp2 = 100 + lifeFromCon
+mana2 = 100
+atk2 = 4
+atkspeed2 = 1
+critchance2 = .15
+crit2 = 3
+
+
+continueGame = True
+
+
+
+
+while continueGame == True:
+    random.seed()
+    
+    print(name, "LVL:", lvl, "HP:", hp, "MP:", mana, "Stats:", strength, dexterity, constitution, intelligence, wisdom, charisma)
+    print("Choose an option:")
+    print(name,'HP:', hp, 'MP:', mana)
+    choice = int(input("1. Atk\n2.Spell\n: "))
+
+    if choice == 1:
+        dmg = atk * atkspeed
+        criticalnumber = random.randint(1, critrange)
+        
+        if criticalnumber >= 4:
+            dmg += critdmg
+        
+    elif choice == 2:
+        spell = int(input("Choose spell: 1. Fire\n2. Blizzard"))
+        if spell == 1:
+            dmg = fireskill * spelldmg
+            mana -= 40
+        elif spell == 2:
+            dmg = coldskill * spelldmg
+            mana -= 30
+
+    print("DMG: ", dmg)
+    print("CRT: ", criticalnumber)
+    hp2 -= dmg
+    print(name2,'HP:', hp2, 'MP:', mana2)
+
+    if hp2 <= 0:
+        print(name2, "dies")
+        exp += 25
+        hp2 = 100 + lifeFromCon
+
+    if exp >= 100:
+        exp = 0
+        lvl += 1
+        print("You have leveled up!")
+        strength += random.randint(1,3)
+        intelligence += random.randint(1,3)
+        dexterity += random.randint(1,3)
+        wisdom += random.randint(1,3)
+        constitution += random.randint(1,3)
+        charisma += random.randint(1,3)
+        lifeFromCon = constitution * 10
+        hp = 100 + lifeFromCon    
+        manaFromInt = intelligence * 10
+        mana = 100 + manaFromInt
+        atk = strength * 2
+        atkspeed = dexterity / 2
+        critdmg = atk * crit
+        
+    
+
+***********************************
+Filename: strip_newline.py
+***********************************
+#This program reads the contents of the philosophers.txt file one line at a time
+
+def main():
+    fileChoice = input("Enter file name: ")
+    fileChoice = fileChoice.rstrip('\n')
+    
+    #open a file named philosophers.txt
+    infile = open(fileChoice, 'r')
+
+    #read three lines from the file
+    line1 = infile.readline()
+    line2 = infile.readline()
+    line3 = infile.readline()
+
+    #strip the \n from each string.
+    line1 = line1.rstrip('\n')
+    line2 = line2.rstrip('\n')
+    line3 = line3.rstrip('\n')
+
+    #close the file.
+    infile.close()
+
+    #print the data that was read into memory
+    print(line1)
+    print(line2)
+    print(line3)
+#call main
+main()
+
+***********************************
+Filename: strip_newline1.py
+***********************************
+#This program reads the contents of the philosophers.txt file one line at a time
+
+def main():
+    fileChoice = input("Enter file name: ")
+    
+    
+    #open a file named philosophers.txt
+    infile = open(fileChoice, 'r')
+
+    #read three lines from the file
+    line1 = infile.readline()
+    line2 = infile.readline()
+    line3 = infile.readline()
+
+    #strip the \n from each string.
+    line1 = line1.rstrip('\n')
+    line2 = line2.rstrip('\n')
+    line3 = line3.rstrip('\n')
+
+    #close the file.
+    infile.close()
+
+    #print the data that was read into memory
+    print(line1)
+    print(line2)
+    print(line3)
+#call main
+main()
+
+***********************************
+Filename: write_numbers.py
+***********************************
+#this program demonstrates how numbers must be converted
+#to strings before they are written to a text file
+
+def main():
+    #open a file for writing
+    outfile = open('numbers.txt', 'w')
+
+    #get three numbers from the user.
+
+    num1 = int(input('Enter a number: '))
+    num2 = int(input('Enter a number: '))
+    num3 = int(input('Enter a number: '))
+
+    #write the numbers to the file
+    outfile.write(str(num1) + '\n')
+    outfile.write(str(num2) + '\n')
+    outfile.write(str(num3) + '\n')
+
+    #close the file
+    outfile.close()
+    print('Data written to numbers.txt')
+
+    #call main function.
+main()
+    
+    
+
+***********************************
+Filename: write_sales.py
+***********************************
+#this program prompts the user for sales amounts and writes those amounts to the sales.txt file.
+
+def main():
+    num_days = int(input('For how many days do you have sales? '))
+
+    #open a new file named sales.txt
+
+    sales_file = open('sales.txt', 'w')
+
+    #get the amount of sales for each day and write it to the file.
+
+    for count in range(1, num_days +1):
+        #get the sales for a day
+        sales = float(input('Enter the sales for day #' + \
+                            str(count) + ': '))
+
+        #write the sales amount to the file.
+        sales_file.write(str(sales) + '\n')
+
+        #close the file.
+    sales_file.close()
+    print('Data written to sales.txt.')
+
+#call main
+main()
+
+***********************************
+Filename: mycircle.py
+***********************************
+#Greg Leftwich
+#April 16, 2016
+#mycircle.py
+
+#custom python module named mycircle.py that imports the math module and contains two void functions. One named area that takes the radius of a circle as its argument
+# and prints the area accurate to three decimal places. The other function called circumference also takes the radius of a circle as its only argument. It prints the circles circumference accurate to three
+#decimal places
+
+#pseudocode:
+
+#define area function
+
+#take the argument passed in and calculate the area
+
+#print the area to 3 decimal places
+
+#define the circumference function
+
+#calculate circumference
+
+#print output accurate to 3 decimal places
+
+#import math
+
+import math
+
+#define area
+
+def area(radius):
+    
+    #caclulate area
+    
+    areaCircle = math.pi * (radius**2)
+    
+    #print area
+    
+    print("The area of the circle is: ", format(areaCircle, ".3f"), "squared")
+
+#define circumference
+    
+def circumference(radius):
+    
+    #calculate circumference
+    
+    circumferenceCircle = math.pi * (radius * 2)
+    
+    #print circumference
+    
+    print("The circumference of the circle is: ", format(circumferenceCircle, ".3f"))
+    
+
+***********************************
+Filename: program51.py
+***********************************
+#Greg Leftwich
+#March 13, 2016
+#program51.py
+
+#pseudocode
+#program should have a value returning function called box that takes
+#the three dimensions of a cuboid box as arguments and returns both the volume and surface aprea of the box.
+#prompt user to input the dimensions of the cuboid
+#call the box function
+#box function calculates the volume and the surface area of the box
+#return the results of the calculations
+#main function gets the return and displays both accurate to three decimal palces
+
+#define main function
+
+def main():
+    
+    #get the users input
+    length = float(input("Enter cuboid length: "))
+    width = float(input("Enter cuboid width: "))
+    height = float(input("Enter cuboid height: "))
+
+    #call the box function and get the return values
+    volume, surfaceArea = box(length, width, height)
+
+    #display the results of the calculations made by the box function
+    print("Volume is: ", format(volume, ".3f"))
+    print("Surface area is: ", format(surfaceArea, ".3f"))
+
+
+
+
+
+#define the box function
+def box(length, width, height):
+
+    #calculate volume
+    volume = length * width * height
+
+    #calculate surface area
+    surfaceArea = 2 * ((length * width) + (width * height) + (height * length))
+
+    #return results of volume and surface area calculation
+    return volume, surfaceArea
+
+
+#call the main function
+main()
+
+***********************************
+Filename: program52.py
+***********************************
+#Greg Leftwich
+#March 13, 2016
+#program52.py
+
+#use a void function named carpet that calculates the cost of carpeting a room with a rectangular floor.
+#The carpet function should take the length of the room in feet, width of the room in feet, and cost of carpet per square yard.
+#as its three arguments. The function should calculate and display the area of the floor in square yards and the cost of the carpet in currency format.
+
+#get the input for length, width, and cost of carpet from user.
+
+#pass these values to the carpet function
+
+#carpet function calculates the area of the floor in square yards and the cost of the carpet
+
+#display the output of the calculations
+
+#define main function
+
+def main():
+
+    #get the input for length, width, and cost of carpet
+
+    length = float(input("Enter the length of the room in feet: "))
+    width = float(input("Enter the width of the room in feet: "))
+    cost = float(input("Enter the cost of the carpet per square yard: "))
+
+    #call the carpet function
+    carpet(length, width, cost)
+
+#define the carpet function
+    
+def carpet(length, width, cost):
+    #calculate area in square yards
+    areaFloor = (length / 3) * (width / 3)
+
+    #calculate total cost
+    totalCost = cost * areaFloor
+
+    #display area in square yards and total cost of the carpet
+    print("The area of the floor is:", format(areaFloor, ".3f"), "square yards.")
+    print("The cost of the carpet is: $", format(totalCost, ",.2f"),  sep="")
+
+#call the main function
+main()
+    
+    
+
+***********************************
+Filename: program53.py
+***********************************
+#Greg Leftwich
+#April 16, 2016
+#program53.py
+
+#prompt the user to enter an even integer and use this integer as the sole argument for a value returning function named check_input.
+#Call it in main, analyze input a return a boolean value back to main. Notify the user if it is correct input.
+
+#get user input
+#pass it to the check_input function
+#check_input analyzes the input to determine if it is even.
+#check input returns true if even and false if odd.
+#output whether it was correct input or not
+
+
+def main():
+    #get user input
+    
+        
+    number = int(input("Enter an even number: "))
+    
+        
+
+    #check the input
+
+    result = check_input(number)
+
+    #tell the user if it was correct input
+
+    if result == True:
+        print("Good job! That was an even number.")
+    else:
+        print("That was not an even number.")
+
+def check_input(n):
+    if n % 2 == 0:
+        return True
+    else:
+        return False
+
+
+main()
+
+***********************************
+Filename: program54.py
+***********************************
+#Greg Leftwich
+#April 16, 2016
+#program54.py
+
+#program should import mycircle.py module. Program should prompt the user to enter the radius of a circle(possibly with decimals). It should call both methods in the mycircle module.
+
+#pseudocode
+
+#import mycircle.py module
+#get the user to input the radius of a circle as a float
+#call both methods from the mycircle module
+
+#import mycircle.py
+
+import mycircle
+
+#get user to input the radius of a circle
+
+radius = float(input("Enter the radius of a circle: "))
+
+print("")
+
+#call the method mycircle.area
+
+mycircle.area(radius)
+
+print("")
+
+#call the method mycircle.circumference
+
+mycircle.circumference(radius)
+
+
+***********************************
+Filename: program61.py
+***********************************
+#Greg Leftwich
+#April 16, 2016
+#program61.py
+
+#program should generate 8 random integers in the range of 10 to 100 inclusive. Each number should be written to a text file on its own line. File is named mynumbers.txt
+
+#pseudocode
+
+#import random module
+
+#use loop to generate 8 random integers and write them to text file on seperate lines
+
+#import random module
+
+import random
+
+#open the file
+
+file = open("mynumbers.txt", "w")
+
+#loop to generate random numbers
+
+for n in range(8):
+    
+    #call random function to generate random numbers
+    
+    number = random.randint(10, 100)
+
+    #write the number generated to the file
+    
+    file.write(str(number) + '\n')
+
+#close the file
+
+file.close()
+    
+
+***********************************
+Filename: program62.py
+***********************************
+#Greg Leftwich
+#April 16, 2016
+#program62.py
+
+#use a loop to read and process mynumbers.txt. Program should output all of the integers in the file on one line separated by spaces.
+#The program must also output the average of the even integers and the average of the odd integers. Both averages must be expressed accurate to four decimal places.
+
+#pseudocode
+#process the mynumbers.txt file.
+#display the numbers in the file on one line separated by spaces.
+
+#calculate the average of the even integers.
+#calculate the average of the odd integers.
+
+#display the averages accurate to 4 decimal places.
+
+#assign variables
+
+even_total = 0
+odd_total = 0
+even_numbers = 0
+odd_numbers = 0
+
+#open the file
+
+file = open('mynumbers.txt', 'r')
+
+print("Here are the numbers on file")
+
+
+#process file
+
+for line in file:
+    
+    number = int(line)
+
+    print(number, end=" ")
+
+    if number % 2 == 0:
+
+        even_total += number
+        even_numbers += 1
+
+    else:
+        odd_total += number
+        odd_numbers += 1
+
+#close file
+file.close()
+
+
+#calculate averages
+
+even_average = even_total / even_numbers
+odd_average = odd_total / odd_numbers
+
+#display averages
+print("")
+print("The average of the even numbers:", format(even_average, '.4f'))
+print("The average of the odd numbers:", format(odd_average, '.4f'))
+
+
+        
+        
+
+
+
+
+
+***********************************
+Filename: program71.py
+***********************************
+#Greg Leftwich
+#April 23, 2016
+#program71.py
+
+#program to make an empy list, then the program uses a loop to prompt the user for the names of some notable celebrities and adds each one to the list.
+#the program should keep going until the user enters "done". "done" should not be added to the list. The program should then output the number of celebrities entered. Next the list should be sorted alphabetically.
+#finally the program should use another loop to display the sorted celebrity names, each on its own line.
+
+#pseudocode
+
+#make an empty list
+#use loop to prompt user to enter celebrity names, add them to the list.
+#keep going until user enters "done", don't add "done" to list
+#keep a total of the number of entries made
+#display the number of celebrities entered.
+#sort the list alphabetically.
+#display the sorted celebrity names, each on its own line.
+
+list = []
+
+name = ''
+
+celebrities_entered = 0
+
+while name != 'done':
+    #enter a name
+    name = input("Enter a celebrity name or done to quit: ")
+    if name != 'done':
+        
+        #add name to list
+        
+        list.append(name)
+        
+        #increment counter for number of entries
+        
+        celebrities_entered += 1
+
+#display number of celebrities entered
+        
+print("Number of celebrities you entered is: ", celebrities_entered)
+
+#sort celebrities
+
+sorted_celebrities = list.sort()
+
+#display list of sorted celebs
+
+print("Here is your sorted celebrity list:")
+
+
+for name in list:
+    print(name)
+
+
+
+    
+
+
+
+
+
+***********************************
+Filename: program72.py
+***********************************
+#Greg Leftwich
+#April 23, 2016
+#program72.py
+
+#make a program that makes a list of ten integers named nums in no order. Use numbers less than 100.
+#use a loop to display the list with all numbers on the same line seperated by spaces.
+#use slice syntax to make a new list named nums2 from the middle six numbers in nums.
+#pass nums2 as the sole argument to a void func named list_func
+#inside the list_func function, display the largest number in the slie and its index.
+
+
+#define main function
+def main():
+    #assign list values
+    nums = [85, 99, 23, 44, 8, 6, 12, 13, 70, 62]
+    #display the original list
+    print("Here is the original list:")
+    for numbers in nums:
+        print(numbers, end=" ")
+    #assign nums2 the slice from nums list
+    nums2 = nums[3:7]
+    
+    print("")
+    #call list_func and pass nums2 as paramater
+    list_func(nums2)
+
+
+#define list_func function
+def list_func(nums2):
+    #print highest value in nums2 slice
+    print("The highest value in the slice is", max(nums2))
+    #create a variable for the highest value
+    highest = max(nums2)
+    #create a variable for the index of the highest value
+    highest_index = nums2.index(highest)
+    #print the highest value and its index number
+    print(highest, "is at index", highest_index, "in the slice")
+
+#call main func
+main()
+    
+    
+    

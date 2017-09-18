@@ -1,0 +1,2153 @@
+// Common Tasks / Links
+-------------------------------------------------------------------------------------------------------------------------------
+I/O Tasks
+---------
+https://msdn.microsoft.com/en-us/library/ms404278(v=vs.110).aspx
+--------------------------------------------------------------------
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+// validating input of integer
+//-----------------------------------------------------------
+
+int i;
+
+            while (!int.TryParse(Console.ReadLine(), out i))
+                Console.WriteLine("Please enter a valid integer.");
+
+
+------------------------------------------------------------------------------------------------------------------------------
+// downloading a file with http using the WebClient class
+//-----------------------------------------------------------
+class downloadFileWithHttp
+    {
+        public void doWork()
+        {
+            WebClient wc = new WebClient();
+
+            wc.DownloadFile("https://i.imgur.com/9JQiB2i.png", "test.png");
+        }
+       
+    }
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+// This code does a simple form of bencharking a function
+// by timing the number of milliseconds for it to complete.
+
+using System.Diagnostics;
+
+	var watch = new Stopwatch();
+
+	watch.Start();
+
+	// code goes here
+
+	watch.Stop();
+
+	Console.WriteLine($"Total milliseconds: {watch.ElapsedMilliseconds}");
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+
+// This program takes hours, min, seconds input
+// and meters traveled as input
+// and converts it to speed in mp/h   km/h and meters/sec
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input;
+
+            double  distanceInMeters, distanceInKilometers, distanceInMiles, hours, minutes, seconds, metersPerSecond;
+
+            double x, y, time, distance;
+
+            Console.WriteLine("Enter the distance in meters: ");
+            input = Console.ReadLine();
+            distanceInMeters = double.Parse(input);
+
+            Console.WriteLine("Enter the amount of hours: ");
+            input = Console.ReadLine();
+            hours = double.Parse(input);
+
+            Console.WriteLine("Enter the amount of minutes: ");
+            input = Console.ReadLine();
+            minutes = double.Parse(input);
+
+            Console.WriteLine("Enter the amount of seconds: ");
+            input = Console.ReadLine();
+            seconds = double.Parse(input);
+
+            distanceInMiles = distanceInMeters / 1609.34;
+
+            distanceInKilometers = distanceInMeters / 1000;
+
+            // 100 miles in 2 and 30 minutes and 15 seconds
+
+            x = hours * 3600;  // converting hours to seconds
+            y = minutes * 60;  // converting minutes to seconds
+
+            seconds += x + y;  // adding all 3 of the seconds items together
+
+            metersPerSecond = distanceInMeters / seconds;
+
+            time = seconds / 3600;  // converting seconds into a decimal representation of hours
+
+            distance = distanceInMiles / time; 
+
+            Console.WriteLine($"Your speed in meters/sec is: {Math.Round(metersPerSecond, 5)}");
+
+            Console.WriteLine($"Speed in miles/h is: {Math.Round(distance, 5)}");
+
+            distance = distanceInKilometers / time;
+
+            Console.WriteLine($"Speed in km/h is: {Math.Round(distance, 5)}");
+
+
+
+
+            Console.Read();
+
+
+        }
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Program takes the radius as an input and calculates the surface area, and volume of a sphere.
+            // Area formula: A = 4 (pi) r^2
+            //  Volume formula: V = 4/3*pi*r^3
+            //----------------------------------------------------------------------------------------------      
+
+            double radius, volume, area;
+
+            Console.WriteLine("Enter the radius of a circle: ");
+            radius = double.Parse(Console.ReadLine());
+
+            area = 4 * Math.PI * radius * radius;
+
+            volume = 4 / 3 * Math.PI * radius * radius * radius;
+
+            Console.WriteLine($"The area  is: {Math.Round(area, 4)}\nThe Volume is: {Math.Round(volume, 4)}");
+
+            Console.Read();
+
+
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Program takes a character as an input and checks if it is uppercase, lowercase, a vowel, or consonant, or a number.
+            //-------------------------------------------------------------------------------------------------------------------
+
+            bool isUpper = false;
+            bool isLower = false;
+            bool isNumber = false;
+            bool isVowel = false;
+
+            Console.WriteLine("Enter an uppercase letter, lowercase letter, or number: ");
+            string input = Console.ReadLine();     
+
+            foreach (char c in input)
+            {
+
+                if (c >= 48 && c <= 57)
+                {
+                    isUpper = false;
+                    isLower = false;
+                    isNumber = true;
+                }
+
+                if (c >= 65 && c <= 90 && isNumber == false)
+                {
+                    isUpper = true;
+
+                }
+                else
+                {
+                    if(isNumber != true)
+                    {
+                        isLower = true;
+                    }
+                    
+                }
+
+                if (isNumber == false)
+                {
+                    input = input.ToUpper();
+
+                    if(input == "A" || input == "E" || input == "I" || input == "O" || input == "U")
+                    {
+                        isVowel = true;
+                    }
+                }
+
+            }
+
+            if(isUpper == true)
+            {
+                if(isVowel == true)
+                {
+                    Console.WriteLine("It's an uppercase vowel.");
+                }
+                else
+                {
+                    Console.WriteLine("It's an uppercase consonant.");
+                }
+            }
+
+            if(isLower == true)
+            {
+                if(isVowel == true)
+                {
+                    Console.WriteLine("It's a lowercase vowel");
+                }
+                else
+                {
+                    Console.WriteLine("It's a lowercase consonant");
+                }
+            }
+
+            if(isNumber == true)
+            {
+                Console.WriteLine("It's a number");
+            }
+
+
+
+            Console.Read();
+
+
+
+
+        }
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Program takes two numbers as input and returns true if both are even or odd, and false if they are even and odd
+            //-------------------------------------------------------------------------------------------------------------------
+            // another way to do the test of whether both numbers are even is:
+            //bool bothEven = ((x % 2 == 0) && (y % 2 == 0)) ? true : false;
+            //Console.WriteLine(bothEven ? "there both even" : "there is an odd number");
+            //-----------------------------------------------------------------------------------------------------------------
+
+
+            string input1, input2;
+            int x, y;
+          
+
+            input1 = Console.ReadLine();
+
+            input2 = Console.ReadLine();
+
+        
+
+            x = int.Parse(input1);
+            y = int.Parse(input2);
+
+            if(isEven(x) && isEven(y) )
+            {
+                Console.WriteLine("True");
+                Console.Read();
+               
+            }
+
+            else
+            {
+                Console.WriteLine("False");
+                Console.Read();
+                
+            }
+
+            
+
+
+        }
+
+        private static bool isEven(int value)
+        {
+            int remainder = value % 2;
+
+            if(remainder == 0)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // This program converts a string to an array of chars and then sorts it alphabetically and returns it as a regular string
+            
+            string input = Console.ReadLine();
+
+            string sorted = "";
+
+            sorted = sortArrayAlphabetical(input);
+
+            Console.WriteLine(sorted);
+
+            Console.Read();
+
+        }
+
+        private static string sortArrayAlphabetical(string str)   // work done here
+        {
+            char[] cArray = str.ToCharArray();
+            Array.Sort(cArray);
+            return new string(cArray);
+        }
+
+       
+
+        //private static string[] populateArray(string input, string[] strArray)
+        //{
+           
+
+        //    int i = 0;
+
+        //    foreach (char c in input)
+        //    {
+        //        strArray[i] = c.ToString();
+
+        //        i++;
+        //    }
+
+        //    return strArray;
+        //}
+    }
+}
+------------------------------------------------------------------------------------------------------
+
+using System;  
+public class Exercise11  
+{  
+    public static void Main() 
+{
+	// Manually sorting a string using nested for statements
+	// -------------------------------------------------------
+  string str;
+  char[] arr1;
+  char ch;
+  int i,j,l;
+      Console.Write("\n\nSort a string array in ascending order :\n");
+      Console.Write("--------------------------------------------\n");  
+      Console.Write("Input the string : ");
+      str = Console.ReadLine();	
+      l=str.Length;
+      arr1 = str.ToCharArray(0, l);
+
+   for(i=1;i<l;i++)
+    for(j=0;j<l-i;j++)
+	
+	if(arr1[j]>arr1[j+1])
+	{
+	  ch=arr1[j];
+	  arr1[j] = arr1[j+1];
+	  arr1[j+1]=ch;
+	}
+   Console.Write("After sorting the string appears like : \n");
+    foreach (char c in arr1)
+       { 
+        ch=c;
+         Console.Write("{0} ",ch);
+       }
+       Console.WriteLine("\n");
+   }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        // Manually copying a substring out of a string without using the library function
+        //--------------------------------------------------------------------------------
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the string: ");
+            string input = Console.ReadLine();
+
+            Console.WriteLine("Enter the starting position for the substring: ");
+            string index = Console.ReadLine();
+
+            Console.WriteLine("Enter the length of the substring: ");
+            string length = Console.ReadLine();
+
+            
+
+            string substringCopy = Substring(input, index, length);
+
+
+            Console.WriteLine(substringCopy);
+
+            Console.Read();
+
+
+
+
+        }
+
+        private static string Substring(string input, string startingIndex, string numberOfChars)
+        {
+
+            int index, count;
+
+            int.TryParse(startingIndex, out index);
+
+            int.TryParse(numberOfChars, out count);
+
+            char[] cArr = input.ToCharArray();
+
+            char[] sub = new char[cArr.Length];
+
+            for(int i = index, j = 0; j < count; j++, i++)
+            {
+                sub[j] = cArr[i];
+            }
+
+            return new string(sub);
+
+
+        }
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Diagnostics;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        // Manually copying a substring out of a string without using the library function
+        // also the built in indexOf  function of the string class is shown also
+        //--------------------------------------------------------------------------------
+
+        static void Main(string[] args)
+        {
+
+            Console.WriteLine("Enter the string: ");
+            string inputStr = Console.ReadLine();
+
+            Console.WriteLine("Enter the string to search: ");
+            string searchStr = Console.ReadLine();
+                      
+            // int index = inputStr.IndexOf(searchStr);  // built in string classes indexOf function
+
+            int index = indexOfSearchStr(inputStr, searchStr);  // calls manual version of indexOf function
+                                
+
+            if(index != -1)
+            {
+                Console.Write(index);
+            }
+            else
+            {
+                Console.WriteLine("Not found");
+            }
+
+
+            Console.Read();
+        
+
+        }
+
+        private static int indexOfSearchStr(string inputStr, string searchStr)
+        {
+            int count = 0;
+            int matchingChars = 0;
+            bool found = false;
+            int index = 0;
+            bool increment = false;
+            int counter = 0;
+
+            inputStr = inputStr.ToUpper();
+
+            searchStr = searchStr.ToUpper();
+
+           foreach (char c in inputStr)
+            {
+                if(c == searchStr[count])
+                {
+                    matchingChars++;
+                    increment = true;
+                    
+                }
+
+                if(c != searchStr[count] && matchingChars != 0)
+                {
+                    matchingChars = 0;
+                    increment = false;
+                    count = 0;
+                    
+                }
+
+                if(matchingChars == searchStr.Length)
+                {
+                    found = true;
+                   
+                }
+
+                if (increment == true && count == 0)
+                {
+                    index = counter;
+                }
+
+                if (increment == true && found != true)
+                {
+                    count++;
+                }
+
+                
+
+
+                if (found == true)
+                {
+                    return index;
+                }
+
+                counter++;
+                
+
+            }
+
+            return -1;
+
+
+
+
+        }
+
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------
+
+// Useful library methods for working with strings
+//----------------------------------------------------------------------------------------------------------------------------
+            //empty string is better than null string as it is assigned
+            string s = String.Empty;  
+
+            string s3 = "Visual C# Express";
+            System.Console.WriteLine(s3.Substring(7, 2));
+            // Output: "C#"
+
+            System.Console.WriteLine(s3.Replace("C#", "Basic"));
+            // Output: "Visual Basic Express"
+
+            // Index values are zero-based
+            int index = s3.IndexOf("C");
+            // index = 7
+
+	    // Printing backwards
+	    string s5 = "Printing backwards";
+
+            for (int i = 0; i < s5.Length; i++)
+            {
+                System.Console.Write(s5[s5.Length - i - 1]);
+            }
+            // Output: "sdrawkcab gnitnirP"
+
+ 	    // swap lowercase with uppercase letters 
+
+ 	    string question = "hOW DOES mICROSOFT wORD DEAL WITH THE cAPS lOCK KEY?";
+            System.Text.StringBuilder sb = new System.Text.StringBuilder(question);
+
+            for (int j = 0; j < sb.Length; j++)
+            {
+                if (System.Char.IsLower(sb[j]) == true)
+                    sb[j] = System.Char.ToUpper(sb[j]);
+                else if (System.Char.IsUpper(sb[j]) == true)
+                    sb[j] = System.Char.ToLower(sb[j]);
+            }
+            // Store the new string.
+            string corrected = sb.ToString();
+            System.Console.WriteLine(corrected);
+            // Output: How does Microsoft Word deal with the Caps Lock key?      
+
+	    // Using StringBuilder to change string characters in place (without creating a new string)
+
+	    System.Text.StringBuilder sb = new System.Text.StringBuilder("Rat: the ideal pet");
+            sb[0] = 'C';
+            System.Console.WriteLine(sb.ToString());
+            System.Console.ReadLine();
+
+            //Outputs Cat: the ideal pet
+
+	    // Using StringBuilder to append strings because it is more effecient
+	    ---------------------------------------------------------------------------------------------------
+	     class StringBuilderTest
+    {
+        static void Main()
+        {
+            string text = null;
+
+            // Use StringBuilder for concatenation in tight loops.
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            for (int i = 0; i < 100; i++)
+            {
+                sb.AppendLine(i.ToString());
+            }
+            System.Console.WriteLine(sb.ToString());
+
+            // Keep the console window open in debug mode.
+            System.Console.WriteLine("Press any key to exit.");
+            System.Console.ReadKey();
+        }
+    }
+
+---------------------------------------------------------------------------------------------------------------
+
+	// Takes an input string and counts the count of vowels and consonants in it and returns an array with two elements.
+        // Element 0 is the number of vowels and element 2 is the number of consonants.
+
+        private static int[] CountConsonantsAndVowels(string input)
+        {
+
+            int vowelCount = 0;
+            int constCount = 0;
+            int[] results = new int[2];
+
+            foreach(char c in input)
+            {
+                if(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'O' || c == 'U' || c == 'I')
+                {
+                    vowelCount++;
+                }
+                else if(c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')
+                {
+                    constCount++;
+                }
+            }
+
+            results[0] = vowelCount;
+            results[1] = constCount;
+
+            return results;
+        }
+-------------------------------------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Diagnostics;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        // SwapingCase
+        // This program swaps the letters in a strings case. If it is uppercase
+        // it will make it lowercase, and vice versa.
+        //--------------------------------------------------------------------------------
+
+        static void Main(string[] args)
+        {
+            string inputStr = Console.ReadLine();
+                                  
+            string swappedStr = SwapCase(inputStr);
+
+            Console.WriteLine(swappedStr);
+
+            Console.Read();
+
+
+        }
+
+        private static string SwapCase(string inputStr)
+        {
+            char[] cArr = inputStr.ToCharArray();
+            char ch;
+
+            for(int i = 0; i < cArr.Length; i++)
+            {
+               
+                if(Char.IsUpper(cArr[i]))
+                {
+                    cArr[i] = Char.ToLower(cArr[i]);
+                }
+                else if(Char.IsLower(cArr[i]))
+                {
+                    cArr[i] = Char.ToUpper(cArr[i]);
+                }
+                
+
+            }
+
+            return new string(cArr);
+        }
+    }
+}
+------------------------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Diagnostics;
+
+namespace ConsoleApplication1
+{
+    // StringBuilder usage
+
+    class Program
+    {
+       
+        public static void Main()
+        {
+            // StringBuilder is mutable meaning that when you change it's value it does not create a new object
+            // it modifies this one in place. the String class is the opposite.
+            // it is immutable meaning that each time you modify it, it actually creates a new object with the new value.
+
+            StringBuilder sb = new StringBuilder();
+
+            char[] cArray = new char[] { 'h', 'e', 'l', 'l', 'o' };
+
+            string str = "world";
+
+            string str2 = "what is going on with you?";
+
+            string str3 = String.Empty;
+
+            sb.Append(cArray);
+
+            sb.Append(" ");
+
+            sb.Append(str);
+
+            sb.Append(" ");
+
+            sb.Append(str2, 0, 4);           
+
+            sb.Insert(9, "test ");
+
+            sb.Replace('h', 'r');
+
+            sb.AppendLine(" This is the first line");
+
+            sb.Remove(0, 5);
+
+            sb.Replace(" is ", " ## ");
+
+            sb.Append(str3);
+
+            Console.WriteLine(sb.ToString());
+
+            ShowSBInfo(sb);
+
+            sb.Clear();
+
+            Console.WriteLine(sb.ToString());
+
+            ShowSBInfo(sb);
+
+            Console.ReadKey();
+
+        }
+
+        private static void ShowSBInfo(StringBuilder sb)
+        {
+            foreach (var prop in sb.GetType().GetProperties())
+            {
+                if (prop.GetIndexParameters().Length == 0)
+                    Console.Write("{0}: {1:N0}    ", prop.Name, prop.GetValue(sb));
+            }
+            Console.WriteLine();
+        }
+    
+
+
+
+
+}
+}
+
+---------------------------------------------------------------------------------------------------------------------------------
+// using an Action delegate with an anonymous method to call a method
+
+using System;
+using System.Windows.Forms;
+
+public class Name
+{
+   private string instanceName;
+
+   public Name(string name)
+   {
+      this.instanceName = name;
+   }
+
+   public void DisplayToConsole()
+   {
+      Console.WriteLine(this.instanceName);
+   }
+
+   public void DisplayToWindow()
+   {
+      MessageBox.Show(this.instanceName);
+   }
+}
+
+public class Anonymous
+{
+   public static void Main()
+   {
+      Name testName = new Name("Koani");
+      Action showMethod = delegate() { testName.DisplayToWindow();} ;
+      showMethod();
+   }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------
+// Uses an AppDomain to generate a new AppDomain and then call a method by proxy with it
+using System;
+using System.Reflection;
+using System.Threading;
+
+class Module1
+{
+    public static void Main()
+    {
+        // Get and display the friendly name of the default AppDomain.
+        string callingDomainName = Thread.GetDomain().FriendlyName;
+        Console.WriteLine(callingDomainName);
+
+        // Get and display the full name of the EXE assembly.
+        string exeAssembly = Assembly.GetEntryAssembly().FullName;
+        Console.WriteLine(exeAssembly);
+
+        // Construct and initialize settings for a second AppDomain.
+        AppDomainSetup ads = new AppDomainSetup();
+        ads.ApplicationBase = AppDomain.CurrentDomain.BaseDirectory;
+
+        ads.DisallowBindingRedirects = false;
+        ads.DisallowCodeDownload = true;
+        ads.ConfigurationFile =
+            AppDomain.CurrentDomain.SetupInformation.ConfigurationFile;
+
+        // Create the second AppDomain.
+        AppDomain ad2 = AppDomain.CreateDomain("AD #2", null, ads);
+
+        // Create an instance of MarshalbyRefType in the second AppDomain. 
+        // A proxy to the object is returned.
+        MarshalByRefType mbrt =
+            (MarshalByRefType)ad2.CreateInstanceAndUnwrap(
+                exeAssembly,
+                typeof(MarshalByRefType).FullName
+            );
+
+        // Call a method on the object via the proxy, passing the 
+        // default AppDomain's friendly name in as a parameter.
+        mbrt.SomeMethod(callingDomainName);
+
+        // Unload the second AppDomain. This deletes its object and 
+        // invalidates the proxy object.
+        AppDomain.Unload(ad2);
+        try
+        {
+            // Call the method again. Note that this time it fails 
+            // because the second AppDomain was unloaded.
+            mbrt.SomeMethod(callingDomainName);
+            Console.WriteLine("Sucessful call.");
+
+        }
+        catch (AppDomainUnloadedException)
+        {
+            Console.WriteLine("Failed call; this is expected.");
+            Console.ReadKey();
+        }
+    }
+}
+
+// Because this class is derived from MarshalByRefObject, a proxy 
+// to a MarshalByRefType object can be returned across an AppDomain 
+// boundary.
+public class MarshalByRefType : MarshalByRefObject
+{
+    //  Call this method via a proxy.
+    public void SomeMethod(string callingDomainName)
+    {
+        // Get this AppDomain's settings and display some of them.
+        AppDomainSetup ads = AppDomain.CurrentDomain.SetupInformation;
+        Console.WriteLine("AppName={0}, AppBase={1}, ConfigFile={2}",
+            ads.ApplicationName,
+            ads.ApplicationBase,
+            ads.ConfigurationFile
+        );
+
+        // Display the name of the calling AppDomain and the name 
+        // of the second domain.
+        // NOTE: The application's thread has transitioned between 
+        // AppDomains.
+        Console.WriteLine("Calling from '{0}' to '{1}'.",
+            callingDomainName,
+            Thread.GetDomain().FriendlyName
+        );
+    }
+}
+
+/* This code produces output similar to the following: 
+
+AppDomainX.exe
+AppDomainX, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+AppName=, AppBase=C:\AppDomain\bin, ConfigFile=C:\AppDomain\bin\AppDomainX.exe.config
+Calling from 'AppDomainX.exe' to 'AD #2'.
+Failed call; this is expected.
+
+-------------------------------------------------------------------------------------------
+
+// this class displays the bit values of any given byte by using an indexer
+-------------------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication2
+{
+    class IntBits
+    {
+
+        private int bits;
+        private string binary = String.Empty;
+
+        public IntBits(int initialBits)
+        {
+            this.bits = initialBits;
+        }
+
+        public IntBits()
+        {
+            this.bits = 0;
+        }
+
+        public bool this[int index]
+        {
+            get { return (bits & (1 << index)) != 0; }
+
+            set
+            {
+                if (value) // turn the  bit on if value is true; otherwise, turn it off
+                    bits |= (1 << index);
+                else
+                    bits &= ~(1 << index);
+            }
+
+
+        }
+
+        public  override string ToString()
+        {
+            IntBits binaryBits = new IntBits(bits);
+
+            for (int i = 0; i < 8; i++)
+            {
+                binary += Convert.ToInt16(binaryBits[i]).ToString();
+            }
+
+            return binary;
+        }
+
+        public string Reverse()
+        {
+            ToString();
+
+            char[] binArr = new char[binary.Length];
+
+            binArr = binary.ToCharArray();
+
+            Array.Reverse(binArr);
+
+            binary = String.Empty;
+
+            foreach(char c in binArr)
+            {
+                binary += c;
+            }
+
+            return binary;
+
+        }
+
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------
+// Environmental Information about the system 
+//like OS version, Machine Name, User Name etc.
+//----------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Collections;
+using System.IO;
+
+public class Example
+{
+    public static void Main()
+    {
+        //Console.WriteLine($"CurrentDirectory: {Environment.CurrentDirectory}");
+        //Console.WriteLine($"CommandLine: {Environment.CommandLine}");
+        //Console.WriteLine($"CurrentManagedThreadId: {Environment.CurrentManagedThreadId}");
+        //Console.WriteLine($"ExitCode: {Environment.ExitCode}");
+        //Console.WriteLine($"HasShutdownStarted: {Environment.HasShutdownStarted}");
+        //Console.WriteLine($"Is64BitOperatingSystem: {Environment.Is64BitOperatingSystem}");
+
+        //Console.WriteLine($"Is64BitProcess: {Environment.Is64BitProcess}");
+        //Console.WriteLine($"MachineName: {Environment.MachineName}");
+        //Console.WriteLine($"NewLine: {Environment.NewLine}");
+        //Console.WriteLine($"OSVersion: {Environment.OSVersion}");
+        //Console.WriteLine($"ProcessorCount: {Environment.ProcessorCount}");
+        //Console.WriteLine($"StackTrace: {Environment.StackTrace}");
+
+        //Console.WriteLine($"SystemDirectory: {Environment.SystemDirectory}");
+        //Console.WriteLine($"SystemPageSize: {Environment.SystemPageSize}");
+        //Console.WriteLine($"TickCount: {Environment.TickCount}");
+        //Console.WriteLine($"UserDomainName: {Environment.UserDomainName}");
+        //Console.WriteLine($"UserInteractive: {Environment.UserInteractive}");
+        //Console.WriteLine($"UserName: {Environment.UserName}");
+
+        //Console.WriteLine($"Version: {Environment.Version}");
+        //Console.WriteLine($"WorkingSet: {Environment.WorkingSet}");
+
+        // IDictionary environmentVariable = Environment.GetEnvironmentVariables();
+
+        //foreach(DictionaryEntry de in environmentVariable)
+        //{
+        //    Console.WriteLine($"{de.Key}  {de.Value}");
+        //}
+
+        //Console.WriteLine(environmentVariable);
+
+        //var drives = Environment.GetLogicalDrives();
+
+        //foreach(string s in drives)
+        //{
+        //    Console.WriteLine(s);
+        //}
+
+        var startup = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+
+        Console.WriteLine(startup);
+
+        Console.ReadKey();
+    }
+}
+--------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Runtime.InteropServices;
+
+//------------------------------------------------------------------------------------
+// This program uses unsafe/ unmanaged pointers to reverse a string.
+// It defines pointers, allocates memory, copies from one to the other in reverse.
+//------------------------------------------------------------------------------------
+
+
+class NotTooSafeStringReverse
+{
+    static public void Main()
+    {
+        string stringA = "I seem to be turned around!";
+        int copylen = stringA.Length;
+
+        // Allocate HGlobal memory for source and destination strings
+        IntPtr sptr = Marshal.StringToHGlobalAnsi(stringA);
+        IntPtr dptr = Marshal.AllocHGlobal(copylen + 1);
+
+        // The unsafe section where byte pointers are used.
+        unsafe
+        {
+            byte* src = (byte*)sptr.ToPointer();
+            byte* dst = (byte*)dptr.ToPointer();
+
+            if (copylen > 0)
+            {
+                // set the source pointer to the end of the string
+                // to do a reverse copy.
+                src += copylen - 1;
+
+                while (copylen-- > 0)
+                {
+                    *dst++ = *src--;
+                }
+                *dst = 0;
+            }
+        }
+        string stringB = Marshal.PtrToStringAnsi(dptr);
+
+        Console.WriteLine("Original:\n{0}\n", stringA);
+        Console.WriteLine("Reversed:\n{0}", stringB);
+        Console.ReadKey();
+
+        // Free HGlobal memory
+        Marshal.FreeHGlobal(dptr);
+        Marshal.FreeHGlobal(sptr);
+    }
+}
+
+// The progam has the following output:
+//
+// Original:
+// I seem to be turned around!
+//
+// Reversed:
+// !dnuora denrut eb ot mees I
+----------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------
+// Program creates a new application domain and then
+// creates an instance of the Worker object in that domain.
+// It prints the name of the domain from both domains.
+// -------------------------------------------------------------------------------
+
+using System;
+using System.Reflection;
+
+public class Worker : MarshalByRefObject
+{
+    public void PrintDomain()
+    {
+        Console.WriteLine("Object is executing in AppDomain \"{0}\"",
+            AppDomain.CurrentDomain.FriendlyName);
+    }
+}
+
+class Example
+{
+    public static void Main()
+    {
+        // Create an ordinary instance in the current AppDomain
+        Worker localWorker = new Worker();
+        localWorker.PrintDomain();
+
+        // Create a new application domain, create an instance
+        // of Worker in the application domain, and execute code
+        // there.
+            
+        AppDomain ad = AppDomain.CreateDomain("New domain");
+        Worker remoteWorker = (Worker)ad.CreateInstanceAndUnwrap(typeof(Worker).Assembly.FullName, "Worker");
+        remoteWorker.PrintDomain();
+
+        Console.ReadKey();
+    }
+}
+
+/* This code produces output similar to the following:
+
+Object is executing in AppDomain "source.exe"
+Object is executing in AppDomain "New domain"
+ */
+-------------------------------------------------------------------------------------------------
+// Equivalent of fflush
+------------------------------------------------------
+while (Console.KeyAvailable)
+    Console.ReadKey(true);
+
+-------------------------------------------------------------------------------------------------
+
+// Type in a hostname and get the ip address for it 
+-------------------------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net.Sockets;
+using System.Net;
+
+namespace ConsoleApplication3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter a hostname: ");
+            string userInput = Console.ReadLine();
+
+
+
+            if(!string.IsNullOrEmpty(userInput))
+            {
+                string address = GetAddressFromHost(userInput);
+
+                Console.Write(" " + address + "\n");
+
+                Main(args);
+            }
+           else
+            {
+                Main(args);
+            }
+
+        }
+
+        private static string GetAddressFromHost(string host)
+        {
+
+            try
+            {
+                if(host != null && host != "")
+                {
+                    IPHostEntry ip = Dns.GetHostEntry(host);
+
+                    string result = Convert.ToString(ip.AddressList[0]);
+
+                    return result;
+                }
+                return null;
+               
+            }
+            catch
+            {
+                throw new NotImplementedException();
+            }
+        }
+    }
+}
+----------------------------------------------------------------------------------------------------
+// Checks if a domain is valid
+----------------------------------------------------------------------------------------------------
+private static bool IsValidDomainName(string name)
+{
+    return Uri.CheckHostName(name) != UriHostNameType.Unknown;
+}
+----------------------------------------------------------------------------------------------------
+
+// Program uses DirectoryInfo classe to enumerate the files in the C:\ drive
+// and catch unauthorized access exceptions. It first enumerates directories
+// then only enumerates the files in the directories that didn't throw exceptions
+// it displays a list of files that the program had permission to access.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net.Sockets;
+using System.Net;
+using System.IO;
+
+namespace ConsoleApplication3
+{
+    class Program
+    {
+
+
+        static void Main(string[] args)
+        {
+            DirectoryInfo diTop = new DirectoryInfo(@"c:\");
+            try
+            {
+                foreach (var fi in diTop.EnumerateFiles())
+                {
+                    try
+                    {
+                        // display each file
+                        Console.WriteLine($"{fi.FullName} \t\t {fi.Length.ToString("N0")}");
+                    }
+                    catch (UnauthorizedAccessException UnauthTop)
+                    {
+                        Console.WriteLine($"{UnauthTop.Message}");
+                    }
+                }
+                foreach (var di in diTop.EnumerateDirectories("*"))
+                {
+                    try
+                    {
+                        foreach (var fi in di.EnumerateFiles("*", SearchOption.AllDirectories))
+                        {
+                            try
+                            {
+                                Console.WriteLine($"{fi.FullName}\t\t {fi.Length.ToString("N0")}");
+                            }
+                            catch (UnauthorizedAccessException UnAuthFile)
+                            {
+                                Console.WriteLine("UnAuthFile: {0}", UnAuthFile.Message);
+
+                            }
+                        }
+                    }
+                    catch (UnauthorizedAccessException UnauthSubDir)
+                    {
+                        Console.WriteLine("UnAuthSubDir: {0}", UnauthSubDir.Message);
+                    }
+                }
+
+            }
+            catch (DirectoryNotFoundException DirNotFound)
+            {
+                Console.WriteLine($"{DirNotFound.Message}");
+            }
+            catch (UnauthorizedAccessException UnAuthDir)
+            {
+                Console.WriteLine("UnAuthDir: {0}", UnAuthDir.Message);
+            }
+            catch (PathTooLongException LongPath)
+            {
+                Console.WriteLine("{0}", LongPath.Message);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"{ex.Message}");
+            }
+
+            Console.ReadLine();
+        }
+    }
+}  
+
+-------------------------------------------------------------------------------------------------
+// Use FileStream to asynchronously copy files from a source directory to a destination directory
+// Uses two Filestreams, Directory, and File classes
+
+using System;
+using System.Threading.Tasks;
+using System.Windows;
+using System.IO;
+
+namespace WpfApplication
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string StartDirectory = @"c:\Users\exampleuser\start";
+            string EndDirectory = @"c:\Users\exampleuser\end";
+
+            foreach (string filename in Directory.EnumerateFiles(StartDirectory))
+            {
+                using (FileStream SourceStream = File.Open(filename, FileMode.Open))
+                {
+                    using (FileStream DestinationStream = File.Create(EndDirectory + filename.Substring(filename.LastIndexOf('\\'))))
+                    {
+                        await SourceStream.CopyToAsync(DestinationStream);
+                    }
+                }
+            }
+        }
+    }
+}
+--------------------------------------------------------------------------------------------------------
+// Use StreamReader and StreamWriter objects to read and write the contents of a text file asynchronously
+----------------------------------------------------------------------------------------------------------
+ private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string UserDirectory = @"c:\Users\exampleuser\";
+
+            using (StreamReader SourceReader = File.OpenText(UserDirectory + "BigFile.txt"))
+            {
+                using (StreamWriter DestinationWriter = File.CreateText(UserDirectory + "CopiedFile.txt"))
+                {
+                    await CopyFilesAsync(SourceReader, DestinationWriter);
+                }
+            }
+        }
+
+        public async Task CopyFilesAsync(StreamReader Source, StreamWriter Destination) 
+        { 
+            char[] buffer = new char[0x1000]; 
+            int numRead; 
+            while ((numRead = await Source.ReadAsync(buffer, 0, buffer.Length)) != 0) 
+            {
+                await Destination.WriteAsync(buffer, 0, numRead);
+            } 
+        } 
+---------------------------------------------------------------------------------------------------------------
+// Uses FileOpenPicker, StringBuilder, and StreamReader to open a file, read its contents,
+// append them into a StringBuilder object, and display them.
+---------------------------------------------------------------------------------------------------------------
+using System;
+using System.IO;
+using System.Text;
+using Windows.Storage.Pickers;
+using Windows.Storage;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+
+namespace ExampleApplication
+{
+    public sealed partial class BlankPage : Page
+    {
+        public BlankPage()
+        {
+            this.InitializeComponent();
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            StringBuilder contents = new StringBuilder();
+            string nextLine;
+            int lineCounter = 1;
+
+            var openPicker = new FileOpenPicker();
+            openPicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            openPicker.FileTypeFilter.Add(".txt");
+            StorageFile selectedFile = await openPicker.PickSingleFileAsync();
+
+            using (StreamReader reader = new StreamReader(await selectedFile.OpenStreamForReadAsync()))
+            {
+                while ((nextLine = await reader.ReadLineAsync()) != null)
+                {
+                    contents.AppendFormat("{0}. ", lineCounter);
+                    contents.Append(nextLine);
+                    contents.AppendLine();
+                    lineCounter++;
+                    if (lineCounter > 3)
+                    {
+                        contents.AppendLine("Only first 3 lines shown.");
+                        break;
+                    }
+                }
+            }
+            DisplayContentsBlock.Text = contents.ToString();
+        }
+    }
+}
+----------------------------------------------------------------------------------------------------
+// Creates a directory listing of files in the directory with the .exe extension
+----------------------------------------------------------------------------------------------------
+using System;
+using System.IO;
+
+public class DirectoryLister
+{
+    public static void Main(String[] args)
+    {
+        string path = Environment.CurrentDirectory;
+        if (args.Length > 0)
+        {
+            if (Directory.Exists(args[0]))
+            {
+                path = args[0];
+            }
+            else
+            {
+                Console.WriteLine("{0} not found; using current directory:",
+                    args[0]);
+            }
+        }
+        DirectoryInfo dir = new DirectoryInfo(path);
+        foreach (FileInfo f in dir.GetFiles("*.exe"))
+        {
+            string name = f.Name;
+            long size = f.Length;
+            DateTime creationTime = f.CreationTime;
+            Console.WriteLine("{0,-12:N0} {1,-20:g} {2}", size,
+                creationTime, name);
+        }
+    }
+}
+
+--------------------------------------------------------------------------------------------------------
+// How to read characters froma  string using a StringReader stream
+--------------------------------------------------------------------------------------------------------
+using System;
+using System.IO;
+
+public class CharsFromStr
+{
+    public static void Main()
+    {
+        string str = "Some number of characters";
+        char[] b = new char[str.Length];
+
+        using (StringReader sr = new StringReader(str))
+        {
+            // Read 13 characters from the string into the array.
+            sr.Read(b, 0, 13);
+            Console.WriteLine(b);
+
+            // Read the rest of the string starting at the current string position.
+            // Put in the array starting at the 6th array member.
+            sr.Read(b, 5, str.Length - 13);
+            Console.WriteLine(b);
+        }
+    }
+}
+// The example has the following output:
+//
+// Some number o
+// Some f characters
+-----------------------------------------------------------------------------------------------------------
+// Anychronously reads the string in TextBox control and adds it to a char array.
+// Then asynchronously writes it to  a StringBuilder with all the letters to lower case
+// and a line break added after each character. Then displays it to a new TextBox.
+//---------------------------------------------------------------------------------------------------------
+using System;
+using System.Text;
+using System.Windows;
+using System.IO;
+
+namespace WpfApplication
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private async void ReadButton_Click(object sender, RoutedEventArgs e)
+        {
+            char[] charsRead = new char[UserInput.Text.Length];
+            using (StringReader reader = new StringReader(UserInput.Text))
+            {
+                await reader.ReadAsync(charsRead, 0, UserInput.Text.Length);
+            }
+
+            StringBuilder reformattedText = new StringBuilder();
+            using (StringWriter writer = new StringWriter(reformattedText))
+            {
+                foreach (char c in charsRead)
+                {
+                    if (char.IsLetter(c) || char.IsWhiteSpace(c))
+                    {
+                        await writer.WriteLineAsync(char.ToLower(c));
+                    }
+                }
+            }
+            Result.Text = reformattedText.ToString();
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------------------------
+// Synchronously writes 5 characters from a char array to a string
+//---------------------------------------------------------------------------
+using System;
+using System.Text;
+using System.Windows;
+using System.IO;
+
+namespace WpfApplication
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private async void ReadButton_Click(object sender, RoutedEventArgs e)
+        {
+            char[] charsRead = new char[UserInput.Text.Length];
+            using (StringReader reader = new StringReader(UserInput.Text))
+            {
+                await reader.ReadAsync(charsRead, 0, UserInput.Text.Length);
+            }
+
+            StringBuilder reformattedText = new StringBuilder();
+            using (StringWriter writer = new StringWriter(reformattedText))
+            {
+                foreach (char c in charsRead)
+                {
+                    if (char.IsLetter(c) || char.IsWhiteSpace(c))
+                    {
+                        await writer.WriteLineAsync(char.ToLower(c));
+                    }
+                }
+            }
+            Result.Text = reformattedText.ToString();
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------------
+// Zip a folder, and then extract it back out to a new folder.
+//---------------------------------------------------------------------
+using System;
+using System.IO;
+using System.IO.Compression;
+
+namespace ConsoleApplication
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string startPath = @"c:\example\start";
+            string zipPath = @"c:\example\result.zip";
+            string extractPath = @"c:\example\extract";
+
+            ZipFile.CreateFromDirectory(startPath, zipPath);
+
+            ZipFile.ExtractToDirectory(zipPath, extractPath);
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------
+// Iterates through a zip file without extracting it and extracts only the files ending in .txt
+//----------------------------------------------------------------------------------------------------------
+using System;
+using System.IO;
+using System.IO.Compression;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string zipPath = @"c:\example\start.zip";
+            string extractPath = @"c:\example\extract";
+
+            using (ZipArchive archive = ZipFile.OpenRead(zipPath))
+            {
+                foreach (ZipArchiveEntry entry in archive.Entries)
+                {
+                    if (entry.FullName.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
+                    {
+                        entry.ExtractToFile(Path.Combine(extractPath, entry.FullName));
+                    }
+                }
+            } 
+        }
+    }
+}
+--------------------------------------------------------------------------------------------------------------
+// Access an existing zip file and add a new text file to it without extracting it
+// the new text file is written programatically and is zipped as it is added.
+--------------------------------------------------------------------------------------------------------------
+using System;
+using System.IO;
+using System.IO.Compression;
+
+namespace ConsoleApplication
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            using (FileStream zipToOpen = new FileStream(@"c:\users\exampleuser\release.zip", FileMode.Open))
+            {
+                using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Update))
+                {
+                    ZipArchiveEntry readmeEntry = archive.CreateEntry("Readme.txt");
+                    using (StreamWriter writer = new StreamWriter(readmeEntry.Open()))
+                    {
+                            writer.WriteLine("Information about this package.");
+                            writer.WriteLine("========================");
+                    }
+                }
+            }
+        }
+    }
+}
+--------------------------------------------------------------------------------------------------------------------
+// A more elaborate compression using GZipStream. Compresses a directory full of files and then decompresses it.
+//------------------------------------------------------------------------------------------------------------------
+using System;
+using System.IO;
+using System.IO.Compression;
+
+namespace zip
+{
+    public class Program
+    {
+        private static string directoryPath = @"c:\temp";
+        public static void Main()
+        {
+            DirectoryInfo directorySelected = new DirectoryInfo(directoryPath);
+            Compress(directorySelected);
+
+            foreach (FileInfo fileToDecompress in directorySelected.GetFiles("*.gz"))
+            {
+                Decompress(fileToDecompress);
+            }
+        }
+
+        public static void Compress(DirectoryInfo directorySelected)
+        {
+            foreach (FileInfo fileToCompress in directorySelected.GetFiles())
+            {
+                using (FileStream originalFileStream = fileToCompress.OpenRead())
+                {
+                    if ((File.GetAttributes(fileToCompress.FullName) & 
+                       FileAttributes.Hidden) != FileAttributes.Hidden & fileToCompress.Extension != ".gz")
+                    {
+                        using (FileStream compressedFileStream = File.Create(fileToCompress.FullName + ".gz"))
+                        {
+                            using (GZipStream compressionStream = new GZipStream(compressedFileStream, 
+                               CompressionMode.Compress))
+                            {
+                                originalFileStream.CopyTo(compressionStream);
+
+                            }
+                        }
+                        FileInfo info = new FileInfo(directoryPath + "\\" + fileToCompress.Name + ".gz");
+                        Console.WriteLine("Compressed {0} from {1} to {2} bytes.",
+                        fileToCompress.Name, fileToCompress.Length.ToString(), info.Length.ToString());
+                    }
+
+                }
+            }
+        }
+
+        public static void Decompress(FileInfo fileToDecompress)
+        {
+            using (FileStream originalFileStream = fileToDecompress.OpenRead())
+            {
+                string currentFileName = fileToDecompress.FullName;
+                string newFileName = currentFileName.Remove(currentFileName.Length - fileToDecompress.Extension.Length);
+
+                using (FileStream decompressedFileStream = File.Create(newFileName))
+                {
+                    using (GZipStream decompressionStream = new GZipStream(originalFileStream, CompressionMode.Decompress))
+                    {
+                        decompressionStream.CopyTo(decompressedFileStream);
+                        Console.WriteLine("Decompressed: {0}", fileToDecompress.Name);
+                    }
+                }
+            }
+        }
+    }
+}
+--------------------------------------------------------------------------------------------
+// Adding or removing file ACLs (Access Control List) entries. 
+// more info available here: https://msdn.microsoft.com/en-us/library/ms229078(v=vs.110).aspx
+//------------------------------------------------------------------------------------------
+using System;
+using System.IO;
+using System.Security.AccessControl;
+
+namespace FileSystemExample
+{
+    class FileExample
+    {
+        public static void Main()
+        {
+            try
+            {
+                string fileName = "test.xml";
+
+                Console.WriteLine("Adding access control entry for "
+                    + fileName);
+
+                // Add the access control entry to the file.
+                AddFileSecurity(fileName, @"DomainName\AccountName",
+                    FileSystemRights.ReadData, AccessControlType.Allow);
+
+                Console.WriteLine("Removing access control entry from "
+                    + fileName);
+
+                // Remove the access control entry from the file.
+                RemoveFileSecurity(fileName, @"DomainName\AccountName",
+                    FileSystemRights.ReadData, AccessControlType.Allow);
+
+                Console.WriteLine("Done.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        // Adds an ACL entry on the specified file for the specified account.
+        public static void AddFileSecurity(string fileName, string account,
+            FileSystemRights rights, AccessControlType controlType)
+        {
+
+
+            // Get a FileSecurity object that represents the
+            // current security settings.
+            FileSecurity fSecurity = File.GetAccessControl(fileName);
+
+            // Add the FileSystemAccessRule to the security settings.
+            fSecurity.AddAccessRule(new FileSystemAccessRule(account,
+                rights, controlType));
+
+            // Set the new access settings.
+            File.SetAccessControl(fileName, fSecurity);
+
+        }
+
+        // Removes an ACL entry on the specified file for the specified account.
+        public static void RemoveFileSecurity(string fileName, string account,
+            FileSystemRights rights, AccessControlType controlType)
+        {
+
+            // Get a FileSecurity object that represents the
+            // current security settings.
+            FileSecurity fSecurity = File.GetAccessControl(fileName);
+
+            // Remove the FileSystemAccessRule from the security settings.
+            fSecurity.RemoveAccessRule(new FileSystemAccessRule(account,
+                rights, controlType));
+
+            // Set the new access settings.
+            File.SetAccessControl(fileName, fSecurity);
+
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------------------------
+// Using FileStream composed with a BinaryReader to read the contents of a file and display them as binary.
+//---------------------------------------------------------------------------------------------------------------
+using System;
+using System.IO;
+
+public class ReadBuf
+{
+    private const string FILE_NAME = "MyFile.txt";
+
+    public static void Main()
+    {
+        if (!File.Exists(FILE_NAME))
+        {
+            Console.WriteLine("{0} does not exist.", FILE_NAME);
+            return;
+        }
+        FileStream f = new FileStream(FILE_NAME, FileMode.Open,
+            FileAccess.Read, FileShare.Read);
+        // Create an instance of BinaryReader that can
+        // read bytes from the FileStream.
+        using (BinaryReader br = new BinaryReader(f))
+        {
+            byte input;
+            // While not at the end of the file, read lines from the file.
+            while (br.PeekChar() > -1 )
+            {
+                input = br.ReadByte();
+                Console.WriteLine(input);
+            }
+        }
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------
+// Anonymous Pipe Server portion - sends a message from a parent to a child process.
+//------------------------------------------------------------------------------------
+using System;
+using System.IO;
+using System.IO.Pipes;
+using System.Diagnostics;
+
+class PipeServer
+{
+    static void Main()
+    {
+        Process pipeClient = new Process();
+
+        pipeClient.StartInfo.FileName = "pipeClient.exe";
+
+        using (AnonymousPipeServerStream pipeServer =
+            new AnonymousPipeServerStream(PipeDirection.Out,
+            HandleInheritability.Inheritable))
+        {
+            // Show that anonymous pipes do not support Message mode.
+            try
+            {
+                Console.WriteLine("[SERVER] Setting ReadMode to \"Message\".");
+                pipeServer.ReadMode = PipeTransmissionMode.Message;
+            }
+            catch (NotSupportedException e)
+            {
+                Console.WriteLine("[SERVER] Exception:\n    {0}", e.Message);
+            }
+
+            Console.WriteLine("[SERVER] Current TransmissionMode: {0}.",
+                pipeServer.TransmissionMode);
+
+            // Pass the client process a handle to the server.
+            pipeClient.StartInfo.Arguments =
+                pipeServer.GetClientHandleAsString();
+            pipeClient.StartInfo.UseShellExecute = false;
+            pipeClient.Start();
+
+            pipeServer.DisposeLocalCopyOfClientHandle();
+
+            try
+            {
+                // Read user input and send that to the client process.
+                using (StreamWriter sw = new StreamWriter(pipeServer))
+                {
+                    sw.AutoFlush = true;
+                    // Send a 'sync message' and wait for client to receive it.
+                    sw.WriteLine("SYNC");
+                    pipeServer.WaitForPipeDrain();
+                    // Send the console input to the client process.
+                    Console.Write("[SERVER] Enter text: ");
+                    sw.WriteLine(Console.ReadLine());
+                }
+            }
+            // Catch the IOException that is raised if the pipe is broken
+            // or disconnected.
+            catch (IOException e)
+            {
+                Console.WriteLine("[SERVER] Error: {0}", e.Message);
+            }
+        }
+
+        pipeClient.WaitForExit();
+        pipeClient.Close();
+        Console.WriteLine("[SERVER] Client quit. Server terminating.");
+    }
+}
+-----------------------------------------------------------------------------------------------------
+// Anonymous pipe client portion  - recieves data from the parent process.
+//---------------------------------------------------------------------------
+using System;
+using System.IO;
+using System.IO.Pipes;
+
+class PipeClient
+{
+    static void Main(string[] args)
+    {
+        if (args.Length > 0)
+        {
+            using (PipeStream pipeClient =
+                new AnonymousPipeClientStream(PipeDirection.In, args[0]))
+            {
+                // Show that anonymous Pipes do not support Message mode.
+                try
+                {
+                    Console.WriteLine("[CLIENT] Setting ReadMode to \"Message\".");
+                    pipeClient.ReadMode = PipeTransmissionMode.Message;
+                }
+                catch (NotSupportedException e)
+                {
+                    Console.WriteLine("[CLIENT] Execption:\n    {0}", e.Message);
+                }
+
+                Console.WriteLine("[CLIENT] Current TransmissionMode: {0}.",
+                   pipeClient.TransmissionMode);
+
+                using (StreamReader sr = new StreamReader(pipeClient))
+                {
+                    // Display the read text to the console
+                    string temp;
+
+                    // Wait for 'sync message' from the server.
+                    do
+                    {
+                        Console.WriteLine("[CLIENT] Wait for sync...");
+                        temp = sr.ReadLine();
+                    }
+                    while (!temp.StartsWith("SYNC"));
+
+                    // Read the server data and echo to the console.
+                    while ((temp = sr.ReadLine()) != null)
+                    {
+                        Console.WriteLine("[CLIENT] Echo: " + temp);
+                    }
+                }
+            }
+        }
+        Console.Write("[CLIENT] Press Enter to continue...");
+        Console.ReadLine();
+    }
+}
+-----------------------------------------------------------------------------------------------
+// program to practice adding 3 digit numbers
+//--------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tester
+{
+    class Program
+    {
+
+
+
+        public static void Main()
+        {
+            Random r = new Random();
+            int number1, number2, answer, result;
+            number1 = number2 = answer = result = 0;
+            string choice = String.Empty;
+
+            while(choice != "q")
+            {
+                Console.WriteLine("Add the two numbers together and enter the answer:");
+                number1 = r.Next(100, 999);
+                number2 = r.Next(100, 999);
+
+                Console.Write("\n " + number1 + "\n+" + number2 + "\n----\n ");
+
+                int.TryParse(Console.ReadLine(), out result);
+
+                answer = number1 + number2;
+
+                Console.WriteLine(result == answer ? "\nGreat job! That is the correct answer." : "Sorry but that is incorrect. The correct answer is " + answer + ".");
+                Console.WriteLine("Press Enter to continue, or type q and then Enter to quit.");
+
+                choice = Console.ReadLine();
+
+            }     
+        }     
+
+
+    }
+}
+----------------------------------------------------------------------------------------------
+// string format with currency example
+//---------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tester
+{
+    class Program
+    {
+        const float TIER1_FEE = .10f;
+        const float TIER2_FEE = .08f;
+        const float TIER3_FEE = .06f;
+        const float TIER4_FEE = .04f;
+        const float MONTHLY_FEE = 10f;
+        const float MINIMUM_BALANCE_FEE = 15f;
+
+        public static void Main()
+        {
+            float balance = 0;
+            int checks = 0;
+            float checkFee = 0;
+
+            Console.Write("Enter the starting balance of the bank account: ");
+            while(!float.TryParse(Console.ReadLine(), out balance))
+            {
+                Console.WriteLine("Please enter a valid number.");
+            }
+
+            if (balance < 0)
+                Console.WriteLine("URGENT: The account is overdrawn!");
+
+            Console.Write("Enter the number of checks: ");
+            while((checks = int.Parse(Console.ReadLine())) < 0)
+            {
+                Console.WriteLine("Number of checks written cannot be negative.");
+            }
+
+            if (checks < 20)
+                checkFee = TIER1_FEE * checks;
+            else if (checks >= 20 && checks <= 39)
+                checkFee = TIER2_FEE * checks;
+            else if (checks >= 40 && checks <= 59)
+                checkFee = TIER3_FEE * checks;
+            else if (checks >= 60)
+                checkFee = TIER4_FEE * checks;
+
+            Console.WriteLine(String.Format("\n\n{0,-20} {1,-20:c}", "Starting Balance: ", balance));
+            if (balance < 400)
+            {
+                balance -= MINIMUM_BALANCE_FEE;
+                Console.WriteLine(String.Format("{0,-20} {1,-20:c}", "Minimum Balance Fee: ", MINIMUM_BALANCE_FEE));
+            }
+
+            balance -= MONTHLY_FEE;
+            balance -= checkFee;
+
+            Console.WriteLine(String.Format("{0,-20} {1,-20:c}", "Monthly Fee: ", MONTHLY_FEE));
+            Console.WriteLine(String.Format("{0,-20} {1,-20:c}", "Check Fee: ", checkFee));
+            Console.WriteLine(String.Format("{0,-20} {1,-20:c}", "Ending Balance: ", balance));
+
+            Console.ReadLine();
+        }     
+        
+    }
+}
+-----------------------------------------------------------------------------------------------------------

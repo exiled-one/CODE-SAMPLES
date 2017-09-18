@@ -1,0 +1,4390 @@
+﻿***********************************
+Filename: first.html
+***********************************
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script>
+function moveIt(){
+	var coords = new Array(10,50,100,130,175,225,260,300,320,350);
+	var colors = new Array("#0066aa", "#0000ff", "#ff0000", "#00ff00");	
+	var x = coords[Math.floor((Math.random()*10))];
+	var y = coords[Math.floor((Math.random()*10))];
+	var color = colors[Math.floor((Math.random()*4))];
+	$("#elusiveText").css({"top": y + "px", "left": x + "px", "background-color": color})
+	$("#elusiveText2").css({"top": y + "px", "left": x + "px", "background-color": color})
+	
+	}
+</script>
+
+
+<style>
+span{
+background-color: #0066aa;
+color: #ffffff;
+font-weight: bold;
+border-color: #303030;
+border: 2px solid;
+border-radius: 5px;
+padding: 3px;
+position: absolute;
+top: 150px;
+left: 100px;
+
+}</style>
+</head>
+<body>
+<span id="elusiveText" onmouseover="moveIt()">Click Me</span>
+<span id="elusiveText2" onmouseover="moveIt()">Click ssssssssMe</span>
+</body>
+
+
+</html>
+***********************************
+Filename: css_errors.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>      
+      #container{
+        margin: 30px;
+        padding:5px;
+      }  
+      #tabs{
+        padding: 0px;
+        width:100px;
+      }
+      #content{
+        border: 1px solid #000000;
+        height: 100px;
+        width: 300px;
+        clear: both;
+      }
+      span{
+        margin: 5px;
+        width: 70px;
+        background-color: #C0C0C0;
+        font-weight: bold;
+        border-color: #C0C0C0;
+        border:1px solid #000000;
+        border-radius: 5px 5px 0px 0px;
+        padding: 3px;
+        float: left;
+        text-align: center;
+      }
+      span:hover{
+        background-color: #3030FF;
+        color: #FFFFFF;
+        cursor: pointer;
+      }
+      p{
+        font-weight: bold;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="tabs">
+        <span>Name</span>
+        <span>Contact</span>
+        <span>Bio</span>
+      </div>
+      <div id="content">
+        <p>Brad Dayley</p>
+        <p>Author</p>
+      </div>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: debug.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+    var cnt = 1;
+      function incCount(){
+    	
+        cnt += 1;
+        console.log(cnt);
+        return cnt;
+      }
+      function countIt(){
+        $("#counter").html(incCount);
+      }
+    </script>
+    <style>
+      #clicker{
+        background-color: #0066AA;
+        color: #FFFFFF;
+        font-weight: bold;
+        border:2px solid, #C0C0C0;
+        width: 65px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clicker" onclick="countIt()">Click Me</div>
+    <div id="counter">1</div>
+  </body>
+</html>
+***********************************
+Filename: html_errors.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1><i>Favorite</i> Movies</h1>
+    <ul>
+      <li>Lord of the Rings</li>
+      <li>Harry Potter</li>
+      <li>Narnia</li>
+      <li>Hot Lead and Cold Feet</li>
+    </ul>
+  </body>
+</html>
+***********************************
+Filename: js_errors.html
+***********************************
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script>
+	function loadedFunction() {
+		console.log("Page is Loaded");
+	}
+	function clickItNow() {
+		console.log("User Clicked");
+	}
+</script>
+</head>
+<body onload="loadedFunction()">
+	<span onclick="clickItNow()">Click me </span>
+
+</body>
+</html>
+***********************************
+Filename: dom_elements.html
+***********************************
+<html>
+<head>
+
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script>
+function writeIt(){
+	$("#heading").css('font-weight', 'bold').html("jQuerssssy");
+	var q = document.getElementById("question");
+	q.innerHTML = "I Prefer jQuery";
+
+}
+
+
+</script>
+</head>
+<body onload="writeIt()">
+
+<p id ="heading">jQuery or JavaScript</p>
+<p id="question"> Which method do you prefer?</p>
+
+
+
+
+
+
+
+
+
+
+</body></html>
+***********************************
+Filename: if_logic.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>If Logic</title>
+    <meta charset="utf-8" />
+    <script>
+      function writeIt(){
+        var hour = new Date().getHours();
+        var timeOfDay;
+        if(hour>=7 && hour<12){
+          document.write("Good Morning!");
+          timeOfDay="morning";
+        } else if(hour>=12 && hour<18) {
+          document.write("Good Day!");
+          timeOfDay="day";
+        } else {
+          document.write("Good Night!");
+          timeOfDay="night";
+        }
+        switch(timeOfDay){
+          case "morning":
+          case "day":
+            document.write("<img src='/images/day.png' />");
+            break;
+          case "night":
+            document.write("<img src='/images/night.png' />");
+            break;
+          default:
+            document.write("<img src='/images/day.png' />");
+        }
+      }
+    </script>
+  </head>
+  <body onload="writeIt()">
+  </body>
+</html>
+***********************************
+Filename: js_functions.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Functions</title>
+    <meta charset="utf-8" />
+    <script>
+      var superData = {"Super Man":["Lex Luther"],
+                       "Bat Man":["Joker", "Riddler",],
+                       "Spider Man":["Green Goblin", 
+                                     "Vulture", "Carnage"],
+                       "Thor":["Loki", "Frost Giants"]};
+      function writeIt(){
+    	  document.write("<table>");
+    	  
+        for (hero in superData){
+          var villains = superData[hero];
+          for (villainIdx in villains){
+            var villain = villains[villainIdx];
+            var listItem = makeListItem(hero, villain);
+            document.write(listItem);
+          }
+        }
+      }
+      function makeListItem(name, value){
+        var itemStr = "<li>" + name + ":&nbsp;" + value + "</li>";
+        return itemStr;
+      }
+    </script>
+  </head>
+  <body onload="writeIt()">
+  </body>
+</html>
+***********************************
+Filename: jquery_version.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery Version</title>
+    <meta charset="utf-8" />    
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+      function writeIt(){
+        document.write("jQuery Version " + $().jquery + " loaded.");
+      }
+    </script>
+  </head>
+  <body onload="writeIt()">
+  </body>
+</html>
+***********************************
+Filename: ajax.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AJAX</title>
+    <meta charset="utf-8" />
+    <script>
+      var xmlhttp = new XMLHttpRequest();
+      function loadPlanets(){
+        xmlhttp.open("GET","/lesson01/data.html",false);
+        xmlhttp.send();
+        var planets = JSON.parse( xmlhttp.responseText );
+        var ulElement = document.getElementById("planetList");
+        for (var planet in planets){
+          var listItem = ulElement.appendChild(document.createElement("li"));
+          listItem.appendChild(document.createTextNode(planets[planet]));
+        }
+      }      
+    </script>
+  </head>
+  <body onload="loadPlanets()">
+    <ul id="planetList">
+    </ul>
+  </body>
+</html>
+***********************************
+Filename: client_script.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Client Side Script</title>
+    <meta charset="utf-8"/>
+    <script>
+      function loadPlanets(){
+        var cities = ["Mercury", "Venus", "Earth", "Mars"];
+        var ulElement = document.getElementById("planetList");
+        for (var city in cities){
+          var listItem = ulElement.appendChild(document.createElement("li"));
+          listItem.appendChild(document.createTextNode(cities[city]));
+        }
+      }  		
+    </script>
+  </head>
+  <body onload="loadPlanets()">
+    <ul id="planetList">
+    </ul>
+  </body>
+</html>
+
+***********************************
+Filename: data.html
+***********************************
+[
+  "Mercury",
+  "Venus",
+  "Earth",
+  "Mars"
+]
+***********************************
+Filename: first.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+      function moveIt(){
+        var coords = new Array(10,50,100,130,175,225,260,300,320,350);
+        var x = coords[Math.floor((Math.random()*10))];
+        var y = coords[Math.floor((Math.random()*10))];
+        $("#elusiveText").css({"top": x + "px", "left": y + "px"})
+      }
+    </script>
+    <style>
+      span{
+        background-color: #0066AA;
+        color: #FFFFFF;
+        font-weight: bold;
+        border-color: #C0C0C0;
+        border:2px solid;
+        border-radius:5px;
+        padding: 3px;
+        position:absolute;
+        top:150px;
+        left:100px;
+      }
+    </style>
+  </head>
+  <body>
+    <span id="elusiveText" onmouseover="moveIt()">Click Me</span>
+  </body>
+</html>
+***********************************
+Filename: first2.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+      function moveIt(){
+        var coords = new Array(10,50,100,130,175,225,260,300,320,350);
+        var colors = new Array("#0066AA", "#0000FF", "#FF0000", "#00FF00");
+        var color = colors[Math.floor((Math.random()*4))];
+        var x = coords[Math.floor((Math.random()*10))];
+        var y = coords[Math.floor((Math.random()*10))];
+        $("#elusiveText").css({"top": y + "px", "left": x + "px", "background-color": color})
+        $("#elusiveText2").css({"top": x + "px", "left": y + "px"})
+      }
+    </script>
+    <style>
+      span{
+        background-color: #0066AA;
+        color: #FFFFFF;
+        font-weight: bold;
+        border-color: #C0C0C0;
+        border:2px solid;
+        border-radius:5px;
+        padding: 3px;
+        position:absolute;
+        top:150px;
+        left:100px;
+      }
+    </style>
+  </head>
+  <body>
+    <span id="elusiveText" onmouseover="moveIt()">Click Me</span>
+    <span id="elusiveText2" onmouseover="moveIt()">Click Me</span>
+  </body>
+</html>
+***********************************
+Filename: list.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Server Side Script</title>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <ul>
+      <li>Mercury</li>
+      <li>Venus</li>
+      <li>Earth</li>
+      <li>Mars</li>
+    </ul>
+  </body>
+</html>
+***********************************
+Filename: style.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Style</title>
+    <meta charset="utf-8" />
+    <style>
+      li {
+        text-align: center;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 30px;
+        font-style: italic;
+        font-weight: bold;
+        list-style-image: url('/images/check.png');
+        list-style-position: inside;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>Mercury</li>
+      <li>Venus</li>
+      <li>Earth</li>
+      <li>Mars</li>
+    </ul>
+  </body>
+</html>
+***********************************
+Filename: template.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Server Side Script</title>
+    <meta charset=utf-8" />
+  </head>
+  <body>
+    <ul>
+      <?php
+        $planets = array("Mercury", "Venus", "Earth", "Mars");
+        foreach ($planets as $planet) {
+          echo "<li>$planet</li>";
+        }
+      ?>
+    </ul>
+  </body>
+</html>
+
+***********************************
+Filename: css_errors.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>      
+      #container{
+        margin: 30px;
+        padding:5px;
+      }  
+      #tabs{
+        padding: 0px;
+        width:100px;
+      }
+      #content{
+        border: 1px solid #000000;
+        height: 100px;
+        width: 300px;
+        clear: both;
+      }
+      span{
+        margin: 5px;
+        width: 70px;
+        background-color: #C0C0C0;
+        font-weight: bold;
+        border-color: #C0C0C0;
+        border:1px solid #000000;
+        border-radius: 5px 5px 0px 0px;
+        padding: 3px;
+        float: left;
+        text-align: center;
+      }
+      span:hover{
+        background-color: #3030FF;
+        color: #FFFFFF;
+        cursor: pointer;
+      }
+      p{
+        font-weight: bold;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="tabs">
+        <span>Name</span>
+        <span>Contact</span>
+        <span>Bio</span>
+      </div>
+      <div id="content">
+        <p>Brad Dayley</p>
+        <p>Author</p>
+      </div>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: debug.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+        var cnt = 1;
+      function incCount(){
+        cnt += 1;
+        return cnt;
+      }
+      function countIt(){
+        $("#counter").html(incCount);
+      }
+    </script>
+    <style>
+      #clicker{
+        background-color: #0066AA;
+        color: #FFFFFF;
+        font-weight: bold;
+        border:2px solid, #C0C0C0;
+        width: 65px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clicker" onclick="countIt()">Click Me</div>
+    <div id="counter">1</div>
+  </body>
+</html>
+***********************************
+Filename: html_errors.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1><i></i>Favorite Movies</h1>
+    <ul>
+      <ll>Lord of the Rings</li>
+      <li>Harry Potter</li>
+      <li>Narnia</li>
+      <li>Hot Lead and Cold Feet</li>
+    </ul>
+  </body>
+</html>
+***********************************
+Filename: js_errors.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <script>
+      fnction loadedFunction(){
+        console.log("Page is Loaded");
+      }
+      function clickItNow(){
+        console.log("User Clicked");
+      }
+    </script>
+  </head>
+  <body onload="loadedFunction()">
+    <span onclick="clickIt()">Click Me</span>
+  </body>
+</html>
+***********************************
+Filename: css_styling.html
+***********************************
+<html>
+  <head>
+    <title>CSS Styling</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+      .content p{
+        background-color:#C0C0C0;
+        padding: 3px;
+      }
+      .heading p{
+        display: inline;
+        background-color:black;
+        color: white;
+        font-weight:bold;
+        padding:3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="heading">      
+      <p>Heading A</p>
+      <p>Heading B</p>
+      <p>Heading C</p>
+    </div>
+    <div class="content">
+      <p>Paragraph A</p>
+      <p>Paragraph B</p>
+      <p>Paragraph C</p>
+    </div>
+  </body>
+</html>
+
+***********************************
+Filename: forms.html
+***********************************
+<html>
+  <head>
+    <title>Forms</title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <form>
+       <fieldset>
+          <legend>Contact Info:</legend>
+          Name: <input type="text" name="name">
+	        Origin: <input type="text" name="address"><br>
+	        Destination: <input type="text" name="city">
+	        Flight Date: <input type="text" name="zip"><br>
+        <select name="Airline">
+          <option value="DA">Delta</option>
+          <option value="PJ">Private Jet</option>
+          <option value="Heli">Helicopter</option>
+          <option value="EG">Eagles</option>
+        </select>
+      </fieldset>
+      <input id="One WayRB" type="radio" 
+             name="travelPlan" value="One way">
+      <label for="One WayRB">One Way</label>
+      <input id="Round TripRB" type="radio" 
+             name="travelPlan" value="round trip">
+      <label for="Round TripRB">Round Trip</label><br>
+      <textarea rows="10" cols="30">comments</textarea><br>
+      <input di='newsCB' type="checkbox" name="news" value="news">
+        <label for="newsCB">
+          I would like to enroll into the frequent flyer miles program
+        </label><br>
+      <button type="submit" name="SubmitButton" 
+              value="Submit">Submit</button>
+      <button type="reset" name="ResetButton" 
+              value="Reset">Reset</button>
+    </form>
+  </body>
+</html>
+
+***********************************
+Filename: html_canvas.html
+***********************************
+<html>
+  <head>
+    <title>HTML 5 Canvas</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <canvas id="myCanvas" width="300" height="300">
+      Sorry Your Browser Doesn't Support HTML5 Canvas
+    </canvas>
+    <script>
+      var c=document.getElementById("myCanvas");
+      var ctx=c.getContext("2d"); 
+      ctx.lineWidth="1";
+      ctx.strokeStyle="blue";
+      //top  
+      ctx.beginPath();
+      var grd=ctx.createLinearGradient(100,50,100,5);
+      grd.addColorStop(0,"blue");
+      grd.addColorStop(1,"white");
+      ctx.fillStyle=grd;
+      grd.addColorStop(0,"blue");
+      ctx.moveTo(1,25);
+      ctx.lineTo(100,5);
+      ctx.lineTo(200,25);
+      ctx.lineTo(100,50);
+      ctx.fill();  
+      ctx.stroke();   
+      //left
+      ctx.beginPath();
+      var grd=ctx.createLinearGradient(75,100,60,25);
+      grd.addColorStop(0,"red");
+      grd.addColorStop(1,"white");
+      ctx.fillStyle=grd;
+      ctx.moveTo(1,25);
+      ctx.lineTo(100,50);
+      ctx.lineTo(100,165);
+      ctx.lineTo(1,125);
+      ctx.lineTo(1,25);
+      ctx.fill();   
+      ctx.stroke();      
+      //right
+      ctx.beginPath();
+      var grd=ctx.createLinearGradient(200,50,125,175);
+      grd.addColorStop(0,"yellow");
+      grd.addColorStop(1,"white");
+      ctx.fillStyle=grd;
+      ctx.moveTo(100,50);
+      ctx.lineTo(200,25);
+      ctx.lineTo(200,125);
+      ctx.lineTo(100,165);
+      ctx.fill(); 
+      ctx.stroke();   
+    </script>
+  </body>
+</html>
+***********************************
+Filename: html_svg.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>html 5 graphics</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" 
+         height="200">
+      <ellipse   cx="100" cy="100" rx="80" ry="50" 
+                 stroke="black" stroke-width="2" 
+                 fill="transparent" />
+      <ellipse   cx="100" cy="100" rx="50" ry="80" 
+                 stroke="black" stroke-width="2" 
+                 fill="transparent"
+                 transform="rotate(30, 100, 100)" />
+      <ellipse   cx="100" cy="100" rx="80" ry="50" 
+                 stroke="black" stroke-width="2" 
+                 fill="transparent"
+                 transform="rotate(60, 100, 100)" />
+      <ellipse   cx="100" cy="100" rx="8" ry="2" 
+                 stroke="crimson" stroke-width="2" 
+                 fill="crimson"
+                 transform="rotate(45, 100, 100)" />
+      <ellipse   cx="100" cy="100" rx="2" ry="8" 
+                 stroke="crimson" stroke-width="2" 
+                 fill="crimson"
+                 transform="rotate(45, 100, 100)" />
+      <ellipse   cx="100" cy="100" rx="2" ry="8" 
+                 stroke="crimson" stroke-width="2" 
+                 fill="crimson" /> 
+      <ellipse   cx="100" cy="100" rx="8" ry="2" 
+                 stroke="crimson" stroke-width="2" 
+                 fill="crimson" />                  
+      <circle    cx="100" cy="100" r="6"
+            stroke="red" stroke-width="4" fill="DarkRed"/>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" 
+         height="200">
+      <path d="M100,90 h-50 a50,50 0 1,0 50,-50 z"
+            fill="none" stroke="purple" stroke-width="1" />
+      <path d="M90,80 v-50 a50,50 0 0,0 -50,50 z"
+            fill="violet" stroke="none" stroke-width="2" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" 
+         height="350">
+      <defs>
+        <path id="path1" 
+              d="M 77,210 a 1,1 0 1,1 200,0 a 1,1 0 1,1 -200,1"/>
+      </defs>
+      <text x="10" y="10" style="fill:blue;font-size:31px;">
+        <textPath xlink:href="#path1">
+          Teach Yourself AngularJS JavaScript and jQuery
+        </textPath>
+      </text>
+      <path d="M 175,130 v90 h60" stroke="black" 
+            stroke-width="5" fill="none"/>
+    </svg>
+  </body>
+</html>
+***********************************
+Filename: js_reversed_text.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+      function reverseText(){
+        $("h1").css("background-color", "black");
+        $("h1").css("color", "white");
+      }
+    </script>
+  </head>
+  <body onload="reverseText()">
+    <h1>JavaScript Reversed Text</h1>
+  </body>
+</html>
+***********************************
+Filename: page_title.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page</title>
+    <meta charset="UTF-8" />
+    <script>
+      function appendTitle(newTitle){
+        document.title += newTitle;
+      }
+    </script>
+  </head>
+  <body onload="appendTitle('... Loaded')">
+  </body>
+</html>
+
+
+***********************************
+Filename: reversed_text.html
+***********************************
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+      h1 {
+        background-color:black;
+        color:white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS Reversed Text Color</h1>
+  </body>
+</html>
+***********************************
+Filename: tables.html
+***********************************
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tables</title>
+  <meta Charset="UTF-8">
+</head>
+<body>
+  <table border=1>
+    <caption>Favorite World Sites</caption>
+    <thead>
+      <th>Monument</th>
+      <th>location</th>
+      <th colspan=2>century</th>
+    </thead>
+    <tr>
+      <th>Delicate Arch</th>
+      <td>Utah</td>
+      <td>March 1, 1872</td>
+      <td><img src="/images/arch.jpg" width="100" />
+    </tr>
+    <tr>
+      <th>Washington Monument</th>
+      <td>Washington D.C.</td>
+      <td>March 1, 1872</td>
+      <td><img src="/images/washington.jpg" width="100" />
+    </tr>
+    <tr>
+      <th>Tikal</th>
+      <td>Guatemala</td>
+      <td>November 19, 1919</td>
+      <td><img src="/images/pyramid.jpg" width="100" />
+    </tr>
+  </table>
+</body>
+</html>
+***********************************
+Filename: test.html
+***********************************
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tables</title>
+  <meta Charset="UTF-8">
+</head>
+<body>
+<img src="/images/peak.jpg" height="200px"/>
+<img src="/images/peak.jpg" width="200px"/>
+<img src="/images/peak.jpg" height="200px" width="200px"/>
+</body>
+</html>
+***********************************
+Filename: backgrounds.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Backgrounds</title>
+    <meta charset="UTF-8">
+    <style>
+      body {
+        margin:0px;
+        background-image:url("/images/ruler.png");
+        background-repeat:repeat-y;        
+      }     
+      #heading { 
+        background-image: -moz-linear-gradient(left, #294551 0%, #AACCFF 100%);
+        background-image: -webkit-linear-gradient(left, #294551 0%, #AACCFF 100%);
+        background-image: -ms-linear-gradient(left, #294551 0%, #AACCFF 100%);
+        height:200px;        
+        font:150px bold;
+        text-align: center;
+        color:rgba(255,255,255,.4);
+      }      
+      #content {        
+        margin-left:200px;        
+      } 
+      #menu{
+        padding:2px;
+        background-color:#294551;
+      }
+      span {
+        padding:3px; 
+        background-image: -moz-linear-gradient(top, #294551 0%, #AACCFF 85%, #0022ff 100%);
+        background-image: -webkit-linear-gradient(top, #294551 0%, #AACCFF 85%, #294551 100%);
+        background-image: -ms-linear-gradient(top, #294551 0%, #AACCFF 85%, #294551 100%);
+        font:20px bold;
+        color:white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="heading">jQuery Rules!</div>    
+    <div id="content">
+      <div id="menu">
+        <span>Home</span>
+        <span>Info</span>
+        <span>Examples</span>
+      </div>
+      <p>Page Content</p>      
+    </div>        
+  </body>
+</html>
+***********************************
+Filename: borders.html
+***********************************
+<html>
+  <head>
+    <title>Borders</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/borders.css">
+  </head>
+  <body>
+    <div id="simple">Simple Border</div>   
+    <div id="dashed">Dashed Border</div>  
+    <div id="dotted">Dotted Border</div>  
+    <div id="groove">groove Border</div>  
+    <div id="inset">Inset Border</div>  
+    <div id="outset">Outset Border</div>  
+    <div id="ridge">Ridge Border</div> 
+    <div id="round">Round Border</div>
+    <div id="veryround">Rounder Border</div>
+    <div id="shadow">Outset shadow</div>
+    <div id="ishadow">Inset shadow</div>
+    <div id="mixed">Mixed Border</div>
+    <div id="button">Button</div>
+  </body>
+</html>
+***********************************
+Filename: text_styles.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text Styles</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/text_styles.css">
+  </head>
+  <body>
+    <p id="plain">Plain Text</p>
+    <p id="indent">Indented Text <br>Indented Line 2</p>
+    <p id="blue">Blue Text</p>
+    <p id="tight">Tight Text</p>
+    <p id="half-height">Close Text Line 1<br>
+                      Close Text Line 2</p>
+    <p id="align-left">Left Text</p>
+    <p id="align-center">Centered Text</p>
+    <p id="align-right">Right Text</p>
+    <p id="underline">Underlined Text</p>
+    <p id="strike-through">Strike Through Text</p>
+    <p id="first-cap">capitalize the first letter</p>
+    <p id="uppercase">change to upper case</p>
+    <p id="blackadder">Some BlackAdder Text</p> 
+    <p id="roman">Some Times New Roman Text</p>    
+  </body>
+</html>
+***********************************
+Filename: web_layout.html
+***********************************
+<html>
+  <head>
+    <title>Layout</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/web_layout.css">
+  </head>
+  <body>
+    <div id="buttons">
+      <img src="/images/skipBack.png" />
+      <img src="/images/seekBackward.png" />
+      <img src="/images/play.png" />
+      <img src="/images/stop.png" />
+      <img src="/images/seekForward.png" />
+      <img src="/images/skipForward.png" />
+    </div>
+    <div id="songinfo">
+    <p id="title">9TH Symphony</p>
+    <p id="artist">Beethoven</p>
+    <p id="Year">1824</p>
+  </div>
+    <h1>Song Controls</h1>
+  </body>
+</html>
+***********************************
+Filename: dom_elements.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Changes</title>
+    <meta charset="utf-8" />    
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+      function writeIt(){
+        $("#heading").css('font-weight', 'bold').html("jQuery");
+        var q = document.getElementById("question");
+        q.innerHTML = "I Prefer jQuery!";
+      }
+    </script>
+  </head>
+  <body onload="writeIt()">
+    <p id="heading">jQuery or JavaScript</p>
+    <p id="question">Which method do you prefer?</p>
+  </body>
+</html>
+***********************************
+Filename: if_logic.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>If Logic</title>
+    <meta charset="utf-8" />
+    <script>
+      function writeIt(){
+        var hour = new Date().getHours();
+        var timeOfDay;
+        if(hour>=7 && hour<12){
+          document.write("Good Morning!");
+          timeOfDay="morning";
+        } else if(hour>=12 && hour<18) {
+          document.write("Good Day!");
+          timeOfDay="day";
+        } else {          document.write("Good Night!");
+          timeOfDay="night";
+        }
+        switch(timeOfDay){
+          case "morning":
+          case "day":
+            document.write("<img src='/images/day.png' />");
+            break;
+          case "night":
+            document.write("<img src='/images/night.png' />");
+            break;
+          default:
+            document.write("<img src='/images/day.png' />");
+        }
+      }
+    </script>
+  </head>
+  <body onload="writeIt()">
+  </body>
+</html>
+***********************************
+Filename: jquery_version.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery Version</title>
+    <meta charset="utf-8" />    
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+      function writeIt(){
+        document.write("jQuery Version " + $().jquery + " loaded.");
+      }
+    </script>
+  </head>
+  <body onload="writeIt()">
+  </body>
+</html>
+***********************************
+Filename: js_functions.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Functions</title>
+    <meta charset="utf-8" />
+    <script>
+      var superData = {"Super Man":["Lex Luther"],
+                       "Bat Man":["Joker", "Riddler",],
+                       "Spider Man":["Green Goblin", 
+                                     "Vulture", "Carnage"],
+                       "Thor":["Loki", "Frost Giants"]};
+      function writeIt(){
+        for (hero in superData){
+          var villains = superData[hero];
+          for (villainIdx in villains){
+            var villain = villains[villainIdx];
+            var listItem = makeListItem(hero, villain);
+            document.write(listItem);
+          }
+        }
+      }
+      function makeListItem(name, value){
+        var itemStr = "<li>" + name + ":&nbsp;" + value + "</li>";
+        return itemStr;
+      }
+    </script>
+  </head>
+  <body onload="writeIt()">
+  </body>
+</html>
+***********************************
+Filename: array_manipulation.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Array Manipulation</title>
+    <meta charset="utf-8" />
+<script>
+  function writeArray(msg, arr){
+    var arrString = arr.join(" | ");    
+    document.write("<b>"+ msg + ": </b>" + arrString + "<br><br>");
+  }
+  function writeIt(){
+    var weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+    writeArray("Week Days", weekDays);
+    var weekEnd = new Array();
+    weekEnd.push("Saturday");
+    weekEnd.push("Sunday");
+    writeArray("Weekend", weekEnd);
+    var week = weekDays.concat([]);
+    week.unshift(weekEnd[1]);
+    week.push(weekEnd[0]);
+    writeArray("Week", week);
+    var midWeek = week.slice(2,5);
+    writeArray("Mid Week", midWeek);
+    var sortedWeek = week.sort();
+    document.write("<b>Sorted Days :</b> <br>");
+    for (dayIndex in sortedWeek){
+      document.write(sortedWeek[dayIndex] + "<br>");
+    }
+  }
+</script>
+  </head>
+  <body onload="writeIt()">
+  </body>
+</html>
+***********************************
+Filename: custom_objects.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Custom Objects</title>
+    <meta charset="utf-8" />
+<script>
+  function writeIt(){
+    var characters = new Array();
+    characters.push(new Character("John 117", "Master Chief", 
+                                  "Earth", "Spartan"));
+    characters.push(new Character("vadam", "The Arbitor", 
+                                  "High Charity", "Elite"));
+    characters.push(new Character("Gravemind", "", "Precursors", 
+                                  "Flood"));
+    sgtJohnson = new Character("Sgt Johnson", "", "", "");
+    sgtJohnson.land = "Earth";
+    sgtJohnson.race = "Human";
+    characters.push(sgtJohnson);
+    for (var i=0; i<characters.length; i++){
+      var character = characters[i];
+      character.number = i+1;
+      document.write(character.number + ". " +
+                     character.getFullName() + " " + 
+                     character.getDetails() + "<br>");
+    }
+  }
+  function Character(first, last, land, race){
+    this.first = first;
+    this.last = last;
+    this.race = race;
+    this.land = land;
+  }
+  Character.prototype = {
+    getFullName: function(){
+        return this.first + " " + this.last;
+    },
+    getDetails: function(){
+        return "is a " + this.race + " from the " + this.land;
+      }
+  };
+</script>
+  </head>
+  <body onload="writeIt()">
+  </body>
+</html>
+***********************************
+Filename: string_manipulation.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>String Manipulation</title>
+    <meta charset="utf-8" />
+<script>
+  function writeIt(){
+    var line1 = "In a [place] a long time ago, ";
+    var line2 = "there lived an [animal] that liked to ";
+    var line3 = "[action] people.";
+    var place = "crater";
+    var animal = "elephant";
+    var action = "smell";
+    var madlib = line1.concat(line2, line3);
+    madlib = madlib.replace("[place]", place);
+    madlib = madlib.replace("[animal]", animal);
+    madlib = madlib.replace("[action]", action);
+    document.write(madlib);
+  }
+</script>
+  </head>
+  <body onload="writeIt()">
+  </body>
+</html>
+***********************************
+Filename: dom_objects.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Objects</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="js/dom_objects.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/dom_objects.css">
+  </head>
+  <body>
+    <input id="textIn" type="text"/>
+    <input type="button" onclick="textChange()" value="Update" /><br>
+    <span class="heading"></span>
+    <p id="p1"></p>
+    <span class="heading"></span>
+    <p id="p2"></p>
+  </body>
+</html>
+***********************************
+Filename: jquery_selectors.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery Selectors</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery_selectors.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery_selectors.css">
+  </head>
+  <body>
+    <span onclick="setEven()">Even</span>
+    <span onclick="setOdd()">Odd</span>
+    <span onclick="setFirst4()">First 4</span>
+    <p class="label">Planets</p>
+    <ul>
+      <li>Poseidon</li>
+      <li>Ares</li>
+      <li>Apollo</li>
+      <li>Hermes</li>
+      <li>Nike</li>
+      <li>Nemesis</li>
+      <li>Zeus</li>
+      <li>Hades</li>
+    </ul>
+  </body>
+</html>
+***********************************
+Filename: dom_manipulation.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Manipulation</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/dom_manipulation.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/dom_manipulation.css">
+  </head>
+  <body>
+    <input type="button" value=".each()">
+    <input type="button" value=".map()">
+    <p>red 10</p>
+    <p>orange 15</p>
+    <p>yellow 20</p>
+    <p>green 25</p>
+    <p>blue 30</p>
+    <p>indigo 35</p>
+    <p>violet 40</p>
+    <div></div>
+  </body>
+</html>
+***********************************
+Filename: traverse_dom.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Traversing the DOM</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/traverse_dom.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/traverse_dom.css">
+  </head>
+  <body>
+    <p>How satisfied are you 1-5</p>
+    <div>
+      <label>Quality</label>
+      <input type="text" onkeyup="update()"></input>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div><label>Taste</label>
+      <input type="text" onkeyup="update()"></input>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div>
+      <label>Server</label>
+      <input type="text" onkeyup="update()"></input>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: broken_event.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Broken Event</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/broken_event.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/broken_event.css">
+  </head>
+  <body onload="onloadHandler()">
+    <div id="div1")">Say Yes</div>
+    <div id="div2")">Say No</div>
+    <h1 id="heading"></h1>
+  </body>
+</html>
+***********************************
+Filename: card_suits.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event Based Manipulation</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/card_suits.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/card_suits.css">
+  </head>
+  <body>
+    <p>Card and Suit: </p>
+    <input type="text" />
+    <span>&#9824;</span>
+    <span>&#9827;</span>
+    <span>&#9829;</span>
+    <span>&#9830;</span>
+  </body>
+</html>
+***********************************
+Filename: manual_event.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Manual Event</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="js/manual_event.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/manual_event.css">
+  </head>
+  <body onload="onloadHandler()">
+    <input id="checkAvailable" type="checkbox" /><label>Available</label><br>
+    <input id="checkAllWeek" type="checkbox" /><label>All Week</label><br>
+    <input id="checkWeekDays" type="checkbox" /><label>Week Days</label><br>
+    <span id="Available">I'm Available</span>
+    <span id="AllWeek">All Week</span>
+    <span id="WeekDays">Week Days</span>
+  </body>
+</html>
+***********************************
+Filename: working_event.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Working Events</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/working_event.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/working_event.css">
+  </head>
+  <body>
+    <div id="div1")">Say Yes</div>
+    <div id="div2")">Say No</div>
+    <h1 id="heading"></h1>
+  </body>
+</html>
+***********************************
+Filename: rearranging_elements.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rearranging Elements</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/rearranging_elements.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/rearranging_elements.css">
+  </head>
+  <body>
+    <div id="container">
+      <span id="left">Left</span>
+      <span id="right">Right</span>
+      <span id="bigger">Bigger</span>
+      <span id="smaller">Smaller</span>
+      <span id="stack">Stack</span>
+      <span id="flip">Flip</span>
+      <span id="tile">Tile</span>
+      <div id="photos">
+        <img class="photo" src="/images/pyramid.jpg" />
+        <img class="photo" src="/images/boy2.jpg" />
+        <img class="photo" src="/images/flower.jpg" />
+        <img class="photo" src="/images/double.jpg" />
+      </div>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: web_element_manipulation.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web Element Manipulation</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/web_element_manipulation.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/web_element_manipulation.css">
+  </head>
+  <body>
+    <div id="container">
+      <div id="menu" class="menu">
+        <span id="lessons" class="menuItem">lessons</span>
+        <span id="docs" class="menuItem">Docs</span>
+        <span id="fade" class="menuItem">Fade</span>
+      </div>
+      <div id="content"></div>
+    </div>
+    <div id="docMenu">
+      <span onclick="setDoc('http://api.jquery.com/')">jQuery</span>
+      <span onclick="setDoc('http://api.jqueryui.com/')">jQueryUI</span>
+      <span onclick="setDoc('http://jquerymobile.com/demos/1.4.0/')">jQueryMobile</span>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: web_page_manipulation.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web Page Manipulation</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/web_page_manipulation.js"></script>
+   <link rel="stylesheet" type="text/css" href="css/web_page_manipulation.css">
+  </head>
+  <body>
+    <div>
+      <div id="banner" class="header">
+        Teach YourSelf AngularJS, JavaScript and jQuery</div>
+      <div id="menu" class="menu">
+        <span class="menuItem">Lessons</span>
+        <span class="menuItem">Docs</span>
+        <span class="menuItem">Code</span>
+      </div>
+      <div id="content">
+        <p class="imageArea">
+          <img id="Cliff" src="/images/cliff.jpg" width="200px"/>
+          Cliff</p>
+        <select>
+          <option value=1>lesson 1</option>
+          <option value=2>lesson 2</option>
+          <option value=3>lesson 3</option>
+          <input type=text />
+        </select>
+        <input type="checkbox" />
+      </div>
+    </div>
+    <div class=infoContainer>
+      <p>Screen & Browser Info</p>
+      <div>Screen Size: <span id="screenSize"></span></div>
+      <div>Color Level: <span id="colors"></span></div>
+      <div>Browser Size: <span id="browserSize"></span></div>
+      <p>Mouse Position</p>
+      <div>Absolute Mouse: <span id="mousePosition"></span></div>
+      <div>Page Mouse: <span id="pagePosition"></span></div>
+      <div>Relative Mouse: <span id="scrollPosition"></span></div>
+      <p>Element Info</p>
+      <div>Element ID: <span id="elementId"></span></div>
+      <div>Element Type: <span id="elementType"></span></div>
+      <div>Element Class: <span id="elementClass"></span></div>
+      <div>Element Size: <span id="elementSize"></span></div>
+      <div>Element Position: <span id="elementPosition"></span></div>      
+      <div>Element Value: <span id="elementValue"></span></div>
+      <div>Element Checked: <span id="elementChecked"></span></div>
+      <div>Image Source: <span id="elementSource"></span></div>
+      <div>Element Color: <span id="elementColor"></span></div>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: clock.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clocks</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/clock.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/clock.css">
+  </head>
+  <body>
+    <div><span id="clock"></span></div>
+  </body>
+</html>
+***********************************
+Filename: cookies.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>C is for Cookie</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/cookies.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/cookies.css">  </head>
+  <body>
+    <div>
+      <span id="set">Set Cookie</span>
+      <span id="get">Get Cookie</span>
+      <span id="delete">Delete Cookie</span>
+    </div>
+    <div>
+      <label>Cookie Name: </label><input id="cookieName" type="text" />
+    </div>
+    <div>
+      <label>Cookie Value: </label><input id="cookieValue" type="text" />
+    </div>
+    <div id="cookieList"></div>
+  </body>
+</html>
+***********************************
+Filename: animated_resize.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Animated Image Resizing</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/animated_resize.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/animated_resize.css">
+  </head>
+  <body>
+    <div id="photos">
+      <img src="/images/pool.jpg"/>
+      <img src="/images/peak.jpg"/>
+      <img src="/images/shadow_jump.jpg"/>
+      <img src="/images/misty_mountains.jpg"/>
+      <img src="/images/tiger.jpg"/>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: image_fade.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image Highlighting and Fading</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/image_fade.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/image_fade.css">
+  </head>
+  <body>
+    <div>
+      <div id="photos">
+      <img src="/images/misty_mountains.jpg"/>
+      <img src="/images/falls.jpg"/>
+      <img src="/images/flower2.jpg"/>
+      <img src="/images/shadow_jump.jpg"/>
+      <img src="/images/beachhouse.jpg"/>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: image_hide.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image Hide</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/image_hide.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/image_hide.css">
+  </head>
+  <body>
+    <div>
+      <div id="title"><span id="handle">-</span>Canon</div>
+      <img id="photo" src="/images/liberty.jpg" width="300px"/>
+      <div id="footer">Image Ready</div>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: interactive_animation.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Interactive Animation</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/interactive_animation.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/interactive_animation.css">
+  </head>
+  <body>
+    <div>
+      <span></span>
+      <img id="up" src="/images/up2.png" /></br>
+      <img id="left" src="/images/left.png" />
+      <img id="stop" src="/images/stop2.png" />
+      <img id="right" src="/images/right.png" /><br>
+      <span></span>
+      <img id="down" src="/images/down2.png" />
+      <img id="ship" src="/images/saucerUp.png" />
+      <img id="moon1" src="/images/night.png" />
+      <img id="moon2" src="/images/night.png" />
+      <img id="moon3" src="/images/night.png" />
+      <img id="moon4" src="/images/night.png" />
+    </div>
+  </body>
+</html>
+***********************************
+Filename: sliding_images.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sliding Images</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/sliding_images.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/sliding_images.css">
+  </head>
+  <body>
+    <div id="container">
+      <p>Images</p>
+      <div id="images">
+        <span>Image 1</span>
+        <span>Image 2</span>
+        <span>Image 3</span>
+        <span>Image 4</span><br>
+        <img src="/images/flower.jpg" />
+        <img src="/images/img7.jpg" />
+        <img src="/images/img4.jpg" />
+        <img src="/images/jump.jpg" />
+      </div>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: form_effects.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form Effects</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/form_effects.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/form_effects.css">
+  </head>
+  <body>
+    <div class="collapsibleForm">
+      <p>Register</p>
+      <form>
+        <input type="text" /><label>Name</label><br>
+        <input type="text" /><label>From</label><br>
+        <input type="radio" name="race" id="man" />
+        <label class="rb" for="man">Man</label>
+        <input type="radio" name="race" id="elf" />
+        <label class="rb" for="elf">Elf</label>
+        <input type="radio" name="race" id="dwarf" />
+        <label class="rb" for="dwarf">Dwarf</label>
+        <input type="radio" name="race" id="orc" />
+        <label class="rb" for="Orc">Orc</label><br>
+        <label>Weapons</label><br>
+        <select size=4 multiple>
+          <optgroup><option>Sword</option></optgroup>
+          <optgroup><option>Bow</option></optgroup>
+          <optgroup><option>Axe</option></optgroup>
+          <optgroup><option>Spear</option></optgroup>
+        </select> 
+        <div>
+          <label>Bring Your Own</label><br>
+	        <input type="checkbox" id="horse" />
+	          <label class="cb" for="horse">
+	          <img src="/images/horse.png" />
+	          <span>Horse</span></label>
+	        <input type="checkbox" id="shield" />
+	          <label class="cb" for="shield">
+	          <img src="/images/shield.png" />
+	          <span>Armor</span></label><br>
+         </div>
+        <textarea>Additional Comments</textarea><br>
+        <input type="submit" value="Submit" id="submit" />      
+      </form>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: form_flow.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form Flow</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/form_flow.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/form_flow.css">
+  </head>
+  <body>
+    <div id="box">
+      <p>Check Out</p>
+      <form>
+        <span>Shipping Info</span><br>
+          <div id="billInfo">
+          <label class="headLabel">Name</label>
+          <input type="text" id="name"/><br>
+          <label class="headLabel">Address</label>
+          <input type="text" id="addr" /><br>
+          <label class="headLabel">City</label>
+          <input type="text" id="city" />
+          <label>State</label>
+          <select class="state" id="state"></select>
+          <label>Zip</label><input type="text"  id="zip"/><br>
+        </div>
+        <span>Billing Info</span><br>
+        <div id="billInfo">
+          <input type="checkbox" id="cbSame"/>
+            <label for="cbSame">Same as Shipping</label><br>     
+          <label class="headLabel">Name on Card</label>
+          <input type="text"  id="nameB"/><br>        
+          <label class="headLabel">Address</label>
+          <input type="text"  id="addrB"/><br>
+          <label class="headLabel">City</label>
+          <input type="text"  id="cityB"/>
+          <label>State</label>
+          <select class="state"  id="stateB"></select>
+          <label>Zip</label><input type="text"  id="zipB"/><br>
+          <input type="radio" name="ptype" id="visa" />
+            <label for="visa"><img src="/images/visa.png"/></label>
+          <input type="radio" name="ptype" id="mc" />
+            <label for="mc"><img src="/images/mc.png" /></label>
+          <input type="radio" name="ptype" id="amex" />
+            <label for="amex"><img src="/images/amex.png"/></label>
+          <input type="radio" name="ptype" id="ppal" />
+            <label for="ppal"><img src="/images/ppal.png"/></label>
+          <br>
+          <div id="ccInfo">        
+            <label class="headLabel">Card Number</label>
+            <input type="text" id="cardNum"/>        
+            <input type="password"  id="csc"/>
+            <label>csc</label><br>
+            <label>Expires</label><select id="expiresY"></select>
+            <select id="expiresM"></select><br>
+          </div>
+          <div id="ppInfo">
+            <input type="text"  id="ppEmail"/>
+            <label>PayPal Email</label><br>
+            <input type="text"  id="ppPW"/>
+            <label>PayPal Password</label><br>
+          </div>
+        </div>
+        <input type="submit" value="Submit" id="submitB" />
+        <input type="button" value="Reset" id="resetB" />      
+      </form>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: form_manipulation.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form Manipulation</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/form_manipulation.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/form_manipulation.css">
+  </head>
+  <body>   
+      <div><form id="formA">
+        <label>Time</label><br>
+        <input type="image" src="/images/day.png" />
+        <input type="image" src="/images/night.png" /><br>
+        <input name="tilte" type="text" /><br>
+        <textarea name="comments"></textarea><br>
+        <input type="radio" name="gender" value="male">Male
+        <input type="radio" name="gender" value="female">Female<br>
+        <input type="checkbox" name="Registered">Registered<br>
+        <select size=3 multiple name="count">
+          <option>One</option><option>Two</option><option>Three</option>
+        </select><br>
+        <input id="resetB" type="button" value="Reset"></input>
+        <input id="serializeB" type="button" value="Serialize"></input>
+      </form></div>
+      <div><form id="formB">
+        <label>Destination</label><br>
+        <input type="image" alt="No Image"></input><br>
+        <input type="text" /><br>
+        <textarea></textarea><br>
+        <input type="radio" name="gender" value="male">Male</input>
+        <input type="radio" name="gender" value="female">Female</input><br>
+        <input type="checkbox">Checked</input><br>
+        <select size=3 multiple>
+          <option>One</option><option>Two</option><option>Three</option>
+        </select>
+      </form></div><br>
+      <div><label>Serialized</label><p id="serialized"></p></div>
+      <div><label>Serialized Array</label><span id="serializedA"></span></div>
+  </body>
+</html>
+***********************************
+Filename: form_validation.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form Validation</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/form_validation.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/form_validation.css">
+  </head>
+  <body>
+    <div id="container"><p>Welcome to the Fight</p>
+    <form action="test.html" method="get" name="test" 
+          id="simpleForm">
+      <label>Name</label>
+      <input name="name" type="text" /><br> 
+      <label>Email</label>
+      <input name="email" type="text" /><br> 
+      <label>Password</label>
+      <input name="password1" type="password" /><br> 
+      <label>Confirm</label>
+      <input name="password2" id="password2" type="password" /><br> 
+      <label>Birth Date</label>
+      <input name="birthDate" type="text" /><br>
+      <select name="class" multiple size=4>
+        <option>Melee</option>
+        <option>Mage</option>
+        <option>Ranged</option>
+        <option>Stealth</option>
+      </select><br>
+      <div class="buttonGroup">
+	      <input type="radio" name="hands" value="right" />
+	      <label>Right Handed</label>
+	      <input type="radio" name="hands" value="left" />
+	      <label>Left Handed</label>
+      </div><br>
+      <div class="buttonGroup">
+        <input type="checkbox" name="armor" value="helmet" />
+        <label>Helmet</label>
+        <input type="checkbox" name="armor" value="shield" />
+        <label>Shield</label><br>
+        <input type="checkbox" name="armor" value="chainmail" />
+        <label>Chainmail</label>
+        <input type="checkbox" name="armor" value="plated" />
+        <label>Plated</label><br>
+        <input type="checkbox" name="armor" value="gloves" />
+        <label>Gloves</label>
+        <input type="checkbox" name="armor" value="boots" />
+        <label>Boots</label>
+      </div><br>
+      <label>Comments:</label><br><textarea></textarea><br>
+      <input type="submit" value="Engage"/>
+    </form>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: dynamic_dialog.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Let's Have a Dialog</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/dynamic_dialog.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/dynamic_dialog.css">
+  </head>
+  <body>
+    <div><div id="title">
+        <span id="edit">Edit Page</span><p>Title</p></div><br>
+    <div>
+      <div id="leftNav">
+        <span>Option 1</span>
+        <span>Option 2</span>
+        <span>Option 3</span>
+        <span>Option 4</span>
+      </div>
+      <div id="content">Some<br>Content</div>
+    </div></div>
+    <div id="overlay"></div>
+    <div id="dialog">
+      <p id="dialogTitle">Update Web Page</p>
+      <label>Title</label><br>
+      <input id="titleT" type="text" /><br>
+      <input type="checkbox" value="Option 1" checked>Option 1</input><br>
+      <input type="checkbox" value="Option 2" checked>Option 2</input><br>
+      <input type="checkbox" value="Option 3" checked>Option 3</input><br>
+      <input type="checkbox" value="Option 4" checked>Option 4</input><br>
+      <label>Content</label><br>
+      <textarea id="contentT"></textarea><br>
+      <span id="updateB">Update</span>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: dynamic_sparkline.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dynamic Spark Line</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/dynamic_sparkline.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/dynamic_sparkline.css">
+  </head>
+  <body>
+    <div>
+      <label>Processes</label><span>1</span><canvas></canvas>
+    </div>
+    <div>
+      <label>Speed</label><span></span><canvas></canvas>
+    </div>
+    <div>
+      <label>Uploads</label><span></span><canvas></canvas>
+    </div>
+    <div>
+      <label>Downloads</label><span></span><canvas></canvas>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: dynamic_tree.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Creating a Dynamic Tree</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/dynamic_tree.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/dynamic_tree.css">
+  </head>
+  <body>
+    <div id="treeContainer"></div>
+  </body>
+</html>
+***********************************
+Filename: graphic_equalizer.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listen to the Beat!</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/graphic_equalizer.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/graphic_equalizer.css">
+  </head>
+  <body>
+    <div id="equalizer"></div>
+  </body>
+</html>
+***********************************
+Filename: image_slider.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sliding Image Gallery</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/image_slider.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/image_slider.css">
+  </head>
+  <body>
+    <div id="viewer">
+      <div id="left"><img src="/images/left.png" /></div>
+      <div id="selector">
+        <div id="imageSlide"></div>
+      </div>
+      <div id="right"><img src="/images/right.png" /></div><br>
+      <div id="photo"><img src="" /></div>      
+    </div>
+  </body>
+</html>
+***********************************
+Filename: interactive_table.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Interactive Table</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/interactive_table.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/interactive_table.css">
+  </head>
+  <body>
+    <table>
+      <thead><tr>
+        <th class="numeric"><span>ID#</span></th>
+        <th ><span>Product</span></th>
+        <th class="numeric"><span>Quantity</span></th>
+        <th class="numeric"><span>Price</span></th>
+        <td class="spacer"></td>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+    <p>* ID#, Quantity and Price Searches Filter 
+       on Numerical Value Greater Than Value Specified</p>
+    <p>* Product Search Filters on String Value Contains 
+       Substring Specified</p>
+  </body>
+</html>
+***********************************
+Filename: ajax_post.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AJAX Post</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/ajax_post.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/ajax_post.css">
+  </head>
+  <body>
+    <div><div id="banner">Vacations</div>
+    <div>
+      <div id="leftNav"></div>
+      <div id="content">
+        <span id="idx" class="hidden"></span>
+        <p id="title">Title</p>
+        <img id="photo" src="/images/falls.jpg" width="200px"/>        
+        <p id="date">date</p>
+        <p id="info">
+        <label>5</label> days of fun in <label>Location</label></p>
+        <img class="star" src="/images/star.png" />
+        <img class="star" src="/images/star.png" />
+        <img class="star" src="/images/star.png" />
+        <img class="star" src="/images/star.png" />
+        <img class="star" src="/images/star.png" />
+      </div>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: ajax_response.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AJAX Error Handling</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/ajax_response.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/ajax_response.css">
+  </head>
+  <body>
+    <div id="request">
+      <div id="title">Gorge of Eternal Peril</div>
+      <form id="requestForm">
+        <label>What is your name? </label>
+        <input type="text" name="name" /><br>
+        <label>What is your favorite color? </label>
+        <input type="text" name="color" /><br>
+        <input id="requestButton" type="button" value="Request" />
+      </form>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: load_content.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Loading Content</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/load_content.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/load_content.css">
+  </head>
+  <body>
+    <div id="banner">AngularJS, JavaScript and jQuery Articles</div>
+    <br>
+    <div>
+      <div id="leftNav">
+        <span class="navItem" 
+              article="article1">Responsive Web Design</span>
+        <span class="navItem" 
+              article="article2">jQUery Under the Hood</span>
+        <span class="navItem" 
+              article="article3">AngularJS Your New Best Friend</span>
+        <span class="navItem" 
+              article="article4">Turbo Charged Web Sites</span>
+      </div>
+      <div id="content">
+        <span id="title">&nbsp;</span>
+        <div id="article"></div>
+      </div>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: load_json.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Loading JSON Data</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/load_json.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/load_json.css">
+  </head>
+  <body>
+    <div id="images"></div>
+  </body>
+</html>
+***********************************
+Filename: load_xml.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Loading XML Data</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/load_xml.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/load_xml.css">
+  </head>
+  <body>
+    <table>
+      <caption>Favorite U.S. National Parks</caption>
+      <thead><th>Park</th><th>Location</th><th>Established</th><th>&nbsp;</th></thead> 
+      <tbody></tbody>    
+    </table>
+    <p></p>
+  </body>
+</html>
+***********************************
+Filename: article1.html
+***********************************
+<span id=title>Responsive Web Design</span>
+<div id="article">
+<span id="by">Brad Dayley</span>
+<span id="date">5/25/2015</span>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et augue vel nisi lobortis aliquet ut ac erat. Proin cursus rutrum mauris, ultrices vulputate magna euismod sed. Proin a metus in ante faucibus posuere at at dui. Fusce justo tortor, dignissim vel congue sed, sodales et nisi. Sed iaculis dignissim leo, id bibendum diam egestas in. </p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac eros lorem. Donec quis nulla diam. Nunc id enim quis quam venenatis vulputate sed sit amet nisl. Vivamus faucibus accumsan aliquet. Maecenas vel ipsum ligula, a volutpat ligula. Curabitur vitae tellus mi. Donec in diam in quam pulvinar consequat id a ipsum. Nullam a purus auctor erat egestas varius.</p>
+<p>Etiam at orci enim, vitae pharetra lectus. Nam ultricies lectus vitae tellus placerat gravida in id ante. Vestibulum non metus felis, eget pellentesque purus. Aliquam mi sem, vulputate vel ullamcorper ac, varius eu nibh. Suspendisse egestas pretium gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque a arcu sed nulla auctor iaculis. Suspendisse potenti. Phasellus et magna ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+<p>Suspendisse placerat ultricies odio, id mattis ante tempus vitae. Proin vitae purus nec ante adipiscing malesuada. Vivamus vitae lectus vel ligula mattis euismod ut ac magna. Vestibulum euismod suscipit sapien eu luctus. Suspendisse quam est, rutrum vel congue a, sollicitudin ac ligula. Etiam arcu lorem, condimentum a iaculis quis, euismod eget ligula. Aenean eget turpis erat, et convallis libero. In eu egestas massa. Nulla a dolor augue, non sollicitudin felis.</p>
+<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin diam nisi, viverra vitae mattis ut, fringilla non justo. Nulla facilisi. Ut ut eros vitae nisl lacinia feugiat. Aenean eu leo et dolor hendrerit sagittis id nec velit. Vivamus vulputate venenatis urna. Morbi at mi turpis, in pellentesque sapien. Vivamus ut odio eget sapien tristique congue id et magna.</p>
+</div> 
+
+***********************************
+Filename: article2.html
+***********************************
+<span id=title>jQUery Under the Hood</span>
+<div id="article">
+<span id="by">Brad Dayley</span>
+<span id="date">6/12/2015</span>
+<p>Etiam at orci enim, vitae pharetra lectus. Nam ultricies lectus vitae tellus placerat gravida in id ante. Vestibulum non metus felis, eget pellentesque purus. Aliquam mi sem, vulputate vel ullamcorper ac, varius eu nibh. Suspendisse egestas pretium gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque a arcu sed nulla auctor iaculis. Suspendisse potenti. Phasellus et magna ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+<p>Suspendisse placerat ultricies odio, id mattis ante tempus vitae. Proin vitae purus nec ante adipiscing malesuada. Vivamus vitae lectus vel ligula mattis euismod ut ac magna. Vestibulum euismod suscipit sapien eu luctus. Suspendisse quam est, rutrum vel congue a, sollicitudin ac ligula. Etiam arcu lorem, condimentum a iaculis quis, euismod eget ligula. Aenean eget turpis erat, et convallis libero. In eu egestas massa. Nulla a dolor augue, non sollicitudin felis.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac eros lorem. Donec quis nulla diam. Nunc id enim quis quam venenatis vulputate sed sit amet nisl. Vivamus faucibus accumsan aliquet. Maecenas vel ipsum ligula, a volutpat ligula. Curabitur vitae tellus mi. Donec in diam in quam pulvinar consequat id a ipsum. Nullam a purus auctor erat egestas varius.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et augue vel nisi lobortis aliquet ut ac erat. Proin cursus rutrum mauris, ultrices vulputate magna euismod sed. Proin a metus in ante faucibus posuere at at dui. Fusce justo tortor, dignissim vel congue sed, sodales et nisi. Sed iaculis dignissim leo, id bibendum diam egestas in. </p>
+<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin diam nisi, viverra vitae mattis ut, fringilla non justo. Nulla facilisi. Ut ut eros vitae nisl lacinia feugiat. Aenean eu leo et dolor hendrerit sagittis id nec velit. Vivamus vulputate venenatis urna. Morbi at mi turpis, in pellentesque sapien. Vivamus ut odio eget sapien tristique congue id et magna.</p>
+</div> 
+
+***********************************
+Filename: article3.html
+***********************************
+<span id=title>AngularJS Your New Best Friend</span>
+<div id="article">
+<span id="by">Brad Dayley</span>
+<span id="date">3/16/2015</span>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac eros lorem. Donec quis nulla diam. Nunc id enim quis quam venenatis vulputate sed sit amet nisl. Vivamus faucibus accumsan aliquet. Maecenas vel ipsum ligula, a volutpat ligula. Curabitur vitae tellus mi. Donec in diam in quam pulvinar consequat id a ipsum. Nullam a purus auctor erat egestas varius.</p>
+<p>Etiam at orci enim, vitae pharetra lectus. Nam ultricies lectus vitae tellus placerat gravida in id ante. Vestibulum non metus felis, eget pellentesque purus. Aliquam mi sem, vulputate vel ullamcorper ac, varius eu nibh. Suspendisse egestas pretium gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque a arcu sed nulla auctor iaculis. Suspendisse potenti. Phasellus et magna ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et augue vel nisi lobortis aliquet ut ac erat. Proin cursus rutrum mauris, ultrices vulputate magna euismod sed. Proin a metus in ante faucibus posuere at at dui. Fusce justo tortor, dignissim vel congue sed, sodales et nisi. Sed iaculis dignissim leo, id bibendum diam egestas in. </p>
+<p>Suspendisse placerat ultricies odio, id mattis ante tempus vitae. Proin vitae purus nec ante adipiscing malesuada. Vivamus vitae lectus vel ligula mattis euismod ut ac magna. Vestibulum euismod suscipit sapien eu luctus. Suspendisse quam est, rutrum vel congue a, sollicitudin ac ligula. Etiam arcu lorem, condimentum a iaculis quis, euismod eget ligula. Aenean eget turpis erat, et convallis libero. In eu egestas massa. Nulla a dolor augue, non sollicitudin felis.</p>
+<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin diam nisi, viverra vitae mattis ut, fringilla non justo. Nulla facilisi. Ut ut eros vitae nisl lacinia feugiat. Aenean eu leo et dolor hendrerit sagittis id nec velit. Vivamus vulputate venenatis urna. Morbi at mi turpis, in pellentesque sapien. Vivamus ut odio eget sapien tristique congue id et magna.</p>
+</div> 
+
+***********************************
+Filename: article4.html
+***********************************
+<span id=title>Turbo Charged Web Sites</span>
+<div id="article">
+<span id="by">Brad Dayley</span>
+<span id="date">7/14/2015</span>
+<p>Vivamus faucibus accumsan aliquet. Maecenas vel ipsum ligula, a volutpat ligula. Curabitur vitae tellus mi. Donec in diam in quam pulvinar consequat id a ipsum. Nullam a purus auctor erat egestas varius.</p>
+<p>Etiam at orci enim, vitae pharetra lectus. Nam ultricies lectus vitae tellus placerat gravida in id ante. Vestibulum non metus felis, eget pellentesque purus. Aliquam mi sem, vulputate vel ullamcorper ac, varius eu nibh. Suspendisse egestas pretium gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque a arcu sed nulla auctor iaculis. Suspendisse potenti. Phasellus et magna ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et augue vel nisi lobortis aliquet ut ac erat. Proin cursus rutrum mauris, ultrices vulputate magna euismod sed. Proin a metus in ante faucibus posuere at at dui. Fusce justo tortor, dignissim vel congue sed, sodales et nisi. Sed iaculis dignissim leo, id bibendum diam egestas in. </p>
+<p>Suspendisse placerat ultricies odio, id mattis ante tempus vitae. Proin vitae purus nec ante adipiscing malesuada. Vivamus vitae lectus vel ligula mattis euismod ut ac magna. Vestibulum euismod suscipit sapien eu luctus. Suspendisse quam est, rutrum vel congue a, sollicitudin ac ligula. Etiam arcu lorem, condimentum a iaculis quis, euismod eget ligula. Aenean eget turpis erat, et convallis libero. In eu egestas massa. Nulla a dolor augue, non sollicitudin felis.</p>
+<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin diam nisi, viverra vitae mattis ut, fringilla non justo. Nulla facilisi. Ut ut eros vitae nisl lacinia feugiat. Aenean eu leo et dolor hendrerit sagittis id nec velit. Vivamus vulputate venenatis urna. Morbi at mi turpis, in pellentesque sapien. Vivamus ut odio eget sapien tristique congue id et magna.</p>
+</div> 
+
+***********************************
+Filename: date_picker.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calendar</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script>
+      $(document).ready(function(){
+        $( "#datepicker" ).datepicker();
+      });
+    </script>
+  </head>
+  <body>
+    <div id="datepicker"></div>
+  </body>
+</html>
+***********************************
+Filename: dynamic_positioning.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dynamic Positioning</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/dynamic_positioning.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/dynamic_positioning.css">
+  </head>
+  <body>
+    <div>
+      <img id="img1" src="/images/arch.jpg">
+      <img id="img2" src="/images/pyramid2.jpg">
+      <img id="img3" src="/images/volcano.jpg">
+      <img id="img4" src="/images/jump.jpg">
+    </div>
+  </body>
+</html>
+***********************************
+Filename: jquery_image_adder.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adding Images</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery_image_adder.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery_image_adder.css">
+  </head>
+  <body>
+    <span id="add">Add Images</span>
+    <div id="arch">Arch</div>
+    <div id="river">River</div>
+    <div id="volcano">Volcano</div>
+    <div id="mountain">Mountain</div>
+    <div id="pyramid">Pyramid</div>
+  </body>
+</html>
+***********************************
+Filename: animation_effects.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adding Effects to Animations</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/animation_effects.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/animation_effects.css">
+  </head>
+  <body>
+	  <img id="needle" src="/images/needle.jpg" />
+    <img id="ball" src="/images/ball.png" />
+  </body>
+</html>
+***********************************
+Filename: class_transitions.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Class Transitions</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/class_transitions.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/class_transitions.css">
+  </head>
+  <body>
+    <span id="btn1">Add Class</span><br>
+    <span id="btn2" class="active">Switch Class</span><br>
+    <span id="btn3" class="square">Toggle Class</span><br>
+    <span id="btn4" class="round">Remove Class</span><br>
+  </body>
+</html>
+***********************************
+Filename: jquery_effects.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQeury Effects Showcase</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery_effects.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery_effects.css">
+  </head>
+  <body>
+      <div id="frame1">
+        <img id="img1" src="/images/double.jpg"></div>
+      <div id="frame2">
+        <img id="img2" src="/images/arch.jpg"></div>
+      <div id="frame3">
+        <img id="img3" src="/images/cliff.jpg"></div>
+      <div id="frame4">
+        <img id="img4" src="/images/sunstar.jpg"></div>
+  </body>
+</html>
+***********************************
+Filename: visibility_transitions.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Visibility Transitions</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/visibility_transitions.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/visibility_transitions.css">
+  </head>
+  <body>
+    <span id="show">Show Fold</span><br>
+    <span id="show2">Show Scale</span><br>
+    <span id="toggle">Toggle Blind</span><br>
+    <div id="showMenu">
+      <span>Fold 1</span><br><span>Fold 2</span><br>
+      <span>Fold 3</span><br><span>Fold 4</span><br>
+    </div>
+    <div id="showMenu2">
+      <span>Explode 1</span><br><span>Explode 2</span><br>
+      <span>Explode 3</span><br><span>Explode 4</span><br>
+    </div>
+    <div id="toggleMenu">
+      <span>Toggle 1</span><br><span>Toggle 2</span><br>
+      <span>Toggle 3</span><br><span>Toggle 4</span><br>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: draggable_images.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Making Images Drag-able</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/draggable_images.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/draggable_images.css">
+  </head>
+  <body>
+      <div id="drag1">
+      <img id="img1" src="/images/snowy_cliff.jpg"></div>
+      <div id="drag2">
+      <img id="img1" src="/images/shadow_jump.jpg"></div>
+      <div id="drag3">
+      <img id="img1" src="/images/sunstar.jpg"></div>
+  </body>
+</html>
+***********************************
+Filename: drag_n_drop.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>drag'n'droppin</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/drag_n_drop.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/drag_n_drop.css">
+  </head>
+  <body>
+    <div id="images">
+      <img id="drag1" src="/images/jungle.jpg" />
+      <img id="drag2" src="/images/wheel.jpg" />
+      <img id="drag3" src="/images/img7.jpg" />
+    </div>
+    <div id="drop1"></div>
+    <div id="drop2"></div>
+  </body>
+</html>
+***********************************
+Filename: resizable_elements.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Making Resizable Elements</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/resizable_elements.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/resizable_elements.css">
+  </head>
+  <body>
+    <div id="resize1"><img src="/images/beachhouse.jpg" /></div>
+    <div id="resize2">      
+      <p>Ocean View</p>
+      <img src="/images/img7.jpg" />
+    </div>
+    <div id="resize3"><div id="list"></div></div>
+  </body>
+</html>
+***********************************
+Filename: selectable_sets.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sorting Elements</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/selectable_sets.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/selectable_sets.css">
+  </head>
+  <body>
+    <span>Nothing Selected</span><br>
+    <div id="set1"></div>
+    <div id="set2">
+      <img src="/images/cliff.jpg" /><img src="/images/flower2.jpg" />
+      <img src="/images/lake.jpg" /><img src="/images/tiger.jpg" />
+      <img src="/images/flower.jpg" /><img src="/images/volcano.jpg" />
+    </div>
+  </body>
+</html>
+***********************************
+Filename: sortable_elements.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sorting Things Out</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/sortable_elements.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/sortable_elements.css">
+  </head>
+  <body>
+    <div id="sorter1"></div>
+    <div id="sorter2"></div>
+    <table border=1>
+      <tbody>
+        <tr>
+          <th>Icon</th>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Source</th>
+        </tr>
+      </tbody>
+      <tbody id="sortTable"></tbody>
+    </table>
+  </body>
+</html>
+***********************************
+Filename: widgets_accordion.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Accordion Widgets</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  </head>
+  <script>
+    $(window).load(function(){
+      $( "#accordion" ).accordion(
+          {header:"p", collapsable:true});
+    });
+  </script>
+  <style>
+    div { width:300px; }
+    img { width:300px; }
+  </style>
+  <body>
+    <div id="accordion">
+      <p>Fort</p><div>
+      <img src="/images/fort.jpg" /></div>
+      <p>Bison</p><div>
+      <img src="/images/bison.jpg" /></div>
+      <p>Sunset</p><div>
+      <img src="/images/sunset3.jpg" /></div>
+      <p>tiger</p><div>
+      <img src="/images/tiger.jpg" /></div>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: widgets_autocomplete.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Auto Complete Widget</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  </head>
+  <script>
+    function dateChanged(dateStr, Object){ 
+      $("span").html("Updated to" + dateStr); }
+    $(document).ready(function(){
+      $( "#autocomplete" ).autocomplete({
+        source: ["Monday", "Tuesday", "Wednesday", 
+                 "Thursday", "Friday"]
+      });
+    });
+  </script>
+  <style>
+    input { 
+      border:2px ridge steelblue; border-radius:5px; 
+      padding:3px; }
+  </style>
+  <body>
+    <label for="autocomplete">Day of Week: </label>
+    <input id="autocomplete">
+  </body>
+</html>
+***********************************
+Filename: widgets_calendar.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calendar Widget</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  </head>
+  <script>
+    function dateChanged(dateStr, Object){ 
+      $("span").html("Updated to" + dateStr); }
+    $(document).ready(function(){
+      $( "#month" ).datepicker({
+          onSelect:dateChanged,
+          showOn: "button", 
+          buttonImage: "/images/calendar32.png", 
+          buttonImageOnly: true,
+          numberOfMonths:2,
+          showButtonPanel:true,
+          dateFormat: "yy-mm-dd"
+        });
+    });
+  </script>
+  <style>
+    input { border:2px ridge steelblue; border-radius:3px; }
+  </style>
+  <body>
+    <label>Start Date: </label>
+    <input type="text" id="month"></input>
+    <span></span>
+  </body>
+</html>
+***********************************
+Filename: widgets_controls.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Control Widgets</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  </head>
+  <script>
+  $(window).ready(function(){
+      $( "#button1" ).button(
+          {icons: {primary: "ui-icon-gear"},text: true});
+      $( "#check" ).button();
+      $( "#format" ).buttonset();
+      $( "#radio" ).buttonset();
+    });
+  </script>
+  <style>
+    div {margin:15px; }
+  </style>
+  <body>
+    <div>
+      <button id="button1">Configure</button>
+    </div>
+    <div>
+      <input type="checkbox" id="check" />
+      <label for="check">Toggle</label>
+    </div>
+    <div id="format">
+      <input type="checkbox" id="check1" />
+      <label for="check1">B</label>
+      <input type="checkbox" id="check2" />
+      <label for="check2">I</label>
+      <input type="checkbox" id="check3" />
+      <label for="check3">U</label>
+    </div>
+    <div id="radio">
+      <input type="radio" id="radio1" name="radio" />
+      <label for="radio1">option 1</label>
+      <input type="radio" id="radio2" name="radio" />
+      <label for="radio2">option 2</label>
+      <input type="radio" id="radio3" name="radio" />
+      <label for="radio3">option 3</label>
+    </div>
+  </body>
+</html>
+***********************************
+Filename: widgets_custom.html
+***********************************
+$.widget("custom.mywidget", {
+  options : {
+    // custom options
+  },
+  _create: function() {
+    //creation code
+  },
+  _refresh: function() {
+    //refresh code called when element refreshed
+  },
+  _destroy: function() {
+    //cleanup code called when widget is destroyed
+  },
+  _setOptions: function() {
+    // _super and _superApply handle keeping the right this-context
+    this._superApply( arguments );
+    this._refresh();
+  },
+  _setOption: function( key, value ) {
+    // set individual option value override code
+    this._super( key, value );
+  }
+});
+***********************************
+Filename: widgets_dialogs.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dialog Widgets</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  </head>
+  <script>
+    $(document).ready(function(){
+       $( "#dialog" ).dialog({ modal: true, 
+         buttons: { Sweet: function() { 
+           $( this ).dialog( "close" ); }}});
+    });
+  </script>
+  <style>
+    img { height:60px; float:left; }
+  </style>
+  <body>
+    <div id="dialog" title="Upload Successful">
+      <p>
+        <img src="/images/sunset2.jpg" />
+        <span class="ui-icon ui-icon-circle-check"></span>
+        Image Uploaded Successfully.
+      </p>
+      <p>You are currently using <br>
+        <b>32% of your storage space</b>.</p>
+    </div>
+  </body>
+</html>
+
+
+
+***********************************
+Filename: widgets_menus.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu Widgets</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  </head>
+  <script>
+    $(document).ready(function(){
+      $( "#menu" ).menu();
+      $( "#menu" ).on("menuselect", function(e, ui){
+        $("p").html("Selected " + 
+            ui.item.children("a:first").html());
+      });
+    });
+  </script>
+  <style>
+   .ui-menu { width: 200px; }
+   p { box-shadow: 5px 5px 5px #888888; 
+       border:3px ridge steelblue; color:teal; 
+       display:inline-block; height:80px; width:100px; }
+  </style>
+  <body>
+    <ul id="menu">
+      <li><a href="#">Open</a></li>
+      <li><a href="#">Recent</a><ul>
+        <li><a href="#">Some File</a></li>
+        <li><a href="#">Another File</a></li>
+        </ul></li>
+      <li><a href="#">Save</a></li>
+      <li class="ui-state-disabled">
+        <a href="#"><span class="ui-icon ui-icon-print">
+        </span>Print...</a></li>
+      <li><a href="#">Slide Show</a><ul>
+        <li>
+          <a href="#">
+            <span class="ui-icon ui-icon-seek-start"></span>Prev</a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="ui-icon ui-icon-stop"></span>Stop</a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="ui-icon ui-icon-play"></span>Play</a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="ui-icon ui-icon-seek-end"></span>Next</a>
+        </li>
+        </ul></li>
+    </ul>
+    <p></p>
+  </body>
+</html>
+***********************************
+Filename: widgets_progress_bars.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Progress Widgets</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  </head>
+  <script>
+    function inc(){
+      var value = $("#progressbar").progressbar("value") + 5; 
+      if (value <= 100){ 
+        $("p").html("Progress: " + value + "%");
+        $("#progressbar").progressbar("value", value);
+        setTimeout(inc, 100);         
+       } 
+    }
+    $(document).ready(function(){
+      $("#progressbar").progressbar({ value: 0});
+      inc();
+    });
+  </script>
+  <style>
+    #progressbar { 
+      box-shadow: 5px 5px 5px #888888; border:2px ridge;     
+      display:inline-block; height:20px; width:300px; }
+    #progressbar .ui-progressbar-value{ 
+      background-image: -moz-linear-gradient(top, steelblue, skyblue); 
+      background-image: -webkit-linear-gradient(top, steelblue, skyblue); 
+      background-image: -ms-linear-gradient(top , steelblue, skyblue); } 
+  </style>
+  <body>
+    <p></p>
+    <div id="progressbar"></div>
+  </body>
+</html>
+***********************************
+Filename: widgets_slider_bars.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slider Widgets</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  </head>
+  <script>
+    function cValue(selector){
+      var v = $(selector).slider("value").toString( 16 );
+      if (v.length ===1) { v = "0" + v;}
+      return v;
+    }
+    function refreshSwatch() {
+      $("#mix").css("background-color", "#" + cValue("#red") +
+        cValue("#green") +  cValue("#blue"));
+      $("#mix").html($("#mix").css("background-color")); 
+    }
+    $(document).ready(function(){
+       $( "#red, #green, #blue" ).slider({
+        orientation: "horizontal",
+        range: "min",
+        max: 255,
+        value: 127,
+        slide: refreshSwatch,
+        change: refreshSwatch
+      });
+      $("#red").slider("value", 128);
+      $("#green").slider("value", 128);
+      $("#blue").slider("value", 128);
+    });
+  </script>
+  <style>
+    #mix { 
+      width:160px; height:100px; text-align:center; 
+      font:18px/100px arial; }
+    #red, #green, #blue { 
+      float: left; clear: left; width: 150px; margin: 15px; }
+    #red .ui-slider-range { background:red; }
+    #red .ui-slider-handle { border-color:red; }
+    #green .ui-slider-range { background:green; }
+    #green .ui-slider-handle { border-color:green; }
+    #blue .ui-slider-range { background:blue; }
+    #blue .ui-slider-handle { border-color:blue; }
+  </style>
+  <body>
+    <div id="mix"></div>
+    <div id="red"></div>
+    <div id="green"></div>
+    <div id="blue"></div>
+  </body>
+</html>
+***********************************
+Filename: widgets_spinner.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spinner Widgets</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  </head>
+  <script>
+    $(document).ready(function(){
+      $( "#spin1" ).spinner({step: 0.5});
+      $( "#spin2" ).spinner({step: 1});
+      $( "#spin3" ).spinner({step: 10});
+    });
+  </script>
+  <style>
+    label { display:inline-block; width:100px; }
+  </style>
+  <body>
+    <p>
+      <label for="spin1">Count by .5s:</label>
+      <input id="spin1" name="value" /><br>
+      <label for="spin2">Count by 1s:</label>
+      <input id="spin2" name="value" /><br>
+      <label for="spin3">Count by 10s:</label>
+      <input id="spin3" name="value" /><br>
+    </p>
+  </body>
+</html>
+***********************************
+Filename: widgets_tabs.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tabs WIdgets</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  </head>
+  <script>
+    $(document).ready(function(){
+      $( "#tabs" ).tabs(
+          { event: "mouseover", collapsible: true, 
+            active:"false"});
+    });
+  </script>
+  <style>
+    * { vertical-align:top; }
+    img { height:120px; margin:5px; }
+    .mini {height:23px; margin:0px; }
+    #tabs { width:450px; }
+    p { text-align:justify; }
+  </style>
+  <body>
+  <div id="tabs">
+    <ul>
+      <li>
+        <a href="#tabs1">
+          <img class="mini" src="/images/arch.jpg" />Images</a>
+      </li>
+      <li><a href="#tabs2">Content</a></li>
+      <li><a href="#tabs3">Widgets</a></li>
+    </ul>
+    <div id="tabs1">
+      <img src="/images/jail.jpg" />
+      <img src="/images/sunset.jpg" />
+      <img src="/images/cliff.jpg" />
+      <img src="/images/sunset2.jpg" />
+    </div>
+    <div id="tabs2">
+      <h3>jQuery UI Widgets</h3>
+      <p><b><i>jQuery UI</i></b> 
+        provides a wide array of pre-built widgets that 
+        provide extended functionality to HTML elements. 
+        These widgets provide functionality that make forms 
+        and other input controls more intuitive 
+        and easy to use. For example a calendar 
+        view for choosing dates and expandable menus.
+      </p>
+    </div>
+    <div id="tabs3">
+      <ul>
+        <li>Accordion</li>
+        <li>Menu</li>
+        <li>Button</li>
+        <li>Slider</li>
+        <li>Progress Bar</li>
+        <li>Tabs</li>
+      </ul>
+    </div>
+  </div>
+  </body>
+</html>
+***********************************
+Filename: widgets_tooltips.html
+***********************************
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tooltip Widgets</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  </head>
+  <script>
+    $(document).ready(function(){
+      $(document).tooltip({
+        items: "img, input",
+        position: { my: "left+15 top", at: "left bottom", 
+                   collision: "flipfit" },
+        content: function() {
+          var obj = $(this);
+          if (obj.is("input")) { return obj.attr( "title" ); }
+          if (obj.is("img")) {
+            var img = $("<img></img>").addClass("mini")
+                        .attr("src", obj.attr("src"));
+            var span = $("<span></span>")
+                         .html(obj.attr( "alt" ));
+            return $("<div></div>").append(img, span); }
+        }});
+    });
+  </script>
+  <style>
+    input { 
+      border:2px ridge blue; border-radius:5px; padding:3px; }
+    img { height:200px; margin:15px; }
+    .mini {height:30px;}
+  </style>
+  <body>
+    <label for="size">Who are You?</label>
+    <input id="size" title="Nosce Te Ipsum (Know Thyself)" /><br>
+    <img src="/images/someday.jpg" alt="I'm going there someday"/>
+  </body>
+</html>
+***********************************
+Filename: first.html
+***********************************
+<!doctype html>
+<html ng-app="firstApp">
+  <head>
+    <title>First AngularJS App</title>
+  </head>
+  <body>
+    <div ng-controller="FirstController">
+      <span>Name:</span>
+      <input type="text" ng-model="first">
+      <input type="text" ng-model="last">
+      <button ng-click='updateMessage()'>Message</button>
+      <hr>
+      {{heading + message}}
+    </div>
+    <script src="http://code.angularjs.org/1.3.0/angular.min.js"></script>
+    <script src="js/first.js"></script>
+  </body>
+</html>
+***********************************
+Filename: config_run_blocks.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>AngularJS Configuration and Run Blocks</title>
+  </head>
+  <body>
+    <div ng-controller="controllerA">
+      <hr>
+      <h2>Config Time:</h2>
+      {{configTime}}
+      <hr>
+      <h2>Run Time:</h2>
+      {{runTime}}
+    </div><hr>
+    <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+    <script src="js/config_run_blocks.js"></script>
+  </body>
+</html>
+***********************************
+Filename: inject_builtin.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>AngularJS Dependency Injection</title>
+  </head>
+  <body>
+    <div ng-controller="controllerA">
+      <h2>This Page has an Alert</h2>
+    </div><hr>
+    <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+    <script src="js/inject_builtin.js"></script>
+  </body>
+</html>
+***********************************
+Filename: inject_custom.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>AngularJS Dependency Injection</title>
+  </head>
+  <body>
+    <div ng-controller="controllerA">
+      <h2>Application Message:</h2>
+      {{message}}
+    </div><hr>
+    <div ng-controller="controllerB">
+      <h2>Module Message:</h2>
+      {{message}}
+    </div>
+    <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+    <script src="js/inject_custom.js"></script>
+  </body>
+</html>
+***********************************
+Filename: scope_controller.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>AngularJS Basic Scope</title>
+  </head>
+  <body>
+    <div ng-controller="Counter">
+      <span>Change Amount:</span>
+      <input type="number" ng-model="change"><hr>
+      <span>Starting Value:</span>
+      {{start}}
+      <br>
+      <span>CurrentValue:</span>
+      {{current}}
+      <button ng-click='inc()'>+</button>
+      <button ng-click='dec()'>-</button><hr>
+      <span>Difference:</span>
+      {{difference}}
+    </div>
+    <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+    <script src="js/scope_controller.js"></script>
+  </body>
+</html>
+***********************************
+Filename: scope_hierarchy.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+<title>AngularJS Scope Hierarchy</title>
+</head>
+<body>
+  <div ng-controller="LevelA">
+    <h3>{{title}}</h3>
+    ValueA = {{valueA}} <input type="button" ng-click="inc()" value="+" />
+    <div ng-controller="LevelB"><hr>
+      <h3>{{title}}</h3>
+      ValueA = {{valueA}}<br>
+      ValueB = {{valueB}}
+      <input type="button" ng-click="inc()" value="+" />
+      <div ng-controller="LevelC"><hr>
+       <h3>{{title}}</h3>
+        ValueA = {{valueA}}<br>
+        ValueB = {{valueB}}<br> 
+        ValueC = {{valueC}} 
+        <input type="button" ng-click="inc()" value="+" />
+      </div>
+    </div>
+  </div>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/scope_hierarchy.js"></script>
+</body>
+</html>
+***********************************
+Filename: scope_template.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>AngularJS Scope and Templates</title>
+  </head>
+  <body>
+    <div ng-controller="SimpleTemplate">
+      ValueA: <input type="number" ng-model="valueA" /><br>
+      ValueB: <input type="number" ng-model="valueB" /><br><br>
+      Expression: {{valueA}} + {{valueB}}<br><br>
+      Live Expression Value: {{valueA + valueB}}<br><br>
+      <input type="button" ng-click="addValues(valueA, valueB, $event)"
+        value ="Click to Add Values {{valueA}} & {{valueB}}" /><br>
+      Clicked Expression Value: {{valueC}}<br>
+    </div>
+    <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+    <script src="js/scope_template.js"></script>
+  </body>
+</html>
+***********************************
+Filename: expressions_basic.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>AngularJS Expressions</title>
+    <style>
+      p{margin:0px;}
+      p:after{color:red;}
+    </style>
+  </head>
+  <body>
+    <div ng-controller="myController">
+      <h1>Expressions</h1>
+      Number:<br>
+      {{5}}<hr>
+      String:<br>
+      {{'My String'}}<hr>
+      Adding two strings together:<br> 
+      {{'String1' + ' ' + 'String2'}}<hr>
+      Adding two numbers together:<br>
+      {{5+5}}<hr>
+      Adding strings and numbers together:<br>
+      {{5 + '+' + 5 + '='}}{{5+5}}<hr>
+      Comparing two numbers with each other:<br>
+      {{5===5}}<hr>
+    <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+    <script src="js/expressions_basic.js"></script>
+  </body>
+</html>
+***********************************
+Filename: expressions_javascript.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>AngularJS Expressions</title>
+    <style>
+      a{color: blue; text-decoration: underline; cursor: pointer}
+    </style>
+  </head>
+  <body>
+    <div ng-controller="myController">
+      <h1>Expressions</h1>
+      Array:<br>
+        {{myArr}}<hr>
+      Elements removed from array:<br>
+        {{removedArr}}<hr> 
+      <a ng-click="myArr.push(Math.floor(Math.random()*100 + 1))">
+        Click to append a value to the array</a><hr> 
+      <a ng-click="removedArr.push(myArr.shift())">
+        Click to remove the first value from the array</a><hr>
+      Size of Array:<br>
+        {{myArr.length}}<hr>
+      Cosine of the length of the removed array:<br>
+        {{Math.cos(removedArr.length)}}<hr>      
+    <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+    <script src="js/expressions_javascript.js"></script>
+  </body>
+</html>
+***********************************
+Filename: expressions_scope.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>AngularJS Expressions</title>
+    <style>
+      a{color: blue; text-decoration: underline; cursor: pointer}
+    </style>
+  </head>
+  <body>
+    <div ng-controller="myController">
+      Directly accessing variables in the scope:<br>
+      {{speed}} {{vehicle}}<hr>
+      Adding variables in the scope:<br>
+      {{speed + ' ' + vehicle}}<hr>
+      Calling function in the scope:<br>
+      {{lower(speed)}} {{upper('Jeep')}}<hr>
+      <a ng-click="setValues('Fast', newVehicle)">
+        Click to change to Fast {{newVehicle}}</a><hr>
+      <a ng-click="setValues(newSpeed, 'Rocket')">
+        Click to change to {{newSpeed}} Rocket</a><hr>
+      <a ng-click="vehicle='Car'">
+        Click to change the vehicle to a Car</a><hr>
+      <a ng-click="vehicle='Enhanced ' + vehicle">
+        Click to Enhance Vehicle</a><hr>
+    <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+    <script src="js/expressions_scope.js"></script>
+  </body>
+</html>
+***********************************
+Filename: filters.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>AngularJS Filters</title>
+  </head>
+  <body>
+    <div ng-controller="myController">
+      <h2>Basic Filters</h2>
+      Number: {{123.45678|number:3}}<br>
+      Currency: {{123.45678|currency:"$"}}<br>
+      Date: {{ currentDate | date:'yyyy-MM-dd HH:mm:ss Z'}}<br>
+      JSON: {{ JSONObj | json }}<br>
+      Limit Array: {{ days | limitTo:3 }}<br>
+      Limit String: {{ word | limitTo:9 }}<br>
+      Uppercase: {{ word | uppercase | limitTo:9 }}<br>
+      Lowercase: {{ word | lowercase | limitTo:9 }}
+    <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+    <script src="js/filters.js"></script>
+  </body>
+</html>
+***********************************
+Filename: filter_custom.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>AngularJS Custom Filter</title>
+  </head>
+  <body>
+    <div ng-controller="myController">
+      <h2>Sorting and Filtering</h2>
+      {{phrase | censor:censorText}}<br>
+      {{"This is some bad, dark, evil text." | censor:"happy"}}
+      <p ng-click="filterText()">{{txt}}</p>
+    <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+    <script src="js/filter_custom.js"></script>
+  </body>
+</html>
+***********************************
+Filename: filter_sort.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>AngularJS Sorting and Filtering</title>
+    <style>
+      table{text-align:right;}
+      td,th{padding:3px;}
+      th{cursor:pointer;}
+    </style>
+  </head>
+  <body>
+    <div ng-controller="myController">
+      <h2>Sorting and Filtering</h2>
+      <input type="text" ng-model="filterString">
+      <input type="button" ng-click="setFilter()" value="Filter">
+      <table>
+      <tr>
+        <th ng-click="setSort('make')">Make</th>
+        <th ng-click="setSort('model')">Model</th>
+        <th ng-click="setSort('capacity')">Capacity</th>
+      </tr>
+      <tr ng-repeat=
+          "plane in filteredPlanes | orderBy:column:reverse">
+        <td>{{plane.make}}</td>
+        <td>{{plane.model}}</td>
+        <td>{{plane.capacity}}</td>
+      </tr>
+      </table>
+    <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+    <script src="js/filter_sort.js"></script>
+  </body>
+</html>
+***********************************
+Filename: directive_angular_include.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS Data Include Directive</title>
+  <style>
+    .large{
+      background-color: blue; color: white; 
+      text-align: center; 
+      font: bold 50px/80px verdana, serif;
+      border: 6px black ridge; }
+    .small{
+      background-color: lightgrey;
+      text-align: center; 
+      border: 1px black solid; }
+    a{
+     color: blue; text-decoration: underline; 
+     cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div ng-controller="myController">
+    [<a ng-click="titleBar='large_title.html'">Make Title Large</a>]
+    [<a ng-click="titleBar='small_title.html'">Make Title Small</a>]
+    <div ng-include="titleBar"></div>
+  </div>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/directive_angular_include.js"></script>
+</body>
+</html>
+***********************************
+Filename: directive_bind.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS Data Binding Directives</title>
+  <style>
+    .even{background-color:lightgrey;}
+    .rect{display:inline-block; height:40px; width:100px;}
+  </style>
+</head>
+<body>
+  <div ng-controller="myController">
+    <h2>Data Binding Directives</h2>
+    <label ng-repeat="color in colors">
+      {{color}}
+      <input type="radio" ng-model="myStyle['background-color']"
+             ng-value="color" id="{{color}}" name="mColor">
+    </label>
+    <span class="rect" ng-style="myStyle"></span><hr>
+    <li ng-repeat="day in days">
+      <span ng-class-even="'even'">{{day}}</span>
+    </li><hr>
+    Show Message: <input type="checkbox" ng-model="checked" />
+    <p ng-if="checked" ng-bind="msg"> </p>
+  </div>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/directive_bind.js"></script>
+</body>
+</html>
+***********************************
+Filename: directive_focus_events.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS Focus Event Directives</title>
+</head>
+<body>
+  <div ng-controller="myController">
+    <h2>Focus Event Directives</h2>
+    Input 1:<br>
+    <input type="text"
+      ng-blur="focusLost($event, 'input1')" 
+      ng-focus="focusGained('input1')"><br>
+    Input 2:<br>
+    <input type="text"
+      ng-blur="focusLost($event, 'input2')" 
+      ng-focus="focusGained('input2')"><hr>
+    Input Data: {{ inputData | json}}<br/>
+  </div>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/directive_focus_events.js"></script>
+</body>
+</html>
+***********************************
+Filename: directive_form.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS Form Directives</title>
+</head>
+<body>
+  <div ng-controller="myController">
+    <h2>Forms Directives</h2>
+    <input type="text" ng-model="someText"> {{someText}}<hr>
+    <input type="checkbox" ng-model="cbValue"
+           ng-true-value="'Checked'" ng-false-value="'Not Checked'">
+    Checkbox: {{cbValue}}<hr>
+    <input type="radio" 
+      ng-model="cameraName" value="Canon"> Canon<br/>
+    <input type="radio" 
+      ng-model="cameraName" value="Nikon"> Nikon<br/>
+    Selected Camera: {{cameraName}} <hr>
+    <select ng-model="camera" 
+      ng-options="c.model group by c.make for c in cameras">
+    </select>
+    {{camera|json}}
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/directive_form.js"></script>
+</body>
+</html>
+***********************************
+Filename: directive_keyboard_events.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS Keyboard Event Directives</title>
+</head>
+<body>
+  <div ng-controller="myController">
+    <h2>Keyboard Event Directives</h2>
+    <input type="text" 
+        ng-keydown="keyState='Pressed'"
+        ng-keyup="keyPressed($event)"><hr>
+    Keyboard State:<br>
+      {{keyState}}<hr>
+    Last Key:<br>
+      {{keyInfo|json}}<hr>
+    Stored String:<br>
+      {{storedString}}<hr>
+    Recorded Key Strokes:<br>
+      {{keyStrokes}}
+  </div>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/directive_keyboard_events.js"></script>
+</body>
+</html>
+***********************************
+Filename: directive_mouse_events.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS Event Directives</title>
+  <style>
+    img {
+      border: 3px ridge black;
+      height: 200px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div ng-controller="myController">
+    <h2>Event Directives</h2>
+    <img
+        src="/images/img3.jpg"
+        ng-mouseenter="mouseState='Entered'" 
+        ng-mouseleave="mouseState='Left'" 
+        ng-mouseclick="mouseState='Clicked'" 
+        ng-mousedown="mouseState='Down'" 
+        ng-mouseup="mouseState='Up'" 
+        ng-click="mouseClick($event)" 
+        ng-mousemove="mouseMove($event)"></img><hr>
+    Mouse State: {{mouseState}}<br/>
+    Mouse Position Info: {{mouseInfo|json}}<br/>
+    Last Click Info: {{lastClickInfo|json}}<br/>
+  </div>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/directive_mouse_events.js"></script>
+</body>
+</html>
+***********************************
+Filename: large_title.html
+***********************************
+<p class="large">
+  This is a Large Title
+</p>
+***********************************
+Filename: small_title.html
+***********************************
+<p class="small">
+  This is a Small Title
+</p>
+***********************************
+Filename: directive_custom_dom.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS Custom Directive</title>
+  <style>
+    * { text-align: center; }
+    .titleBar { color: white; background-color: grey; 
+                font: bold 14px/18px arial; display: block; 
+                border-bottom: 4px ridge grey; }
+    .footer {  color: white; background-color: grey;
+               font: italic 10px/14px arial; display: block;
+               border-top: 4px ridge grey; }
+    mybox { border: 4px ridge grey; margin: 10px; }
+    img { display: block; }
+  </style>
+</head>
+<body>
+  <div ng-controller="myController">
+    <h2>Custom Directive Manipulating the DOM</h2>
+    <mybox title="Simple Text" bwidth="100px">
+      Using AngularJS to build a box around text.
+    </mybox>
+    <mybox title="Paragraph" bwidth="200px">
+      <p>Using AngularJS to build a box around a paragraph.</p>
+    </mybox>    
+    <mybox title="List" bwidth="200px">
+      <ul>
+        <li>Using AngularJS</li>
+        <li>to build a box</li>
+        <li>around a list.
+        </li>
+      </ul>
+    </mybox>
+    <mybox title="Image" bwidth="400px">
+      <img src="/images/sunset2.jpg" width="400px" />
+    </mybox>
+  </div>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/directive_custom_dom.js"></script>
+</body>
+</html>
+***********************************
+Filename: directive_custom_photos.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS Custom Directive</title>
+  <style>
+    img { 
+      width: 300px }
+    .imgView, .imgList { 
+      vertical-align: top; display:inline-block; }
+  </style>
+</head>
+<body>
+  <h2>Custom Directive Photo Flip</h2>
+   <my-photos>
+     <my-photo title="Leap">
+       <img src="/images/power.jpg"/>
+     </my-photo>
+     <my-photo title="Washington">
+       <img src="/images/washington.jpg"/>
+     </my-photo>
+     <my-photo title="Bridge">
+       <img src="/images/bridge.jpg"/>
+     </my-photo>
+     <my-photo title="Liberty">
+       <img src="/images/liberty.jpg"/>
+     </my-photo>
+     <my-photo title="Falls">
+       <img src="/images/falls2.jpg"/>
+     </my-photo>
+   </my-photos>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/directive_custom_photos.js"></script>
+</body>
+</html>
+***********************************
+Filename: directive_custom_zoom.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS Custom Directive</title>
+  <style>
+    img { width: 200px; }
+  </style>
+</head>
+<body>
+  <h2>Custom Directive Zoom and Fade</h2>
+  <img src="/images/wheel.jpg" zoomit></img>
+  <img src="/images/wheel.jpg" fadeit></img>
+  <img src="/images/wheel.jpg" zoomit fadeit></img>
+  <p>Drag up to fade out and down to fade in.</p>
+  <p>Drag left to zoom out and right to zoom in.</p>
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/directive_custom_zoom.js"></script>  
+</body>
+</html>
+***********************************
+Filename: my_photos.html
+***********************************
+<div>
+  <div  class="imgList" >
+	  <li ng-repeat="photo in photos" 
+	        ng-class="{active:photo.selected}">
+	    <a href="" ng-click="select(photo)">{{photo.title}}</a>
+	  </li>  
+  </div>
+  <div class="imgView" ng-transclude></div>
+</div>
+***********************************
+Filename: scope_events.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>AngularJS Scope Events</title>
+    <style>
+      span{
+        padding: 3px; border: 3px ridge; 
+        cursor: pointer; width: 100px; display: inline-block;
+        font: bold 18px/22px Geargia; text-align: center; 
+        color: white; background-color: blue }
+      label{
+        padding: 2px; margin: 5px 10px; font: 15px bold; 
+        display: inline-block; width: 50px; text-align: right; }
+      .lList { 
+        vertical-align: top;
+        display: inline-block; width: 130px; }
+      .cInfo { 
+        display: inline-block; width: 175px; 
+        border: 3px blue ridge; padding: 3px; }
+    </style>
+  </head>
+  <body>
+    <h2>Custom Events in Nested Controllers</h2>
+    <div ng-controller="Characters">
+      <div class="lList">
+	      <span ng-repeat="name in names"
+	            ng-click="changeName()">{{name}}
+	      </span>
+      </div>
+      <div class="cInfo">
+	      <div ng-controller="Character">
+	        <label>Name: </label>{{currentName}}<br>
+	        <label>Race: </label>{{currentInfo.race}}<br>
+	        <label>Weapon: </label>{{currentInfo.weapon}}<br>
+	        <span ng-click="deleteChar()">Delete</span>
+	      </div>
+      </div>
+    </div>
+    <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+    <script src="js/scope_events.js"></script>
+  </body>
+</html>
+***********************************
+Filename: scope_watch.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>AngularJS Scope Variable Watch</title>
+    <style>
+      span { cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <h2>Watching Values in the AngularJS Scope</h2>
+    <div ng-controller="myController">
+      Select Color: 
+      <span ng-repeat="mColor in mColors">
+        <span ng-style="{color: mColor}"
+              ng-click="setColor(mColor)">
+          {{mColor}}</span>
+      </span><hr>
+      <span ng-click="hit()">[+]</span>
+      Hits: {{hits}}<br>
+      <span ng-click="miss()">[+]</span>
+      Misses: {{misses}}<hr>
+      Object: {{myObj|json}} <br>
+      Number of Changes: {{changes}}
+    </div>
+    <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+    <script src="js/scope_watch.js"></script>
+  </body>
+</html>
+***********************************
+Filename: service_animate.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS $animate Service</title>
+  <link rel="stylesheet" href="css/animate.css">
+</head>
+<body>
+  <div ng-controller="myController">
+    <h3>AngularJS Image Animation:</h3>
+    <input type="button" 
+           ng-click="myImgClass='fadeOut'" value="Fade Out"/>
+    <input type="button" 
+           ng-click="myImgClass=''" value="Fade In"/>
+    <input type="button" 
+           ng-click="myImgClass='shrink'" value="Small"/>
+    <input type="button" 
+           ng-click="myImgClass='grow'" value="Big"/>
+    <hr>
+    <img ng-class="myImgClass" src="/images/canyon.jpg" />
+  </div>
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="http://code.angularjs.org/1.3.8/angular-animate.min.js"></script>
+  <script src="js/service_animate.js"></script>
+</body>
+</html>
+***********************************
+Filename: service_cookie.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS $cookie Service</title>
+</head>
+<body>
+  <div ng-controller="myController">
+    <h3>Favorite Cookie:</h3>
+    <input type="radio" value="Chocolate Chip" 
+           ng-model="favCookie"
+           ng-change="setCookie()">Chocolate Chip</input><br>
+    <input type="radio" value="Oatmeal" ng-model="favCookie"
+           ng-change="setCookie()">Oatmeal</input><br>
+    <input type="radio" value="Frosted" ng-model="favCookie"
+           ng-change="setCookie()">Frosted</input><br>
+    <input type="radio" value="None" ng-model="favCookie"
+           ng-change="setCookie()">None</input>
+    <hr>Cookies: {{myFavCookie}}
+  </div>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="http://code.angularjs.org/1.3.8/angular-cookies.min.js"></script>
+  <script src="js/service_cookie.js"></script>
+</body>
+</html>
+***********************************
+Filename: service_http.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS $http Service</title>
+  <style>
+    span { 
+      color:red; cursor: pointer; }
+    .myList { 
+      display: inline-block; width: 200px; 
+      vertical-align: top; }
+  </style>
+</head>
+<body>
+  <div ng-controller="myController">
+    <h2>GET and POST Using $http Service</h2>
+    <input type="button" ng-click="resetStore()"
+           value="Restock Store"/>
+    {{status}}
+    <hr>
+    <div class="myList">
+	    <h3>The Store</h3>
+	    <div ng-repeat="(item, count) in storeItems">
+	      {{item}} ({{count}}) 
+	      [<span ng-click="buyItem(item)">buy</span>]
+	    </div>
+    </div>
+    <div class="myList">
+      <h3>My Kitchen</h3>
+      <div ng-repeat="(item, count) in kitchenItems">
+        {{item}} ({{count}}) 
+        [<span ng-click="useItem(item)">use</span>]
+      </div>
+    </div>
+  </div>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/service_http.js"></script>
+</body>
+</html>
+***********************************
+Filename: service_location.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS $location Service</title>
+  <style>
+    span { 
+      color: red; text-decoration: underline; 
+      cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div ng-controller="myController">    
+    <h3>Location Service:</h3>  
+    [<span ng-click="changePath()">Change Path</span>]  
+    [<span ng-click="changeHash()">Change Hash</span>]
+    [<span ng-click="changeSearch()">Change Search</span>]
+    <hr>
+    <h4>URL Info</h4>  
+    url: {{url}}<br>
+    absUrl: {{absUrl}}<br>
+    host: {{host}}<br>
+    port: {{port}}<br>
+    protocol: {{protocol}}<br>
+    path: {{path}}<br>
+    search: {{search}}<br>
+    hash: {{hash}}<br>    
+  </div>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/service_location.js"></script>
+</body>
+</html>
+***********************************
+Filename: service_custom_censor.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS Custom Censor Service</title>
+  <style>
+    p { color: red; margin-left: 15px; }
+    input { width: 250px; }
+  </style>
+</head>
+<body>
+  <div ng-controller="myController">
+    <h3>Custom Censor Service:</h3>
+    Censored Words:<br>
+    <p>{{censoredWords|json}}</p>
+    <hr>
+    Enter Phrase:<br>
+    <input type="text" ng-model="inPhrase" /><hr>
+    Filtered by Factory:
+    <p>{{censoredByFactory}}</p>
+    Filtered by Service:
+    <p>{{censoredByService}}</p>
+  </div>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/service_custom_censor.js"></script>
+</body>
+</html>
+***********************************
+Filename: service_custom_db.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS Custom Database Service</title>
+	<style>
+	  label { 
+	    display: inline-block; width: 75px; text-align: right; }
+	  td, tr { 
+	    width: 125px; text-align: right; }
+	  p {
+	    color: red; font: italic 12px/14px; margin: 0px;}
+	  h3 { 
+	    margin: 5px; }
+	</style>
+</head>
+<body>
+  <h2>Custom Database Service:</h2>
+  <div ng-controller="myController">
+    <h3>User Info:</h3>
+    <label>First:</label>
+      <input type="text" ng-model="userInfo.first" /><br>    
+    <label>Last:</label>
+      <input type="text" ng-model="userInfo.last" /><br>    
+    <label>Username:</label>
+      <input type="text" ng-model="userInfo.username" /><br>    
+    <label>Title:</label>
+      <input type="text" ng-model="userInfo.title" /><br>    
+    <label>Home:</label>
+      <input type="text" ng-model="userInfo.home" /><br>
+    <input type= button ng-click="updateUser()" value="Update User" />
+    <input type= button ng-click="getUser()" value="Refresh User Info" />
+    <hr>
+    <p>{{status}}</p>
+    <hr>
+    <h3>Data:</h3>
+    <input type= button ng-click="updateData()" value="Update Data" />
+    <input type= button ng-click="getData()" value="Refresh Data Table" /><br>
+    <table>
+      <tr><th>Day</th><th>Time</th><th>Latitude</th><th>Longitude</th></tr>
+      <tr ng-repeat="datum in data">
+        <th>{{datum.day}}</th>
+        <td><input type="text" ng-model="datum.time" /></td>
+        <td><input type="text" ng-model="datum.latitude" /></td>
+        <td><input type="text" ng-model="datum.longitude" /></td>
+      </tr>
+    </table>
+    <hr>
+  </div>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/service_custom_db_access.js"></script>
+  <script src="js/service_custom_db.js"></script>
+</body>
+</html>
+***********************************
+Filename: service_custom_time.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS Custom Time Service</title>
+  <style>
+    span { 
+      color: lightgreen; background-color: black; 
+      border: 3px ridge; padding: 2px; 
+      font: bold 14px/18px arial, serif; }
+  </style>
+</head>
+<body>
+  <h2>Custom Time Service:</h2><hr>
+  <div ng-controller="LAController">
+    Los Angeles Time:    
+    <span>{{myTime}}</span>
+  </div><hr>
+  <div ng-controller="NYController">
+    New York Time:    
+    <span>{{myTime}}</span>
+  </div><hr>
+  <div ng-controller="LondonController">
+    London Time:    
+    <span>{{myTime}}</span>
+  </div><hr>
+  <div ng-controller="TimeController">
+    All Times:
+    <table>
+    <tr> 
+	    <th ng-repeat="city in cities">
+	      {{city}}
+	    </th>
+    </tr>
+    <tr> 
+	    <td ng-repeat="city in cities">
+	      <span>{{getTime(city)}}</span>
+	    </td>
+    </tr>
+    </table>
+  </div><hr>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/service_custom_time.js"></script>
+</body>
+</html>
+***********************************
+Filename: dragdrop.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>HTML5 Draggable and Droppable Directives</title>
+  <style>
+    dropit, img, p{
+      vertical-align: top; text-align: center;
+		  width: 100px;
+		  display: inline-block;
+		}
+		p {
+		  color: white; background-color: black;
+		  font: bold 14px/16px arial;
+      margin: 0px; width: 96px;
+      border: 2px ridge grey;
+      background: linear-gradient(#888888, #000000);
+		}
+		span{
+		  display:inline-block; width: 100px;
+		  font: 16px/18px Georgia, serif; text-align: center;
+		  padding: 2px;
+		  background: linear-gradient(#FFFFFF, #888888);
+		}
+		.dragItem {
+		  color: red;
+      opacity: .5;
+		}
+    .dropItem {
+      border: 3px solid red;
+      opacity: .5;
+    }
+    #dragItems {
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <h2>HTML5 Drag and Drop Components</h2>
+  <div ng-controller="myController">
+    Drag Status: {{dragStatus}}<br>
+    Drop Status: {{dropStatus}}
+    <hr>
+    <div id="dragItems">
+	    <span dragit>Nature</span>
+	    <span dragit>Landscape</span>
+	    <span dragit>Flora</span>
+	    <span dragit>Sunset</span>
+	    <span dragit>Arch</span>
+	    <span dragit>Beauty</span>
+	    <span dragit>Inspiring</span>
+      <span dragit>Summer</span>
+      <span dragit>Fun</span>
+    </div>
+    <hr>
+    <dropit><img src="/images/arch.jpg" /></dropit>
+    <dropit><img src="/images/flower.jpg" /></dropit>
+    <dropit><img src="/images/cliff.jpg" /></dropit>
+    <dropit><img src="/images/jump.jpg" /></dropit>
+  </div>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/dragdrop.js"></script>
+</body>
+</html>
+***********************************
+Filename: expand.html
+***********************************
+<!DOCTYPE html>
+<html  ng-app="myApp">
+  <head>
+    <title>Expandable and Collapsible Lists</title>
+    <style>
+      * { vertical-align: top; }
+      expand-list{
+        border: 2px ridge black; }
+      .expand-header{
+        text-align: center; 
+        font: bold 16px/24px arial; 
+         background-image: linear-gradient(#CCCCCC, #EEEEEE); 
+        }
+      .expand-button{
+        float: left; padding: 2px 4px;
+        font: bold 22px/16px courier; 
+        color: white; background-color: black; 
+        cursor: pointer; 
+        border: 3px groove grey; }
+      .expand-item {
+        border: 1px ridge black;}
+      p { margin: 0px; padding: 2px;}
+      label { display: inline-block; width: 80px; padding: 2px; }
+      .small { width: 100px; padding: 2px; }
+      .large { width: 300px; }
+    </style>
+  </head>
+  <body>
+  <h2>Expandable and Collapsible Lists</h2>
+  <hr>
+  <div ng-controller="myController">
+    <expand-list title="Companion" exwidth="120px">
+      <expand-item>Rose</expand-item>
+      <expand-item>Donna</expand-item>
+      <expand-item>Martha</expand-item>
+      <expand-item>Amy</expand-item>
+      <expand-item>Rory</expand-item>
+    </expand-list>
+    <expand-list title="Form" exwidth="280px">
+      <expand-item>
+        <label>Name</label>
+        <input type="text" /><br>
+        <label>Phone</label>
+        <input type="text" /><br>
+        <label>Address</label>
+        <input type="text" /><br>
+        <label>Comment</label>
+        <textarea type="text"></textarea>
+      </expand-item>
+    </expand-list>
+    <hr>
+    <expand-list title="Mixed List" exwidth="300px">
+      <expand-item>Text Item</expand-item>
+      <expand-item><p>I think therefore I am.</p></expand-item>
+      <expand-item>
+        <img class="small" src="/images/jump.jpg" />Sunset
+      </expand-item>
+      <expand-item>
+        <ul>
+          <li>AngularJS</li>
+          <li>jQuery</li>
+          <li>JavaScript</li>
+        </ul>
+      </expand-item>
+    </expand-list>
+    <expand-list title="Image" exwidth="300px">
+      <expand-item>
+        <img class="large" src="/images/falls.jpg" />
+      </expand-item>
+    </expand-list>
+  </div>
+  </body>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/expand.js"></script>
+</html>
+***********************************
+Filename: expand_item.html
+***********************************
+<div ng-hide="myHide" 
+     ng-style="myStyle"
+     class="expand-item" 
+     ng-transclude>
+</div>
+***********************************
+Filename: expand_list.html
+***********************************
+<div>
+	<div class="expand-header">
+		<span class="expand-button" 
+		      ng-click="collapse()">{{expandHandle}}</span>
+		{{title}}
+	</div>
+	<div ng-transclude></div>
+</div>
+***********************************
+Filename: pane.html
+***********************************
+<div class="pane" 
+     ng-show="selected" 
+     ng-transclude>
+</div>
+***********************************
+Filename: rating.html
+***********************************
+<!DOCTYPE html>
+<html  ng-app="myApp">
+  <head>
+    <title>Ratings</title>
+    <style>
+      img {
+        width: 200px; }
+      .star {
+        display: inline-block;
+        width: 15px;
+        background-image: url("/images/star.png"); 
+        background-repeat: no-repeat;
+        background-size: 15px 15px;
+      }
+      .empty {
+        display: inline-block;
+        width: 15px;
+        background-image: url("/images/empty.png"); 
+        background-repeat: no-repeat;
+        background-size: 15px 15px;
+      }
+    </style>
+  </head>
+  <body>
+  <h2>Images With Ratings</h2>
+  <hr>
+  <div ng-controller="myController">
+    <div ng-repeat="item in items">
+      <img ng-src="{{item.img}}" />
+      {{item.description}}<br>
+      Rating: {{item.rating}} stars<br>
+      <span ng-repeat="idx in stars" 
+            ng-class=
+              "{true: 'star', false: 'empty'}[idx <= item.rating]" 
+            ng-click="adjustRating(item, idx)">&nbsp;
+      </span>      
+      <hr>
+    </div>
+  </div>
+  </body>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/rating.js"></script>
+</html>
+***********************************
+Filename: tabbable.html
+***********************************
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>Tab and Tab Pane Directives</title>
+  <style>
+    .tab{
+      display:inline-block; width:100px; 
+      border-radius: .5em .5em 0 0; border:1px solid black; 
+      text-align:center; font: 15px/28px Helvetica, sans-serif;
+      background-image: linear-gradient(#CCCCCC, #EEEEEE); 
+      cursor: pointer; }
+    .activeTab{
+      border-bottom: none;
+      background-image: linear-gradient(#66CCFF, #CCFFFF); }
+    .pane{
+      border:1px solid black; background-color: #CCFFFF; 
+      height:300px; width:400px; 
+      padding:10px;  margin-top:-2px;
+      overflow: scroll; }  
+  </style>
+</head>
+<body>
+  <h2>AngularJS Custom Tabs</h2>
+  <my-tabs>
+    <my-pane title="Canyon">
+      <img src="/images/canyon.jpg" />
+    </my-pane>
+    <my-pane title="Lake">
+      <img src="/images/lake.jpg" />
+    </my-pane>
+    <my-pane title="Sunset">
+      <img src="/images/jump.jpg" />
+    </my-pane>
+  </my-tabs>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/tabbable.js"></script>
+</body>
+</html>
+***********************************
+Filename: tabs.html
+***********************************
+<div class="tabbable">
+  <div class="tabs">
+    <span class="tab" ng-repeat="pane in panes" 
+        ng-class="{activeTab:pane.selected}"
+        ng-click="select(pane)">{{pane.title}}
+    </span>
+  </div>
+  <div class="tabcontent" ng-transclude></div>
+</div>
+***********************************
+Filename: zooming.html
+***********************************
+<!DOCTYPE html>
+<html  ng-app="myApp">
+  <head>
+    <title>Magnify</title>
+    <style>
+      .zoombox {
+        display: inline-block;
+        border: 3px ridge black; 
+        width: 100px; height: 100px; }
+      img {
+        width: 200px; 
+        vertical-align: top; }
+    </style>
+  </head>
+  <body>
+  <h2>Image Zoom Window</h2>
+  <div ng-controller="myController">
+    <zoomit  src="/images/flower.jpg"></zoomit>
+    <hr>
+    <zoomit  src="/images/tiger.jpg"></zoomit>
+  </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+  <script src="js/zooming.js"></script>
+</html>
+***********************************
+Filename: zoomit.html
+***********************************
+<div> 
+  <img src="{{src}}" 
+       ng-click="imageClick($event)"/>
+  <div class="zoombox" 
+       ng-style="zInfo"></div>
+</div>

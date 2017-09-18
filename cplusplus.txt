@@ -1,0 +1,1841 @@
+﻿***********************************
+Filename: Chap6FunctionsSpring2017.cpp
+***********************************
+//darlene westberg
+//February 7, 2017 �
+//Chapter 6 Functions
+#include "Chap6FunctionsSpring2017.h"
+int main()
+{
+	const float localPI = 3.14159;
+	int number;
+	int number2 = 3;
+	int number3;
+	char name[51] = "darlene westberg";
+	int test = 66;
+	double dAnswer;
+	float p;
+	float q;
+	
+	srand(unsigned(time(NULL)));
+	number = rand();
+	cout << "number is now " << number << endl;
+	cout << name << endl;
+	strcpy_s(name, "bill law");
+	cout << name << endl;
+	number3 = Add(number, number2);
+	cout << "number3 is now " << number3 << endl;
+	cout << "number is now " << number << endl;
+	cout << "test is " << test << endl;
+	cout << "global test is " << ::test << endl;
+	cout << "Enter a whole number and I will tell you if it is odd or even"
+		<< endl;
+	cin >> number;
+	if (IsOdd(number))
+		cout << number << " is an odd value" << endl;
+	else
+		cout << number << " is an even value" << endl;
+
+	for (int cnt1 = 1; cnt1 < 5; cnt1++)
+		StaticDemo();
+	//cout << inum << endl;not known in main
+	cout << "Enter a whole number " << endl;
+	cin >> number;
+	cout << "Enter another whole number " << endl;
+	cin >> number2;
+	dAnswer = Divide(number, number2);
+	cout << "dAnswer is now " << dAnswer << endl;
+	cout << "Enter a whole number " << endl;
+	cin >> number;
+	cout << "Enter a decimal value " << endl;
+	cin >> p;
+	dAnswer = Divide(number, p);
+	cout << "dAnswer is now " << dAnswer << endl;
+	cout << "Enter a decimal value " << endl;
+	cin >> p;
+	cout << "Enter another decimal value " << endl;
+	cin >> q;
+	dAnswer = Divide(p, q);
+	cout << "dAnswer is now " << dAnswer << endl;
+	number3 = AddAndChange(number, number2);
+	cout << "number is now " << number <<endl;
+
+
+	
+	system("pause");
+	return 0;
+}
+/*header line of the function
+return data type FunctionName(parameterType, parameterType)
+{
+	processing statements...body of function
+}*/
+int testa;
+int Add(int num1, int num2)//passing by value
+{
+	int sum = num1 + num2;
+	num1 = 99;
+	cout << "test is " << test << endl;
+	cout << testa << endl;
+	return sum;
+
+}
+bool IsOdd(int num)
+{
+	if (num % 2)
+		return true;
+	return false;
+}
+void StaticDemo()
+{
+	static int inum;//acts like a local variable; initializes to zero
+	//and its value persists between function calls
+	cout << "This is inum in StaticDemo " << inum << endl;
+	inum++;
+}
+double Divide(int x, int y)
+{
+	double quotient;
+	if (y == 0)
+		return 0;
+	quotient = (float)x / y;
+	return quotient;
+}
+double Divide(int x, float y)
+{
+	double quotient;
+	if (y == 0)
+		return 0;
+	quotient = x / y;
+	return quotient;
+}
+double Divide (float x, float y)
+{
+	double quotient;
+	if (y == 0)
+		return 0;
+	quotient = x / y;
+	return quotient;
+}
+int AddAndChange(int &num1, int num2)//passing by reference
+
+{
+	int sum = num1 + num2;
+	num1 = 99;
+	return sum;
+}
+
+***********************************
+Filename: Chapter4IfStatementsSpring2017.cpp
+***********************************
+//darlene westberg
+//January 17, 2017 �
+//Chapter 4 If Statements
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int a = 3, b = 4, c = 5;
+	/* 
+	if ( test ) no semicolon here
+	{
+		whatever is controlled by the if test;
+	}
+	2 most common errors:
+	1) ; after the parentheses for the if test (only thing under control
+		of the test is a null statement)
+	2) using a single = when testing for equality instead of the ==
+	*/
+	if (a == b)
+		cout << "a is equal to b" << endl;
+	if ( a = b)
+		cout << "a is equal to b" << endl;
+	cout << "a is now " << a << endl;
+	if (a == c)
+		cout << "a is equal to c" << endl;
+	else
+		cout << "a is not equal to c" << endl;
+	c = 4;
+	if (a > b)
+		cout << "a is greater than b" << endl;
+	else if (a < b)
+		cout << "a is less than b" << endl;
+	else if (c > a)
+		cout << "c is greater than a" << endl;
+	else
+		cout << "None are true" << endl;
+	if (a > b);//null statement only under if test control
+	cout << "a > b" << endl;
+	//multiple statements under control of the if test 
+	a = 3, c = 5;
+	if (a == 3)
+	{
+		cout << "a is equal to 3" << endl;
+		cout << "I am now changing a to 5" << endl;
+		a = 5;
+	}
+	cout << "a is now " << a << endl;
+	//complex ooperations
+	int num1 = 1, num2 = 3, num3 = 3;
+	if (num1 == 1 && num3 == 3)
+		cout << "complex test 1 is true" << endl;
+	if (num1 == 1 && num3 == 1)
+		cout << "complex test 2 is true" << endl;
+	if (num1 ==1 || num3 == 1)
+		cout << "complex test 3 is true" << endl;
+	if (num1 > 3 || num3 < 5 && num2 == 3)
+		cout << "complex test 4 is true" << endl;
+	if ((num1 > 3 || num3 < 5) && num2 == 3)
+		cout << "complex test 5 is true" << endl;
+	//don't change values inside a conditional
+	if (++num1 == 1 && num2 == 3 || num3 == 3)
+		cout << "don't change values within a conditional statement" << endl;
+	cout << "num1 is now " << num1 << endl;
+	/*
+	conditional operator
+	? : ;
+	*/
+	num1 == 1 ? cout << "num1 is equal to 1" : cout << "num1 is NOT equal to 1";
+	cout << endl;
+	c = num1 == 2 ? 100 : 0;
+	cout << "c is now " <<c <<endl;
+
+	system("pause");
+	return 0;
+}
+***********************************
+Filename: Chapter4SwitchSpring2017.cpp
+***********************************
+//darlene westberg
+//January 17, 2017 �
+//Chapter 4 Switch statements
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	/*
+	switch( integer test)
+	{
+		case TestData1:
+			execute if case is true;
+			break;
+		case TestData2:
+			execute if case is true;
+			break;
+		case TestData3:
+			execute if case is true;
+			break;
+		default:
+			execute if all cases are false;
+			break;
+		}
+	*/
+	int randNum;
+	srand(unsigned(time(NULL)));
+	randNum = rand() % 12 + 1;
+	cout << "My dice throw is " << randNum << endl;
+	switch (randNum)
+	{
+	case 12:
+		cout << "Box cars" << endl;
+		break;
+	case 7:
+	case 11:
+		cout << "Craps" << endl;
+		break;
+	case 3:
+	case 4:
+	case 5:
+	case 6:
+	case 8:
+	case 9:
+	case 10:
+		cout << "Throw again" << endl;
+		break;
+	case 2:
+		cout << "Snake eyes" << endl;
+		break;
+	default:
+		cout << "Invalid throw" << endl;
+		break;
+	}
+
+	if (randNum % 2 == 0)
+		cout << "Your number " << randNum << " is even"<<endl;
+	else
+		cout << "You number " << randNum << " is odd"<<endl;
+	
+	system("pause");
+	return 0;
+}
+***********************************
+Filename: Chapter5ForLoopsSpring2017.cpp
+***********************************
+//darlene westberg
+//January 24, 2017 �
+//Chapter 4 For Loops Spring 2017
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	/*/
+	for( intialization; test; post loop operation )
+	{
+		statement(s);
+	}
+	*/
+	int a, b, c;
+	a = b = c = 0;
+	for (a = 1; a < 10; a++)
+		cout << a << endl;
+	cout << "a is now " << a << endl;
+	for (int x = 0; x < 25; x++)//block scope
+		cout << x << endl;
+	//cout << x << endl; x is only known in the above for loop
+	for (; b < 10; b++)
+		cout << b << " ";//all on one line
+	cout << endl;//go to new line
+	//create a for loop to output starting at 1 and go to 10 
+	//use the variable b
+	for (b = 1; b < 11; b++)
+		cout << b << " ";
+	cout << endl;
+	//for (; ;)perfectly legal but doesn't do much
+	for (a = 1; a < 3; a++)
+	{
+		for (b = 1; b < 5; b++)
+			cout << "a is now " << a << " and b is now " << b << endl;
+	}
+	for (a = 1; a < 3; a++)
+	{
+		for (b = 1; b < 5; b++)
+		{
+			cout << a << " * " << b << " = " << a*b << endl;
+		}
+	}
+	//print odd values betwee 0 and 50
+	for (a = 0; a < 51; a++)
+	{
+		if (a % 2)
+			cout << a << " ";
+	}
+	cout << endl;
+	for (a = 0; a < 51; a++)
+	{
+		if (a % 2 ==1)//does the same as above
+			cout << a << " ";
+	}
+	cout << endl;
+	//print out all even numbers between 0 and 20 inclusive on the same line
+	b = 0;
+	for (b; b < 21; b++)
+	{
+		if (b % 2 == 0)
+			cout << b << " ";
+	}
+	cout << endl;
+	for (b=0; b < 21; b++)
+	{
+		if (!(b % 2))//same as above
+			cout << b << " ";
+	}
+	cout << endl;
+	system("pause");
+	return 0;
+}
+***********************************
+Filename: Chapter5IOSpring2017.cpp
+***********************************
+//darlene westberg
+//January 24, 2017�
+//Chapter 5 Input/Output
+#include <iostream>
+#include<fstream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	ofstream outfile;
+	ifstream infile;
+	char name[31];
+	outfile.open("rockstar.txt");
+	outfile << "Mick Jagger" << endl;
+	outfile << "Jim Morrison" << endl;
+	outfile << "Alanis Morrisette" << endl;
+	outfile << "Michelle Branch" << endl;
+
+	outfile.close();
+	cout << "Finished writing to file rockstar.txt" << endl;
+
+	cout << "reading from file" << endl;
+	infile.open("rockstar.txt");
+	/*infile >> name;
+	cout << name<<endl;
+	infile >> name;
+	cout << name << endl;
+	infile >> name;
+	cout << name<<endl;
+	infile >> name;
+	cout << name << endl;*/
+	infile.getline(name, 31);
+	while (!infile.eof())
+	{
+		cout << name << endl;
+		infile.getline(name, 31);
+	}
+	infile.close();
+
+	system("pause");
+	return 0;
+}
+***********************************
+Filename: Chapter5WhileLoopsSpring2017.cpp
+***********************************
+//darlene westberg
+//January 24, 2017 �
+//Chapter 5 While and do...While Loops
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	/*
+	while(test)
+	{
+		statement(s);
+	}
+	*/
+	for (int a = 0; a < 10; a++)
+		cout << a << endl;
+	cout <<"=============" << endl;
+	int b = 0;
+	while (b < 10)
+	{
+		cout << b << endl;
+		b++;
+	}
+	cout << endl;
+	//starts at 10 and executes in reverse to 0
+	//b = -1; if condition is met before entering loop may
+	//not execute
+	while (b > -1)
+	{
+		cout << b << endl;
+		--b;
+	}
+	/*
+	Standard Data Processing Loop
+	gets the first item of data before entering the loop
+	data is tested
+	processing occurs
+	next item of data is read and tested*/
+	int a = 0;
+	cout << "Enter a value and i will give you the remainder of" <<
+		" dividing by 3" << endl;
+	cout << "Zero (0) to Quit" << endl;
+	cin >> a;
+	while (a != 0)
+	{
+		cout << a % 3 << endl;
+		cout << "Enter another value and i will give you the remainder of" <<
+			" dividing by 3" << endl;
+		cout << "Zero (0) to Quit" << endl;
+		cin >> a;
+	}
+	/*
+	do while loop is a post test loop so it will always execute 
+	at least once. test is at the end...ends with a semicolon*/
+	do
+	{
+		cout << "Enter a number, 0 to quit ";
+		cin >> a;
+		if (a % 2 == 0)
+				cout << a << " is an even number " << endl;
+		else
+			cout << a << " is an odd number " << endl;
+		
+	} while (a != 0);
+	char letter = 'A';
+	//while (letter != 'Z' || letter != 'z')
+	while (letter != 'Z' && letter != 'z')
+	{
+		cout << "Enter a letter ";
+		cin >> letter;
+		cout << "ASCII value for " << letter << " is " << (int)letter << endl;
+		cout << "Enter another letter or z to quit" << endl;
+	}
+	cout << endl;
+
+
+
+
+	system("pause");
+	return 0;
+
+}
+***********************************
+Filename: Chapter7ArraysSpring2017.cpp
+***********************************
+//darlene westberg
+//February 14, 2017 �
+//Chapter 7 Arrays
+#include <iostream>
+using namespace std;
+int Product(int x, int y);
+void FillArray(int x[], short size);
+void PrintArray(int x[], short size);
+void PrintArray(int x[][3], short rows, short cols);
+int AddElements(int x[], short size);
+int AverageArray(int x[], short size);
+int FindHighest(int x[], short size);
+int FindLowest(int x[], short size);
+
+int main()
+{
+	int a = 5, b = 10;
+	int iProduct;
+	int iSum;
+	int iAverage;
+	int high;
+	int low;
+	const short arrNum = 5;
+	char myName[31] = "darlene westberg";
+	int StudentNums[24];//explicit array definition
+	int iNums[] = { 98,97,90,60 };//implicit array definition
+								  //implicit definitions MUST have an initialization list
+	cout << StudentNums[2] << endl;//elements are not initialized garbage
+	
+	int  iKeys[arrNum];//cannot define with variable; must be a const
+	iKeys[0] = 99;
+	cout << "The second element of iKeys is " << iKeys[1] << endl;
+	int iValues[2] = { 1,2 };//both implicit and explicit
+	int iStuff[3] = { 5,4 };
+	int Widgets[2][3] = {
+		{900, 888, 777},
+		{100, 200, 300}
+	};
+
+	PrintArray(iStuff, 3);
+
+
+	iProduct = Product(a, b);
+	cout << "iProduct is now " << iProduct <<
+		" and is returned from the function Product" << endl;
+	cout << "a is now " << a << endl;
+	FillArray(StudentNums, 24);
+	PrintArray(StudentNums, 24);
+	cout << "The number of bytes in the array StudentNums is "<<
+		sizeof(StudentNums) << endl;
+	cout << "The number of elements in the array StudentNums is " <<
+		sizeof(StudentNums) / sizeof(StudentNums[0]) << endl;
+	PrintArray(iNums, 4);
+	cout << myName <<endl;
+	strcpy_s(myName, "bill law");
+	cout << myName << endl;
+	cout << myName[1] << endl;
+	cout << "This is the address of the first element of the array "
+		<<StudentNums << endl;
+	cout << "This is the address of the last element of the array "
+		<< StudentNums + 24 <<endl;//pointer math
+	memset(StudentNums, 0, sizeof(StudentNums));
+	PrintArray(StudentNums, 24);
+	PrintArray(Widgets, 2, 3);
+	iSum = AddElements(iNums, 4);
+	cout << "The total of the elements in the iNums array is " << iSum << endl;
+	iAverage = AverageArray(iNums, 4);
+	cout << "The average of the elements in the iNums array is " << 
+		iAverage << endl;
+	high = FindHighest(iNums, 4);
+	cout << "The highest value in iNums is " << high << endl;
+	low = FindLowest(iNums, 4);
+	cout << "The lowest value in iNums is " << low << endl;
+
+	system("pause");
+	return 0;
+}
+
+int Product(int x, int y)
+{
+	int answer;
+	answer = x * y;
+	x = 2000;
+	return answer;
+}
+void FillArray(int x[], short size)
+{
+	for (int i = 0; i < size; i++)
+		x[i] = i + 1;
+}
+void PrintArray(int x[], short size)
+{
+	for (int i = 0; i < size; i++)
+		cout << x[i] << " ";
+	cout << endl;
+}
+void PrintArray(int x[][3], short rows, short cols)
+{
+	int row, col;
+	for (row = 0; row < rows; row++)
+	{
+		for (col = 0; col < cols; col++)
+			cout << x[row][col] << " ";
+		cout << endl;
+	}
+}
+int AddElements(int x[], short size)
+{
+	int total = 0;
+	for (int i = 0; i < size; i++)
+		total += x[i];
+	return total;
+}
+int AverageArray(int x[], short size)
+{
+	int average = 0;
+	for (int i = 0; i < size; i++)
+		average += x[i];
+	average /= size;
+	return average;
+}
+int FindHighest(int x[], short size)
+{
+	int highest;
+	highest = x[0];
+	for (int cnt = 1; cnt < size; cnt++)
+	{
+		if (x[cnt] > highest)
+			highest = x[cnt];
+	}
+	return highest;
+}
+int FindLowest(int x[], short size)
+{
+	int lowest = x[0];
+	for (int cnt = 1; cnt < size; cnt++)
+	{
+		if (x[cnt] < lowest)
+			lowest = x[cnt];
+	}
+	return lowest;
+}
+***********************************
+Filename: Chapter7VectorsSprint2017.cpp
+***********************************
+//darlene westberg
+//February 14, 2017 �
+//Chapter 7 Vectors
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+	vector <int> values;
+	short num;
+	cout << "How many numbers do you want in your vector?" << endl;
+	cin >> num;
+	for (int cnt = 0; cnt < num; cnt++)
+	{
+		int tempValue;
+		cout << "enter a value " << endl;
+		cin >> tempValue; 
+		values.push_back(tempValue);
+	}
+	for (int cnt = 0; cnt < num; cnt++)
+		cout << values[cnt] << " ";
+	cout << endl;
+	cout << "The number of elements in values vector is " <<
+		values.size() << endl;
+	cout << endl;
+	cout << "popping a value from the vector \n";
+	values.pop_back();
+	for (int val : values)//range based loop
+		cout << val << endl;
+
+	system("pause");
+	return 0;
+}
+***********************************
+Filename: Chapter9DynoSpring2017.cpp
+***********************************
+//darlene westberg
+//February 21, 2017
+//Chapter 9 Dynamic memory allocation
+#include <iostream>
+using namespace std;
+void ChangeDataItem(int n1, int *pn1);
+void ChangeAnArrayP(double *dArray, int size);
+void ChangeAnArrayS(double dArray[], int size);
+
+int main()
+{
+	int *iptr = NULL;//use * to define pointer
+	int number = 5;//define a  normal variable
+	iptr = &number;//make pinter point to a variable with address extraction
+	cout << *iptr << endl;
+	cout << iptr << endl;
+	cout << &number << endl;
+	//==================================
+	//pointers and arrays
+	//==================================
+	double dArr[] = { 1, 2, 3, 4, 5 };//implicit
+	cout << dArr[2] << endl;//prints third element of the array
+	cout << *(dArr + 2) << endl;
+	for (int i = 0; i < 5; i++)
+		cout << *(dArr+i) << endl;
+	//======================================
+	//call a function with pointers to a single variable
+	//=========================================
+	int a = 5, b = 5;
+	ChangeDataItem(a, &b);
+	cout << a << " " << b<<endl;
+	ChangeAnArrayP(dArr, 5);
+	for (int i = 0; i < 5; i++)
+		cout << *(dArr + i) << " ";
+	cout << endl;
+	ChangeAnArrayS(dArr, 5);
+	for (int i = 0; i < 5; i++)
+		cout << *(dArr + i) << " ";
+	cout << endl;
+	//======================================
+	//dynamic memory allocation
+	//======================================
+	iptr = new int[7];
+	for (int i = 0; i < 7; i++)
+	{
+		iptr[i] = i + 3;
+		cout << *(iptr + i) << " ";
+	}
+	cout << endl;
+	int howMany = 0;
+	cout << "How much memory should I allocate? " << endl;
+	cin >> howMany;
+	iptr = new int[howMany];
+	for (int i = 0; i < howMany; i++)
+	{
+		iptr[i] = i *2;
+		cout << *(iptr + i) << " ";
+	}
+
+	delete[] iptr;
+	system("pause");
+	return 0;
+}
+//function to receive a pointer and a value
+//it will change both data items
+void ChangeDataItem(int n1, int *pn1)
+{
+	n1 = 12;
+	//dereference - find address and place data there
+	*pn1 = 12;
+	cout << n1 << " " << *pn1 << endl;
+}
+void ChangeAnArrayP(double *dArray, int size)
+{
+	for (int i = 0; i < size; i++)
+		*(dArray+i) = dArray[i] * 2;
+
+}
+void ChangeAnArrayS(double dArray[], int size)
+{
+	for (int i = 0; i < size; i++)
+		dArray[i] = dArray[i] + 2;
+}
+***********************************
+Filename: Chapter9PointersSpring2017.cpp
+***********************************
+//darlene westberg
+//February 21, 2017
+//Chapter 9 Pointers
+#include <iostream>
+using namespace std;
+void notPointer(int a);
+void aPointer(int *a);
+void PrintArray(int myarray[], int size);
+void changeArray(int iarray[], int size);
+void ptrchangeArray(int * ptr, int size);
+
+int main()
+{
+	int x = 77;
+	int *ptr;
+	double z = 2.5;
+	ptr = &x;
+	double *dptr = &z;
+	int iArr[] = { 1,2,3,4 };//implicit array definition
+
+	cout << sizeof(ptr) << " is the number of bytes in ptr " << endl;
+	cout << sizeof(dptr) << " is the number of bytes in dptr " << endl;
+
+	cout << "x is now " << x << endl;//output of value stored at x
+	cout << "ptr is now " << ptr << endl;//output of pointer (an address)
+	cout << "dptr is now " << dptr << endl;
+	cout << "z is holding " << *dptr << endl;//dereferencing pointer to
+	//get the value stored at the location the pointer is pointing to
+	cout << iArr << " is the array name" << endl;
+	notPointer(x);
+	cout << "x is now " << x << endl;
+	aPointer(&x);
+	cout << "x is now " << x << endl;
+	PrintArray(iArr, 4);
+	changeArray(iArr, 4);
+	PrintArray(iArr, 4);
+	ptrchangeArray(iArr, 4);
+	PrintArray(iArr, 4);
+
+	system("pause");
+	return 0;
+}
+void notPointer(int a)
+{
+	a = 120;
+}
+void aPointer(int *a)
+{
+	*a = 120;
+}
+void PrintArray(int myarray[], int size)
+{
+	for (int i = 0; i < size; i++)
+		cout << myarray[i] << " ";
+	cout << endl;
+}
+void changeArray(int iarray[], int size)
+{
+	for (int i = 0; i < size; i++)
+		iarray[i] = i * size;
+}
+void ptrchangeArray(int * ptr, int size)
+{
+	for (int i = 0; i < size; i++)
+		*(ptr+i) = i * size + 1;
+	cout << endl;
+}
+
+***********************************
+Filename: dwFirstProgram.cpp
+***********************************
+//darlene westberg
+//January 10, 2017 �
+//my first project in C++
+#include <iostream>
+#include<iomanip>
+using namespace std;
+
+int main()
+{
+	int a, b, c;
+	float d;
+	char name[31] = "darlene westberg";
+	double x = 1.23456789;
+
+	cout << "Enter a value that is a whole number:" << endl;
+	cin >> a;
+	cout << "a is now " << a << endl;
+	cout << "Enter two values that are whole numbers:" << endl;
+	cin >> b >> c;
+	cout << "b is now " << b << " c is now "<<c << endl;
+	//cout << "\a\a\a\a\a\a\a";
+	d = (float)a / b;
+	cout << "d is now " << d << endl;
+	cout << "You entered " << name << endl;
+	cout << "Enter another name:" << endl;
+	cin >> name;
+	cout << "You entered " << name <<" for the second name "<<endl;
+	cout << "x is now " << x << endl;
+	cout << setprecision(8) << x << endl;;
+	cout << "x is now " << x << endl;
+	cout << sizeof(long double) << endl;
+	cout << sizeof(d) << endl;
+	cout << sizeof(name) << endl;
+	system("pause");
+	//cin.get();
+	return 0;
+}
+***********************************
+Filename: FunctionHandoutSpring2017.cpp
+***********************************
+//darlene westberg
+//February 7, 2017 �
+//Function Handout
+#include <iostream>
+#define PI 3.14159
+using namespace std;
+void fun1();
+void PrintDiameter(int diameter);
+void PrintArea(float radius, double pi);
+double Area(float radius, double pi);
+long Total(short arr[], short count);
+long TotalP(short *arr, short count);
+long double Avg2Dim(double Arr[][6], short rowcount, short colcount);
+long double AvgWithTotal(double Arr[][6], short rows, short cols, long double *Sum);
+void SwapP(short *num1, short *num2);
+void SwapR(short &num1, short &num2);
+void PrintArray(short count, short *arr);
+short &lowest(short array[], short count);
+
+
+int main()
+{
+	int diam = 7926;
+	float rad = 3.5;
+	double area;
+	short myarr[6] = { 12,3,45,99,12345,-100 };
+	long myTotal;
+	double dArr[3][6] = { {1,2,3}, {7.9,3.4,2.1}, {8.9,9.8, 987.0} };
+	long double average;
+	long double ldx = 0.0;
+	long double *ldptr = &ldx;
+	//function calls
+	fun1();
+	PrintDiameter(diam);
+	PrintArea(rad, PI);
+	area = Area(rad, PI);
+	cout << "The area of the circle back in  main is " << area << endl;
+	myTotal = Total(myarr, 6);
+	cout << "The total of the elements in myarr is (subscript notation)"
+		<< myTotal << endl;
+	myTotal = TotalP(myarr, 6);
+	cout << "The total of the elements in myarr is (pointer notation)"
+		<< myTotal << endl;
+	average = Avg2Dim(dArr, 3, 6);
+	cout << "The average of the double array is " << average << endl;
+	average = AvgWithTotal(dArr, 3, 6, ldptr);
+	cout << average << " is the average from AvgWithTotal " << *ldptr <<
+		" is the total " << endl;
+	cout << myarr << " is the address of the first element of the array" << endl;
+	cout << myarr[0] << " is the value of myarr[0] and " << myarr[5] << " is now " <<
+		"the value in myarr[5]" << endl;
+	SwapP(&myarr[0], &myarr[5]);
+	cout << myarr[0] << " is the value of myarr[0] and " << myarr[5] << " is now " <<
+		"the value in myarr[5]" << endl;
+	cout << myarr[2] << " is the value of myarr[2] and " << myarr[5] << " is now " <<
+		"the value in myarr[5]" << endl;
+	SwapR(myarr[2], myarr[5]);
+	cout << myarr[2] << " is the value of myarr[2] and " << myarr[5] << " is now " <<
+		"the value in myarr[5]" << endl;
+	PrintArray(6, myarr);
+	lowest(myarr, 6) = 0;
+	PrintArray(6,myarr);
+	system("pause");
+	return 0;
+}
+//A function called fun1 returning nothing and receiving 
+//nothing
+void fun1()
+{
+	cout << "Hello World!" << endl;
+	return;
+}
+//A function PrintDiameter returning nothing and 
+//receiving an int
+void PrintDiameter(int diameter)
+{
+	cout << "The world is " << diameter << " miles in diameter"
+		<< endl;
+}
+// a function returning nothing 
+//and receiving a float and a double
+void PrintArea(float radius, double pi)
+{
+	cout << "The area of this circle is " << (pi * radius * radius)
+		<< endl;
+}
+//a function returning a double and receiving a float and a double
+double Area(float radius, double pi)
+{
+	double area;
+	area = pi * radius*radius;
+	return area;
+}
+//a function receiving a pointer to an array, a short and returning a long
+//using subscript notation
+long Total(short arr[], short count)
+{
+	short cnt;
+	long total = 0;
+	for (cnt = 0; cnt < count; cnt++)
+	{
+		total += arr[cnt];
+	}
+	return total;
+}
+long TotalP(short *arr, short count)
+{
+	short cnt;
+	long total = 0;
+	for (cnt = 0; cnt < count; cnt++)
+	{
+		total += *(arr+cnt);
+	}
+	return total;
+}
+long double Avg2Dim(double Arr[][6], short rowcount, short colcount)
+{
+	long double total = 0;
+	short row, col;
+	for (row = 0; row < rowcount; row++)
+	{
+		for (col = 0; col < colcount; col++)
+			total += *(*(Arr+row)+col);//pointer notation do the 4 steps twice
+	}
+	return total / (rowcount*colcount);
+}
+long double AvgWithTotal(double Arr[][6], short rows, short cols, long double *Sum)
+{
+	long double total = 0;
+	short row, col;
+	for (row = 0; row < rows; row++)
+	{
+		for (col = 0; col < cols; col++)
+			total += Arr[row][col];
+	}
+	*Sum = total;
+	return total / (rows*cols);
+}
+void SwapP(short *num1, short *num2)
+{
+	short temp;
+	if (*num1 > *num2)
+	{
+		temp = *num1;
+		*num1 = *num2;
+		*num2 = temp;
+	}
+}
+void SwapR(short &num1, short &num2)
+{
+	short temp;
+	if (num1 > num2)
+	{
+		temp = num1;
+		num1 = num2;
+		num2 = temp;
+	}
+}
+void PrintArray(short count, short *arr)
+{
+	short cnt;
+	for (cnt = 0; cnt < count; cnt++, arr++)
+		cout << *arr << endl;
+}
+short &lowest(short array[], short count)
+{
+	short IndexOfLowest = 0;
+	short cnt;
+	for (cnt = 1; cnt < count; cnt++)
+	{
+		if (array[cnt] < array[IndexOfLowest])
+			IndexOfLowest = cnt;
+	}
+	return array[IndexOfLowest];
+}
+***********************************
+Filename: FunWithLoopsSpring2017.cpp
+***********************************
+//Fun with Loops
+//darlene westberg
+//January 24, 2017
+#include <iostream>
+using namespace std;
+
+int main() {
+
+
+/*
+1.	Create a menu to display on the screen:
+
+1.	Play Games
+2.	Go Home and to Bed
+3.	Play on the Internet
+
+Choose one of the above
+*/
+	/*short choice;
+	do
+	{ 
+	
+	cout << "1.Play Games" << endl;
+	cout << "2.Go Home and to Bed" << endl;
+	cout << "3.Play on the Internet" << endl;
+	cout << endl;
+	cout << "Choose one of the above" << endl;
+	cout << "or zero (0) to Quit" << endl;
+	cin >> choice;
+	system("cls");
+	switch (choice)
+	{
+	case 0:
+		cout <<"Thank you for playing" << endl;
+		break;
+	case 1:
+		cout << "You chose to play games" << endl;
+		break;
+	case 2:
+		cout << "You chose to go home and go to bed" << endl;
+		break;
+	case 3: 
+		cout << "You chose to play on the Internet...go to the Hard Drive Cafe"
+			<< endl;
+		break;
+	default:
+		cout << "You chose poorly..." << endl;
+	}
+	} while (choice != 0);*/
+	/*4.	Using the �standard data processing loop� 
+	ask the user to enter a number.
+		a.Display that number multiplied by itself.
+		b.Continue to ask the user for input until 
+		he / she enters negative one(-1).
+		
+		Gets the first item of data before entereing the loop
+		tests the item of data, processes if test is true
+		gets the next item of data*/
+	int num;
+	cout << "Enter a number or -1 to quit and I will give you its square" 
+		<< endl;
+	cin >> num;
+	while (num != -1)
+	{
+		cout << num*num << " is your number squared" << endl;
+		cout << "Enter a number or -1 to quit and I will give you its square"
+			<< endl;
+		cin >> num;
+	}
+	/*5.	Use a For Loop to print only the even numbers between 1 and 10 inclusively.
+		a.Print the numbers all on the same line and after the loop go to a new line.
+		b.Increment the counter by one only.*/
+	for (int counter = 1; counter < 11; counter++)
+	{
+		if (counter % 2 == 0)//if (!(counter%2))
+			cout << counter << " ";
+	}
+	cout << endl;
+	/*6.	Same as the previous problem, but make it a While Loop.
+		(Use a While Loop to print only the even numbers between 1 and 10 inclusively.
+			a.Print the numbers all on the same line and after the loop go to a new line.
+			b.Increment the counter by one only)*/
+	num = 1;
+	while (num < 11)
+	{
+		if (num % 2 == 0)//if(!(num%2))
+			cout << num << " ";
+		num++;
+	}
+	cout << endl;
+	/*7. Create nested for loops
+		Outer loop will go from 1 to 9
+		Inner loop will go from 0 to 4
+		Print out the value of the counters within the loop.*/
+	for (int num1 = 1; num1 < 10; num1++)
+	{
+		for (int num2 = 0; num2 < 5; num2++)
+			cout << "num1 is now " << num1 << " num2 is now " << num2 << endl;
+	}
+	/*8. Create nested for loops
+		To print a multiplication table from 1�s to 14�s
+		1 * 1 = 1
+		1 * 2 = 2*/
+	for (int num1 = 1; num1 < 15; num1++)
+	{
+		for (int num2 = 1; num2 < 15; num2++)
+			cout << num1 << " * " << num2 << " = " << num1*num2 << endl;
+	}
+	cout << endl;
+
+
+
+
+
+
+
+
+
+	system("pause");
+	return 0;
+}
+***********************************
+Filename: chapter5.cpp
+***********************************
+// Greg Leftwich
+// June 4, 2017 �
+// Chapter 5 Programming Challenge - Add to Chapter 4 program
+
+
+#include <iostream>
+#include <time.h>
+#include <iomanip>
+
+
+using namespace std;
+
+int main()
+{
+	
+	unsigned short dieRoll, guess, totalRolls, cnt1, cnt2;
+	unsigned int seed = time(0);
+
+	srand(seed); // seed the random number function
+	cout << "Enter a whole number between 1 and 6: "; // prompt user for input
+	cin >> guess; // capture users input
+	dieRoll = rand() % 6 + 1; // generate a random number between 1 and 6
+	cout << "\nYou guessed " << guess << " and the random roll was " << dieRoll << ".\n\n"; // display results of user input and random function
+
+	if (guess == dieRoll)  // test numbers for various conditions and output accordingly
+	{
+		cout << "WINNER\n\n";
+	}
+
+	if (dieRoll % 2 == 1)
+	{
+		cout << "DOUBLE WINNER\n\n";
+	}
+
+	totalRolls = guess + dieRoll;
+
+	if (totalRolls >= 10 && dieRoll % 2 == 0)
+	{
+		cout << "YOU ARE A LUCKY PERSON\n\n";
+	}
+
+	cout << "\n";
+	 
+
+	for (int i = 1; i <= 5; i++)
+	{
+		cout << i;
+	}
+
+	cout << "\n";
+
+	for (int i = 100; i >= 0; i--)
+	{
+		if (i % 17 == 0 && i != 0)
+		{
+			cout << i << " ";
+		}
+	}
+
+	cout << "\n";
+	int i = 100;
+
+	while (i >= 0)
+	{
+		if (i % 17 == 0 && i != 0)
+		{
+			cout << i << " ";
+		}
+
+		i--;
+	}
+
+	cout << "\n";
+
+	do
+	{
+		cout << "Enter a number ( to quit enter 0 ): ";
+		cin >> guess;
+		cout << guess << " divided by 5 gives a remainder of " << guess % 5;
+		cout << "\n";
+
+	} while (guess != 0);
+
+	
+
+	for (int i = 1; i <= 5; i++)
+	{
+		for (int x = 1; x <= 6; x++)
+		{
+			cout << i * x << "\t";
+		}
+		cout << "\n";
+	}
+
+	cout << "\n";
+	system("pause");
+	return 0;
+}
+
+
+***********************************
+Filename: chapter6.cpp
+***********************************
+// Greg Leftwich
+// June 18, 2017 �
+// Chapter 6 Programming Challenge - Lowest Score Drop
+
+
+#include <iostream>
+
+using namespace std;
+
+void getScore(int&);
+void calcAverage(int, int, int, int, int);
+int findLowest(int, int, int, int, int);
+
+int main()
+{
+	int score1, score2, score3, score4, score5;
+
+	getScore(score1);
+	getScore(score2);
+	getScore(score3);
+	getScore(score4);
+	getScore(score5);
+
+	calcAverage(score1, score2, score3, score4, score5);
+		
+
+	system("pause");
+
+	return 0;
+}
+
+void getScore(int &score)
+{
+	do
+	{
+		cout << "Please enter a test score: ";
+		cin >> score;
+		if (score < 0 || score > 100)
+			cout << "Please enter a score from 0 to 100.\n\n";
+	} while (score < 0 || score > 100);
+	
+	
+}
+
+void calcAverage(int score1, int score2, int score3, int score4, int score5)
+{
+	int lowest = findLowest(score1, score2, score3, score4, score5);
+
+	double average = ((score1 + score2 + score3 + score4 + score5) - lowest) / 4.0;
+
+	cout << "The average of the scores with the lowest score dropped is: " << average << "\n\n";
+	
+}
+
+int findLowest(int score1, int score2, int score3, int score4, int score5)
+{
+	int lowest = score1;
+
+	if (lowest > score2)
+		lowest = score2;
+	if (lowest > score3)
+		lowest = score3;
+	if (lowest > score4)
+		lowest = score4;
+	if (lowest > score5)
+		lowest = score5;
+
+	return lowest;
+
+}
+
+***********************************
+Filename: chapter7.cpp
+***********************************
+// Greg Leftwich
+// June 25, 2017 �
+// Chapter 7 Assignment - Arrays
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+
+	double dArr[5];
+	long lArr[7] = { 100000, 134567, 123456, 9, -234567, -1, 123489 };
+	int iArr[3][5];
+	char sName[30] = { 'G', 'r', 'e', 'g' };
+	short cnt1, cnt2;
+	double total = 0;
+	long highest;
+
+	srand((unsigned)time(NULL));
+
+	for (int count = 0; count < 5; count++)
+	{
+		
+		dArr[count] = rand();
+	}
+
+	for (int count = 0; count < 5; count++)
+	{
+		cout << dArr[count];
+	}
+
+	cout << "\n";
+
+	for (int count = 0; count < 5; count++)
+	{
+		total += dArr[count];
+	}
+	
+	cout << "Total of the array dArr is: " << total << "\n";
+	cout << "Average of the elements in array dArr is: " << total / 5 << "\n";
+
+	for (cnt1 = 1, highest = lArr[0]; cnt1 < 7; cnt1++)
+	{
+		if (highest < lArr[cnt1])
+		{
+			highest = lArr[cnt1];
+		}
+	}
+
+	cout << "The value of the variable highest is: " << highest << "\n";
+
+	srand((unsigned)time(NULL));
+
+	for (cnt1 = 0; cnt1 < 3; cnt1++)
+	{
+		for (cnt2 = 0; cnt2 < 5; cnt2++)
+		{
+			iArr[cnt1][cnt2] = rand() % 53 + 1;
+		}
+	}
+
+	cout << "\n";
+
+	for (cnt1 = 0; cnt1 < 3; cnt1++)
+	{
+		for (cnt2 = 0; cnt2 < 5; cnt2++)
+		{
+			cout << setw(4) << iArr[cnt1][cnt2];
+		}
+		cout << "\n";
+	}
+
+	cout << "\n";
+
+	for (cnt1 = 0; cnt1 < 5; cnt1++)
+	{
+		for (cnt2 = 0; cnt2 < 3; cnt2++)
+		{
+			cout << setw(4) << iArr[cnt2][cnt1];
+		}
+		cout << "\n";
+	}
+
+	cout << "\n";
+
+	cout << "Enter another name to be copied intot he sName variable: ";
+
+	cin.getline(sName, 30);
+
+	cnt1 = 0;
+
+	while (sName[cnt1] != '\0')
+	{
+		cout << static_cast<int>(sName[cnt1]) << "\n";
+		cnt1++;
+	}
+
+	cout << "\n";
+
+	strcpy_s(sName, 30, "Albert Einstein");
+
+	cnt1 = 0;
+
+	while (sName[cnt1] != '\0')
+	{
+		if (cnt1 == 12)
+		{
+			cout << static_cast<int>(sName[cnt1]) << "\n";
+		}
+		
+		cnt1++;
+	}
+	
+	cout << "\n";
+	system("pause");
+	return 0;
+}
+
+
+***********************************
+Filename: chapter9.cpp
+***********************************
+// Greg Leftwich
+// July 2, 2017 �
+// Chapter 9 Assignment - Pointers
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+
+	double dArr[5];
+	long lArr[7] = { 100000, 134567, 123456, 9, -234567, -1, 123489 };
+	int iArr[3][5];
+	char sName[30] = { 'G', 'r', 'e', 'g' };
+	short cnt1, cnt2;
+	double total = 0;
+	long highest;
+
+
+
+	srand((unsigned)time(NULL));
+
+	for (int count = 0; count < 5; count++)
+	{
+
+		dArr[count] = rand();
+	}
+
+
+	for (int count = 0; count < 5; count++)
+	{
+		cout << dArr[count];
+	}
+
+
+	cout << "\n";
+
+	for (int count = 0; count < 5; count++)
+	{
+		total += dArr[count];
+	}
+
+	cout << "Total of the array dArr is: " << total << "\n";
+	cout << "Average of the elements in array dArr is: " << total / 5 << "\n";
+
+	for (cnt1 = 1, highest = lArr[0]; cnt1 < 7; cnt1++)
+	{
+		if (highest < lArr[cnt1])
+		{
+			highest = lArr[cnt1];
+		}
+	}
+
+	cout << "The value of the variable highest is: " << highest << "\n";
+
+	srand((unsigned)time(NULL));
+
+	for (cnt1 = 0; cnt1 < 3; cnt1++)
+	{
+		for (cnt2 = 0; cnt2 < 5; cnt2++)
+		{
+			iArr[cnt1][cnt2] = rand() % 53 + 1;
+		}
+	}
+
+	cout << "\n";
+
+	for (cnt1 = 0; cnt1 < 3; cnt1++)
+	{
+		for (cnt2 = 0; cnt2 < 5; cnt2++)
+		{
+			cout << setw(4) << iArr[cnt1][cnt2];
+		}
+		cout << "\n";
+	}
+
+	cout << "\n";
+
+	for (cnt1 = 0; cnt1 < 5; cnt1++)
+	{
+		for (cnt2 = 0; cnt2 < 3; cnt2++)
+		{
+			cout << setw(4) << iArr[cnt2][cnt1];
+		}
+		cout << "\n";
+	}
+
+	cout << "\n";
+
+	cout << "Enter another name to be copied intot he sName variable: ";
+
+	cin.getline(sName, 30);
+
+	cnt1 = 0;
+
+	while (sName[cnt1] != '\0')
+	{
+		cout << static_cast<int>(sName[cnt1]) << "\n";
+		cnt1++;
+	}
+
+	cout << "\n";
+
+	strcpy_s(sName, 30, "Albert Einstein");
+
+	cnt1 = 0;
+
+	while (sName[cnt1] != '\0')
+	{
+		if (cnt1 == 11)
+		{
+			cout << static_cast<int>(sName[cnt1]) << "\n";
+		}
+
+		cnt1++;
+	}
+
+	//------------------------------------------
+	// Chaper 9 Assignment code starting here  *
+	//------------------------------------------
+
+	double *pdArray; // step 16
+
+	pdArray = dArr; // step 17
+	 
+	cout << "Chapter 9 assignment begins here.\n\n";
+
+	for (int count = 0; count < 5; count++) // step 18
+	{
+		cout << dArr[count] << " ";
+	}
+
+	cout << "\n";
+
+	for (int count = 0; count < 5; count++) // step 19
+	{
+		cout << *(pdArray + count) << " ";
+	}
+
+	cout << "\n";
+
+	while (pdArray < &dArr[5]) // step 20
+	{
+		cout << *pdArray << " ";
+		pdArray++;
+	}
+
+	// step 21 I did not understand what you mean, but I think the above while loop does something like that.
+
+	int *piArray = new int[100]; // step 22
+	
+
+	srand((unsigned)time(NULL));
+
+
+	for (int count = 0; count < 100; count++)  // step 23
+	{
+		piArray[count] = rand() % (49 + 1);
+	}
+
+	cout << "\n";
+
+	for (int count = 0; count < 10; count++) // step 24
+	{
+		cout << piArray[count] << " ";
+	}
+
+	cout << "\n";
+	system("pause");
+	return 0;
+}
+
+
+***********************************
+Filename: CPP11.cpp
+***********************************
+// Greg Leftwich
+// May 20, 2017 �
+// Chapter 3 Assignment - Program 1
+
+// pseudocode: -------------------------------------
+// define a variable to hold each required item
+// output a prompt asking for each required input
+// get the input for each variable in turn
+// output the contents of the variables to the screen
+// make the program beep 5 times
+//---------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	// define variables for each required item
+
+	unsigned int usaPopulation;
+	float usaAverageFamilyIncome;
+	float hourlyWage;
+	unsigned short studentsAttendingSpc;
+	float gnpOfFlorida;
+	char gender;
+	
+	// get the user input for each variable
+
+	cout << "Please answer the following questions. Do not enter commas for numbers greater than 999.\n\n";
+	cout << "Please enter the population of the USA: ";
+	cin >> usaPopulation;
+
+	cout << "Please enter the average family income of the USA: ";
+	cin >> usaAverageFamilyIncome;
+
+	cout << "Please enter the hourly wage of one family member: ";
+	cin >> hourlyWage;
+
+	cout << "Please enter the total students attending SPC: ";
+	cin >> studentsAttendingSpc;
+
+	cout << "Please enter the GNP of Florida: ";
+	cin >> gnpOfFlorida;
+
+	cout << "Please enter either M or F to represent your gender: ";
+	cin >> gender;
+
+	// display the results
+
+	cout << "USA Population: " << usaPopulation << "\n";
+	cout << "Average family income: " << usaAverageFamilyIncome << "\n";
+	cout << "Family members hourly wage: " << hourlyWage << "\n";
+	cout << "Students attending SPC: " << studentsAttendingSpc << "\n";
+	cout << "GNP of Florida: " << gnpOfFlorida << "\n";
+	cout << "Gender: " << gender << "\n";
+	
+	// beep 5 times
+
+	cout << "\a\a\a\a\a";
+	
+	system("pause");
+	return 0;
+}
+
+
+***********************************
+Filename: CPP12.cpp
+***********************************
+// Greg Leftwich
+// May 27, 2017 �
+// Chapter 4 Assignment - Program 2
+
+//pseudocode --------------------------------------------------------
+// get the user to input a random number between 1 & 6
+// generate a random number between 1 & 6
+// if the numbers match display WINNER
+// if the numbers match AND they are even, also display DOUBLE WINNER
+// if the numbers match, are even, AND add up to more than or equal to 10 display YOU ARE A LUCKY PERSON
+
+#include <iostream>
+#include <time.h>
+#include <iomanip>
+
+
+using namespace std;
+
+int main()
+{
+	
+	unsigned short dieRoll, guess, totalRolls, cnt1, cnt2;
+	unsigned int seed = time(0);
+
+	srand(seed); // seed the random number function
+	cout << "Enter a whole number between 1 and 6: "; // prompt user for input
+	cin >> guess; // capture users input
+	dieRoll = rand() % 6+1; // generate a random number between 1 and 6
+	cout << "\nYou guessed " << guess << " and the random roll was " << dieRoll << ".\n\n"; // display results of user input and random function
+
+	if (guess == dieRoll)  // test numbers for various conditions and output accordingly
+	{
+		cout << "WINNER\n\n";
+	}
+
+	if (guess == dieRoll && dieRoll % 2 == 0)
+	{
+		cout << "DOUBLE WINNER\n\n";
+	}
+
+	totalRolls = guess + dieRoll;
+	
+	if (totalRolls >= 10 && dieRoll % 2 == 0)
+	{
+		cout << "YOU ARE A LUCKY PERSON\n\n";
+	}	
+
+	system("pause");
+	return 0;
+}
+
+
+***********************************
+Filename: SoftwareSales.cpp
+***********************************
+// Greg Leftwich
+// May 27, 2017 �
+// Chapter 4 Assignment - Chapter 4 Programming Challenge - Software Sales
+
+//pseudocode --------------------------------------------------------
+// get the user to enter a quantity of software packages to buy
+// calculate the total cost at full price for the quantity
+// calculate the discount based on the number of packages being bought
+// subtract the discount from the full price to get the discounted price
+// display the discounted price
+
+#include <iostream>
+#include <time.h>
+#include <iomanip>
+
+
+using namespace std;
+
+int main()
+{
+	const unsigned short price = 99;
+	short int quantity;
+	double total, discount;
+	double discountPercentage = 0;
+
+	cout << "Please enter the number of units being purchased: "; // prompt user
+	cin >> quantity; // store user input in quantity variable
+	
+
+	if (quantity > 0) // make sure input is greater than 0
+	{
+		// set the discount percentage based on the quantity being purchased
+		if (quantity >= 10 && quantity <= 19) 
+		{
+			discountPercentage = .20;
+		}
+
+		if (quantity >= 20 && quantity <= 49)
+		{
+			discountPercentage = .30;
+		}
+
+		if (quantity >= 50 && quantity <= 99)
+		{
+			discountPercentage = .40;
+		}
+
+		if (quantity >= 100)
+		{
+			discountPercentage = .50;
+
+		}
+
+		// calculate the total, discount, and discounted price
+		total = quantity * price;
+		discount = total * discountPercentage;
+		total -= discount;
+
+		cout << "\nThe total price is: $" << total << ".\n\n"; // display the discounted total
+
+	}
+	else // if quantity was not greater than zero
+	{
+		cout << "\nUnits being purchased cannot be less than or equal to zero.\n\n"; // show error message
+	}
+
+	
+	
+	system("pause");
+	return 0;
+}
+
